@@ -1,14 +1,7 @@
+# Sensitive
 99_SENSITIVE/
-*.pdf
-*.docx
-*.doc
-*.xlsx
-*.ods
-*.odt
-*.png
-*.jpg
-*.PNG
-*.asc
+
+# Binary/compiled
 *.elf
 *.o
 *.d
@@ -16,8 +9,60 @@
 *.cyclo
 *.map
 *.list
+*.bin
+*.hex
+*.a
+*.so
 Debug/
+Release/
+build/
+
+# IDE metadata — never commit these
+**/.metadata/
+**/.settings/
+**/.history/
+**/.git/
+*.pdom
+*.log
+*.lock
+
+# KiCad generated
+*-backups/
+fp-info-cache
+*.kicad_prl
+gerbers/
+Gerbers/
+
+# Documents (store separately, not in git)
+*.pdf
+*.PDF
+*.docx
+*.doc
+*.xlsx
+*.ods
+*.odt
+*.pptx
+*.png
+*.jpg
+*.PNG
+*.JPG
+*.svg
+*.asc
+
+# Archives
+*.zip
+*.tar.gz
+*.tgz
+*.gbr
+*.drl
+*.gbrjob
+
+# Python
 __pycache__/
 *.pyc
+*.pyo
+
+# System
 .DS_Store
 node_modules/
+*.tmp

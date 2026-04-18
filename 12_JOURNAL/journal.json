@@ -1,0 +1,22 @@
+[
+  {
+    "timestamp": "2025-11-03T14:49:30",
+    "note": "Here is my note can i press enter",
+    "tags": [
+      "nope",
+      "but",
+      "it",
+      "is",
+      "sort",
+      "of",
+      "working"
+    ]
+  },
+  {
+    "timestamp": "2025-11-03T15:59:52",
+    "note": "Ok here we are, completely focused and committed to pentesting. Learn by doing. Eventually after doing many of the boxes and the academy, start doing bug bounty programs. Preengagement onsists of three components\n1. Scoping questionoaire\nunderstand the services they are seeking, internal or ezternal vulnerability assessment or test, wireless, apps, physical, social engineering, web apps, or red team\nGood questions to ask-\nhow many live hosts, IP/CIDRs ranges, domain/subdomains, SSIDs, web/mobile apps, phishing, ph, AD, or red team? See preengagement program.",
+    "tags": [
+      "preengagement"
+    ]
+  }
+]
