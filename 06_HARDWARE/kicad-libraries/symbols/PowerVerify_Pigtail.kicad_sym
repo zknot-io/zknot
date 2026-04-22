@@ -1,0 +1,111 @@
+(kicad_symbol_lib
+	(version 20231120)
+	(generator "zknot_powerverify")
+	(generator_version "1.0")
+
+	(symbol "Pigtail_USB-C_4wire_ZKNOT"
+		(pin_names (offset 1.016))
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+
+		(property "Reference" "J"
+			(at 0 13.97 0)
+			(effects (font (size 1.524 1.524) bold))
+		)
+		(property "Value" "Pigtail_USB-C_4wire_ZKNOT"
+			(at 0 -15.24 0)
+			(effects (font (size 1.27 1.27)) hide)
+		)
+		(property "Footprint" "ZKNOT:Pigtail_USB-C_4wire_6pad_ZKNOT_THT_Arc"
+			(at 0 -17.78 0)
+			(effects (font (size 1.27 1.27)) hide)
+		)
+		(property "Datasheet" "https://verifyknot.io/datasheet/pigtail-v1"
+			(at 0 -20.32 0)
+			(effects (font (size 1.27 1.27)) hide)
+		)
+		(property "Description" "ZKNOT USB-C male pigtail, 4-wire (VBUS/GND/CC1/CC2) 20AWG power / 28AWG CC. 6 THT pads in 15mm arc; D+/D- present as NC terminations for PAT-002/PAT-018 compliance. Strain relief via zip tie + adhesive heat shrink through 2x half-moon cutouts."
+			(at 0 -22.86 0)
+			(effects (font (size 1.27 1.27)) hide)
+		)
+		(property "ki_keywords" "usb-c pigtail cable power-only zknot powerverify airgap patent-002 20awg 100W pd"
+			(at 0 0 0)
+			(effects (font (size 1.27 1.27)) hide)
+		)
+		(property "MPN" "ZKNOT-PGT-USB-C-4W-20AWG-R1"
+			(at 0 -25.4 0)
+			(effects (font (size 1.27 1.27)) hide)
+		)
+
+		(symbol "Pigtail_USB-C_4wire_ZKNOT_0_1"
+			(rectangle
+				(start -15.24 10.16)
+				(end 15.24 -12.7)
+				(stroke (width 0.254) (type default))
+				(fill (type background))
+			)
+			(text "USB-C male"
+				(at 0 7.62 0)
+				(effects (font (size 1.27 1.27) bold))
+			)
+			(text "4-wire power only"
+				(at 0 5.588 0)
+				(effects (font (size 0.762 0.762)))
+			)
+			(text "20 AWG: VBUS, GND"
+				(at 0 -9.4 0)
+				(effects (font (size 0.635 0.635)))
+			)
+			(text "28 AWG: CC1, CC2"
+				(at 0 -10.6 0)
+				(effects (font (size 0.635 0.635)))
+			)
+			(text "PAT-002 compliant"
+				(at 0 -11.8 0)
+				(effects (font (size 0.635 0.635) italic))
+			)
+		)
+
+		(symbol "Pigtail_USB-C_4wire_ZKNOT_1_1"
+			(pin no_connect line
+				(at -20.32 5.08 0)
+				(length 5.08)
+				(name "D+/NC" (effects (font (size 1.27 1.27))))
+				(number "1" (effects (font (size 1.27 1.27))))
+			)
+			(pin passive line
+				(at -20.32 2.54 0)
+				(length 5.08)
+				(name "CC1" (effects (font (size 1.27 1.27))))
+				(number "2" (effects (font (size 1.27 1.27))))
+			)
+			(pin power_in line
+				(at -20.32 0 0)
+				(length 5.08)
+				(name "VBUS" (effects (font (size 1.27 1.27))))
+				(number "3" (effects (font (size 1.27 1.27))))
+			)
+			(pin power_in line
+				(at -20.32 -2.54 0)
+				(length 5.08)
+				(name "GND" (effects (font (size 1.27 1.27))))
+				(number "4" (effects (font (size 1.27 1.27))))
+			)
+			(pin passive line
+				(at -20.32 -5.08 0)
+				(length 5.08)
+				(name "CC2" (effects (font (size 1.27 1.27))))
+				(number "5" (effects (font (size 1.27 1.27))))
+			)
+			(pin no_connect line
+				(at -20.32 -7.62 0)
+				(length 5.08)
+				(name "D-/NC" (effects (font (size 1.27 1.27))))
+				(number "6" (effects (font (size 1.27 1.27))))
+			)
+		)
+
+		(embedded_fonts no)
+	)
+)
