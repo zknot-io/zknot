@@ -1,0 +1,37 @@
+#!/usr/bin/env lua
+
+local filepath = "/home/marctremb/org_notes/mentalmodel"
+local date = os.date("%Y-%m-%d %H:%M:%S")
+
+-- Define your structured mental model steps
+local phases = {
+  { name = "Perceive",   prompt = "What is?" },
+  { name = "Define",     prompt = "What's the system?" },
+  { name = "Dissect",    prompt = "What’s the system? How does this affect me?" },
+  { name = "Design",     prompt = "What might this become?" },
+  { name = "Build",      prompt = "What am I actively creating?" },
+  { name = "Validate",   prompt = "Is it working as intended?" },
+  { name = "Fortify",    prompt = "How do I preserve and protect it?" },
+  { name = "Dismantle",  prompt = "What needs to end or evolve?" },
+}
+
+-- Begin building the entry
+local entry = {}
+table.insert(entry, string.format("* Mental Model Session — %s\n", date))
+
+-- Prompt user for each step
+for _, phase in ipairs(phases) do
+  io.write(string.format("[%s] – %s\n> ", phase.name, phase.prompt))
+  local response = io.read()
+  table.insert(entry, string.format("** %s\n%s\n", phase.name, response))
+end
+
+-- Write to file
+local file = io.open(filepath, "a")
+if file then
+  file:write(table.concat(entry, "\n") .. "\n\n")
+  file:close()
+  print("Mental model session saved to " .. filepath)
+else
+  print("❌ Error: Could not write to file.")
+end

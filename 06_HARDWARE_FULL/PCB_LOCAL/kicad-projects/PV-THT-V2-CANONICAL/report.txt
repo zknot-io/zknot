@@ -1,0 +1,356 @@
+Info: Processing symbol 'R12:Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'.
+Info: Processing symbol 'LED1:LED_THT:LED_D3.0mm'.
+Info: Processing symbol 'TP1:TestPoint:TestPoint_Pad_2.0x2.0mm'.
+Info: Processing symbol 'LED7:LED_THT:LED_D3.0mm'.
+Info: Processing symbol 'U1:Package_SO:SOIC-8_3.9x4.9mm_P1.27mm'.
+Info: Processing symbol 'R9:Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'.
+Info: Processing symbol 'R6:Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'.
+Info: Processing symbol 'R2:Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'.
+Info: Processing symbol 'LED2:LED_THT:LED_D3.0mm'.
+Info: Processing symbol 'TP3:TestPoint:TestPoint_Pad_2.0x2.0mm'.
+Info: Processing symbol 'LED6:LED_THT:LED_D3.0mm'.
+Info: Processing symbol 'TP6:TestPoint:TestPoint_Pad_2.0x2.0mm'.
+Info: Processing symbol 'D1:Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal'.
+Info: Processing symbol 'LED3:LED_THT:LED_D3.0mm'.
+Info: Processing symbol 'R5:Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'.
+Info: Processing symbol 'R10:Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'.
+Info: Processing symbol 'R3:Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'.
+Info: Processing symbol 'TP4:TestPoint:TestPoint_Pad_2.0x2.0mm'.
+Info: Processing symbol 'TP5:TestPoint:TestPoint_Pad_2.0x2.0mm'.
+Info: Processing symbol 'LED4:LED_THT:LED_D3.0mm'.
+Info: Processing symbol 'LED5:LED_THT:LED_D3.0mm'.
+Info: Processing symbol 'R4:Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'.
+Info: Processing symbol 'R11:Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'.
+Info: Processing symbol 'FB1:Inductor_THT:L_Axial_P7.62mm'.
+Info: Processing symbol 'WH6:PowerVerify:WireHole_1.1mm_Annular1.9mm'.
+Info: Processing symbol 'WH5:PowerVerify:WireHole_1.1mm_Annular1.9mm'.
+Info: Processing symbol 'WH4:PowerVerify:WireHole_1.1mm_Annular1.9mm'.
+Info: Processing symbol 'WH3:PowerVerify:WireHole_1.1mm_Annular1.9mm'.
+Info: Processing symbol 'D3:Diode_THT:D_DO-15_P12.70mm_Horizontal'.
+Info: Processing symbol 'WH2:PowerVerify:WireHole_1.1mm_Annular1.9mm'.
+Info: Processing symbol 'WH7:PowerVerify:WireHole_1.1mm_Annular1.9mm'.
+Info: Processing symbol 'WH1:PowerVerify:WireHole_1.1mm_Annular1.9mm'.
+Info: Processing symbol 'WH8:PowerVerify:WireHole_1.1mm_Annular1.9mm'.
+Info: Processing symbol 'R1:Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'.
+Info: Processing symbol 'WH9:PowerVerify:WireHole_1.1mm_Annular1.9mm'.
+Info: Processing symbol 'R8:Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'.
+Info: Processing symbol 'WH10:PowerVerify:WireHole_1.1mm_Annular1.9mm'.
+Info: Processing symbol 'WH11:PowerVerify:WireHole_1.1mm_Annular1.9mm'.
+Info: Processing symbol 'WH12:PowerVerify:WireHole_1.1mm_Annular1.9mm'.
+Info: Processing symbol 'R7:Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal'.
+Info: Processing symbol 'TP2:TestPoint:TestPoint_Pad_2.0x2.0mm'.
+Updated R11 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Add net /FLAG_20V.
+Connected R11 pin 1 to /FLAG_20V.
+Updated R11 sheetname to '/'.
+Connected R11 pin 2 to Net-(LED6-A).
+Updated R11 symbol association from  to /c680daa6-e0e0-4ac7-a9a6-ad271bfe1558.
+Updated R11 unit metadata.
+Updated TP1 sheetname to '/'.
+Changed R11 value from R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal to 330.
+Added R12 (footprint 'Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal').
+Changed REF** reference designator to R12.
+Changed R12 value from R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal to 330.
+Updated R12 symbol association from  to /1868bff0-8bc7-4267-ae13-96f590063e96.
+Updated R12 sheetname to '/'.
+Updated R12 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Connected R7 pin 1 to /CC2_SRC.
+Updated TP1 symbol association from  to /279eb04d-97ba-46bf-b100-863b0b392fc4.
+Changed TP1 value from TestPoint_Pad_2.0x2.0mm to TP_VBUS_IN.
+Add net /PG.
+Connected R12 pin 1 to /PG.
+Connected R12 pin 2 to Net-(LED7-A).
+Updated R12 unit metadata.
+Changed REF** reference designator to TP1.
+Added TP1 (footprint 'TestPoint:TestPoint_Pad_2.0x2.0mm').
+Updated R8 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated R9 symbol association from  to /457c96a8-1f42-46e2-8ea7-1b09d0f618bf.
+Changed R9 value from R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal to 330.
+Changed REF** reference designator to R9.
+Added R9 (footprint 'Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal').
+Updated R8 unit metadata.
+Connected R8 pin 2 to Net-(LED3-A).
+Connected R8 pin 1 to /FLAG_5V.
+Add net /FLAG_5V.
+Updated R9 sheetname to '/'.
+Updated R8 sheetname to '/'.
+Updated R8 symbol association from  to /2ecd6dcb-0dbd-48e2-91b4-accaf7d90f0d.
+Changed R8 value from R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal to 330.
+Changed REF** reference designator to R8.
+Added R8 (footprint 'Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal').
+Updated R7 unit metadata.
+Connected R7 pin 2 to /CC2_SRC.
+Added D1 (footprint 'Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal').
+Changed R10 value from R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal to 330.
+Added R11 (footprint 'Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal').
+Updated R10 unit metadata.
+Connected R10 pin 1 to /FLAG_12V.
+Add net /FLAG_12V.
+Connected R10 pin 2 to Net-(LED5-A).
+Updated R10 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated R10 sheetname to '/'.
+Updated R10 symbol association from  to /e58eaa8a-a8d6-4bb8-ab46-7ba9747d27f1.
+Changed REF** reference designator to R11.
+Changed REF** reference designator to R10.
+Added R10 (footprint 'Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal').
+Updated R9 unit metadata.
+Connected R9 pin 2 to Net-(LED4-A).
+Connected R9 pin 1 to /FLAG_9V.
+Add net /FLAG_9V.
+Updated R9 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Connected TP5 pin 1 to /DM_SRC.
+Removed TP6 'exclude from BOM' fabrication attribute.
+Updated TP6 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated TP6 sheetname to '/'.
+Updated TP6 symbol association from  to /c6da07cd-edb6-4498-b93f-1ba33243f71e.
+Changed TP6 value from TestPoint_Pad_2.0x2.0mm to TP_PG.
+Changed REF** reference designator to TP6.
+Added TP6 (footprint 'TestPoint:TestPoint_Pad_2.0x2.0mm').
+Updated TP5 unit metadata.
+Removed TP6 'exclude from position files' fabrication attribute.
+Add net /DM_SRC.
+Removed TP5 'exclude from position files' fabrication attribute.
+Removed TP5 'exclude from BOM' fabrication attribute.
+Updated TP5 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated TP5 sheetname to '/'.
+Updated TP5 symbol association from  to /4694d3d4-b644-4d9b-b7eb-d951b4757e10.
+Changed TP5 value from TestPoint_Pad_2.0x2.0mm to TP_DM.
+Changed REF** reference designator to TP5.
+Connected U1 pin 5 to /PG.
+Updated U1 unit metadata.
+Connected U1 pin 4 to /CC2_SRC.
+Connected U1 pin 1 to Net-(U1-CFG3).
+Connected U1 pin 2 to Net-(U1-CFG2).
+Connected U1 pin 8 to /CC2_SRC.
+Connected U1 pin 6 to /FLAG_20V.
+Connected U1 pin 3 to /CC2_SRC.
+Connected U1 pin 7 to /CC1_SRC.
+Added TP5 (footprint 'TestPoint:TestPoint_Pad_2.0x2.0mm').
+Updated U1 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated U1 sheetname to '/'.
+Updated U1 symbol association from  to /6feb2ae5-7924-4a18-b76f-7bf57178c062.
+Changed U1 value from SOIC-8_3.9x4.9mm_P1.27mm to CH224K.
+Changed REF** reference designator to U1.
+Added U1 (footprint 'Package_SO:SOIC-8_3.9x4.9mm_P1.27mm').
+Updated TP6 unit metadata.
+Connected TP6 pin 1 to /PG.
+Updated TP2 sheetname to '/'.
+Changed TP3 value from TestPoint_Pad_2.0x2.0mm to TP_GND.
+Changed REF** reference designator to TP3.
+Added TP3 (footprint 'TestPoint:TestPoint_Pad_2.0x2.0mm').
+Updated TP2 unit metadata.
+Connected TP2 pin 1 to /CC2_SRC.
+Removed TP2 'exclude from position files' fabrication attribute.
+Removed TP2 'exclude from BOM' fabrication attribute.
+Updated TP2 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated TP3 symbol association from  to /d6a52e70-3752-45b8-b131-4e717906383f.
+Updated TP2 symbol association from  to /beaeba8f-42ab-48ce-90ff-f7c1321c703c.
+Changed TP2 value from TestPoint_Pad_2.0x2.0mm to TP_VBUS.
+Changed REF** reference designator to TP2.
+Added TP2 (footprint 'TestPoint:TestPoint_Pad_2.0x2.0mm').
+Updated TP1 unit metadata.
+Connected TP1 pin 1 to /VBUS_IN.
+Removed TP1 'exclude from position files' fabrication attribute.
+Removed TP1 'exclude from BOM' fabrication attribute.
+Changed TP4 value from TestPoint_Pad_2.0x2.0mm to TP_DP.
+Updated TP4 unit metadata.
+Connected TP4 pin 1 to /DP_SRC.
+Add net /DP_SRC.
+Removed TP4 'exclude from position files' fabrication attribute.
+Removed TP4 'exclude from BOM' fabrication attribute.
+Updated TP4 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated TP4 sheetname to '/'.
+Updated TP4 symbol association from  to /11583580-4bd1-4d07-9068-cd7c33cee78f.
+Updated TP1 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Changed REF** reference designator to TP4.
+Added TP4 (footprint 'TestPoint:TestPoint_Pad_2.0x2.0mm').
+Updated TP3 unit metadata.
+Connected TP3 pin 1 to /CC2_SRC.
+Removed TP3 'exclude from position files' fabrication attribute.
+Removed TP3 'exclude from BOM' fabrication attribute.
+Updated TP3 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated TP3 sheetname to '/'.
+Add net Net-(LED3-A).
+Connected LED4 pin 2 to /CC2_SRC.
+Updated LED4 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated LED4 sheetname to '/'.
+Updated LED4 symbol association from  to /cd042bd0-0b3d-4d5d-9cda-fc1e7978b8da.
+Changed LED4 value from LED_D3.0mm to AMBER_9V.
+Changed REF** reference designator to LED4.
+Added LED4 (footprint 'LED_THT:LED_D3.0mm').
+Updated LED3 unit metadata.
+Connected LED3 pin 1 to Net-(LED3-A).
+Add net Net-(LED4-A).
+Connected LED3 pin 2 to /CC2_SRC.
+Updated LED3 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated LED3 sheetname to '/'.
+Updated LED3 symbol association from  to /291b93a0-1ee7-4110-b586-f363d5f9b67c.
+Changed LED3 value from LED_D3.0mm to BLUE_5V.
+Changed REF** reference designator to LED3.
+Added LED3 (footprint 'LED_THT:LED_D3.0mm').
+Updated LED2 unit metadata.
+Connected LED2 pin 2 to /CC2_SRC.
+Add net Net-(LED5-A).
+Updated LED6 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated LED6 sheetname to '/'.
+Updated LED6 symbol association from  to /6b5fd7b2-a05e-400d-8bca-e693deb225ef.
+Changed LED6 value from LED_D3.0mm to RED_20V.
+Changed REF** reference designator to LED6.
+Added LED6 (footprint 'LED_THT:LED_D3.0mm').
+Updated LED5 unit metadata.
+Connected LED5 pin 2 to /CC2_SRC.
+Connected LED5 pin 1 to Net-(LED5-A).
+Connected LED2 pin 1 to Net-(LED2-A).
+Updated LED5 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated LED5 sheetname to '/'.
+Updated LED5 symbol association from  to /94a240b8-e283-4da5-b0bd-838b8678efb4.
+Changed LED5 value from LED_D3.0mm to ORANGE_12V.
+Changed REF** reference designator to LED5.
+Added LED5 (footprint 'LED_THT:LED_D3.0mm').
+Updated LED4 unit metadata.
+Connected LED4 pin 1 to Net-(LED4-A).
+Connected D1 pin 2 to /CC2_SRC.
+Connected D3 pin 1 to /VBUS_IN.
+Add net /VBUS_IN.
+Updated D3 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated D3 sheetname to '/'.
+Updated D3 symbol association from  to /1782519b-a972-42f4-b0dd-2a6da91818fd.
+Changed D3 value from D_DO-15_P12.70mm_Horizontal to P6KE5V6A.
+Changed REF** reference designator to D3.
+Added D3 (footprint 'Diode_THT:D_DO-15_P12.70mm_Horizontal').
+Updated D1 unit metadata.
+Connected D3 pin 2 to /CC2_SRC.
+Add net /CC2_SRC.
+Connected D1 pin 1 to Net-(D1-A).
+Add net Net-(D1-A).
+Updated D1 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated D1 sheetname to '/'.
+Updated D1 symbol association from  to /b41593d0-c008-48db-8a17-20e964b126c4.
+Changed D1 value from D_DO-41_SOD81_P7.62mm_Horizontal to 1N4007.
+Changed REF** reference designator to D1.
+Connected LED1 pin 1 to Net-(LED1-A).
+Add net Net-(LED2-A).
+Updated LED2 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated LED2 sheetname to '/'.
+Updated LED2 symbol association from  to /20724a70-acc4-4bb3-827c-c33d8f554495.
+Changed LED2 value from LED_D3.0mm to RED_DATA_BLOCKED.
+Changed REF** reference designator to LED2.
+Added LED2 (footprint 'LED_THT:LED_D3.0mm').
+Updated LED1 unit metadata.
+Connected LED1 pin 2 to /CC2_SRC.
+Updated R7 sheetname to '/'.
+Add net Net-(LED1-A).
+Updated LED1 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated LED1 sheetname to '/'.
+Updated LED1 symbol association from  to /b69f294b-a105-4d92-a3c0-7ccd47ee4822.
+Changed LED1 value from LED_D3.0mm to GREEN_PWR.
+Changed REF** reference designator to LED1.
+Added LED1 (footprint 'LED_THT:LED_D3.0mm').
+Updated D3 unit metadata.
+Updated R4 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated R5 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated R5 sheetname to '/'.
+Updated R5 symbol association from  to /d16fff63-97ed-4e88-99e9-4f1e749a22f5.
+Changed R5 value from R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal to CFG3_SEL.
+Changed REF** reference designator to R5.
+Added R5 (footprint 'Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal').
+Updated R4 unit metadata.
+Connected R4 pin 2 to Net-(R3-Pad1).
+Connected R4 pin 1 to /CC2_SRC.
+Connected R5 pin 1 to /CC2_SRC.
+Updated R4 sheetname to '/'.
+Updated R4 symbol association from  to /68000c98-e192-434c-ab52-9a203879bfe2.
+Changed R4 value from R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal to 5.1k.
+Changed REF** reference designator to R4.
+Added R4 (footprint 'Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal').
+Updated R3 unit metadata.
+Connected R3 pin 1 to Net-(R3-Pad1).
+Add net Net-(R3-Pad1).
+Connected R3 pin 2 to /CC1_SRC.
+Updated R6 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated R7 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated R7 symbol association from  to /3e3a5631-bc39-451e-b891-c0b1c3b7aa35.
+Changed R7 value from R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal to CFG1_SEL.
+Changed REF** reference designator to R7.
+Added R7 (footprint 'Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal').
+Updated R6 unit metadata.
+Connected R6 pin 2 to Net-(U1-CFG2).
+Add net Net-(U1-CFG2).
+Connected R6 pin 1 to /CC2_SRC.
+Connected LED6 pin 1 to Net-(LED6-A).
+Updated R6 sheetname to '/'.
+Updated R6 symbol association from  to /7b02a265-ecf1-4aae-8e3a-eaf7f4252104.
+Changed R6 value from R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal to CFG2_SEL.
+Changed REF** reference designator to R6.
+Added R6 (footprint 'Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal').
+Updated R5 unit metadata.
+Connected R5 pin 2 to Net-(U1-CFG3).
+Add net Net-(U1-CFG3).
+Add net Net-(LED7-A).
+Updated R1 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated R1 sheetname to '/'.
+Updated R1 symbol association from  to /405145c3-a926-406f-863d-221727a21c72.
+Changed R1 value from R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal to 330.
+Changed REF** reference designator to R1.
+Added R1 (footprint 'Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal').
+Updated LED7 unit metadata.
+Connected LED7 pin 2 to /CC2_SRC.
+Connected LED7 pin 1 to Net-(LED7-A).
+Updated R3 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated LED7 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Updated LED7 sheetname to '/'.
+Updated LED7 symbol association from  to /709b863e-b20a-4fe5-8a58-326c81d3cb44.
+Changed LED7 value from LED_D3.0mm to GREEN_PG.
+Changed REF** reference designator to LED7.
+Added LED7 (footprint 'LED_THT:LED_D3.0mm').
+Updated LED6 unit metadata.
+Connected LED6 pin 2 to /CC2_SRC.
+Add net Net-(LED6-A).
+Updated R2 sheetfile to 'PV-THT-V2-CANONICAL.kicad_sch'.
+Changed R3 value from R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal to 5.1k.
+Changed REF** reference designator to R3.
+Added R3 (footprint 'Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal').
+Updated R3 symbol association from  to /670a79b0-3014-4d77-9e08-06ecf5c03d01.
+Updated R2 unit metadata.
+Connected R2 pin 1 to /CC2_SRC.
+Updated R3 sheetname to '/'.
+Connected R2 pin 2 to Net-(LED2-A).
+Updated R2 sheetname to '/'.
+Connected R1 pin 2 to Net-(LED1-A).
+Updated R2 symbol association from  to /9cefbc89-f632-4621-90e7-92390f82cdd2.
+Changed R2 value from R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal to 1k.
+Changed REF** reference designator to R2.
+Added R2 (footprint 'Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal').
+Updated R1 unit metadata.
+Connected R1 pin 1 to /CC2_SRC.
+Add net /CC1_SRC.
+Warning: Via connected to unknown net (GND).
+Warning: Via connected to unknown net (GND).
+Warning: Via connected to unknown net (GND).
+Warning: Via connected to unknown net (GND).
+Warning: Via connected to unknown net (GND).
+Warning: Via connected to unknown net (GND).
+Warning: Via connected to unknown net (GND).
+Warning: Via connected to unknown net (GND).
+Warning: Via connected to unknown net (GND).
+Warning: Via connected to unknown net (GND).
+Warning: Via connected to unknown net (GND).
+Warning: Via connected to unknown net (GND).
+Warning: Copper zone 'GND_POUR' has no pads connected.
+Error: U1 pad EP not found in Package_SO:SOIC-8_3.9x4.9mm_P1.27mm.
+Error: Cannot add WH12 (footprint 'PowerVerify:WireHole_1.1mm_Annular1.9mm' not found).
+Error: Cannot add WH11 (footprint 'PowerVerify:WireHole_1.1mm_Annular1.9mm' not found).
+Error: Cannot add WH10 (footprint 'PowerVerify:WireHole_1.1mm_Annular1.9mm' not found).
+Error: Cannot add WH9 (footprint 'PowerVerify:WireHole_1.1mm_Annular1.9mm' not found).
+Error: Cannot add WH8 (footprint 'PowerVerify:WireHole_1.1mm_Annular1.9mm' not found).
+Error: Cannot add WH7 (footprint 'PowerVerify:WireHole_1.1mm_Annular1.9mm' not found).
+Error: Cannot add WH6 (footprint 'PowerVerify:WireHole_1.1mm_Annular1.9mm' not found).
+Error: Cannot add WH5 (footprint 'PowerVerify:WireHole_1.1mm_Annular1.9mm' not found).
+Error: Cannot add WH4 (footprint 'PowerVerify:WireHole_1.1mm_Annular1.9mm' not found).
+Error: Cannot add WH3 (footprint 'PowerVerify:WireHole_1.1mm_Annular1.9mm' not found).
+Error: Cannot add WH2 (footprint 'PowerVerify:WireHole_1.1mm_Annular1.9mm' not found).
+Error: Cannot add WH1 (footprint 'PowerVerify:WireHole_1.1mm_Annular1.9mm' not found).
+Error: Cannot add FB1 (footprint 'Inductor_THT:L_Axial_P7.62mm' not found).
+
+
+Info: Total warnings: 13, errors: 14.
