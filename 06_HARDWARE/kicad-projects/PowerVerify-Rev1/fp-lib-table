@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "ZKNOT")(type "KiCad")(uri "${KIPRJMOD}/../../kicad-libraries/footprints/ZKNOT.pretty")(options "")(descr "ZKNOT shared footprints — pigtail and future parts"))
+)

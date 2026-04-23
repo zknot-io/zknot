@@ -1,0 +1,35 @@
+(version 1)
+
+# ZKNOT PowerVerify Rev 1 — Custom DRC Rules
+# Reinforces JLCPCB 2-layer capabilities + 100W power-handling requirements
+
+# Enforce minimum clearance for VBUS/GND (Power net class)
+(rule "Power clearance"
+  (condition "A.NetClass == 'Power' && B.NetClass == 'Power'")
+  (constraint clearance (min 0.25mm)))
+
+# Power traces minimum width — 1mm (~40 mil) for 5A @ 20V
+(rule "Power trace width"
+  (condition "A.NetClass == 'Power'")
+  (constraint track_width (min 1.0mm) (opt 1.0mm)))
+
+# CC1/CC2 signal integrity — keep away from power
+(rule "CC to Power clearance"
+  (condition "(A.Net == 'CC1' || A.Net == 'CC2') && B.NetClass == 'Power'")
+  (constraint clearance (min 0.3mm)))
+
+# JLCPCB 2-layer minimum manufacturing rules (conservative)
+(rule "JLCPCB min trace"
+  (constraint track_width (min 0.15mm)))
+
+(rule "JLCPCB min clearance"
+  (constraint clearance (min 0.15mm)))
+
+(rule "JLCPCB min via"
+  (constraint hole_size (min 0.3mm))
+  (constraint via_diameter (min 0.6mm)))
+
+# Edge.Cuts — pigtail zip-tie cutouts need to stay connected to outline
+(rule "Edge clearance"
+  (condition "A.Layer == 'Edge.Cuts'")
+  (constraint edge_clearance (min 0.2mm)))

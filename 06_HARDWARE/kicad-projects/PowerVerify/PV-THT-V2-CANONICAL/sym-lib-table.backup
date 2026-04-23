@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "PowerVerify") (type "KiCad") (uri "${KIPRJMOD}/PowerVerify.kicad_sym") (options "") (descr ""))
+)

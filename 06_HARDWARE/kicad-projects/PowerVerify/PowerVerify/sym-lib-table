@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "PowerVerify")(type "KiCad")(uri "/home/mt/ZKNOT/06_HARDWARE/kicad-libraries/symbols/PowerVerify_Pigtail.kicad_sym")(options "")(descr ""))
+)

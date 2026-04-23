@@ -1,0 +1,320 @@
+ERC report (2026-04-20T12:45:39, Encoding UTF8)
+Report includes: Errors, Warnings
+
+***** Sheet /
+[isolated_pin_label]: Label connected to only one pin
+    ; warning
+    @(1400 mils, 3000 mils): Label 'DP_SRC'
+[isolated_pin_label]: Label connected to only one pin
+    ; warning
+    @(1400 mils, 3100 mils): Label 'DM_SRC'
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(2400 mils, 2700 mils): Symbol D3 [D_TVS]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(1100 mils, 5850 mils): Vertical Wire, length 2385 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(2550 mils, 2700 mils): Vertical Wire, length 253 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(2000 mils, 5850 mils): Vertical Wire, length 2385 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(2300 mils, 5850 mils): Vertical Wire, length 2385 mils
+[footprint_link_issues]: Footprint 'L_Axial_P7.62mm' not found in library 'Inductor_THT'
+    ; warning
+    @(3300 mils, 2700 mils): Symbol FB1 [Ferrite_Bead]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(3300 mils, 2700 mils): Symbol FB1 [Ferrite_Bead]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(4200 mils, 2700 mils): Symbol D1 [D_Blocking]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(4724 mils, 2559 mils): Symbol #PWR01 Pin 1 [pwr, Power output, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(4724 mils, 2559 mils): Vertical Wire, length 141 mils
+[lib_symbol_mismatch]: Symbol 'PWR_FLAG' doesn't match copy in library 'power'
+    ; warning
+    @(4724 mils, 2559 mils): Symbol #PWR01 [PWR_FLAG]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(4350 mils, 2700 mils): Horizontal Wire, length 374 mils
+[footprint_link_issues]: Footprint 'WireHole_1.1mm_Annular1.9mm' not found in library 'PowerVerify'
+    ; warning
+    @(800 mils, 6000 mils): Symbol WH1 [WireHole]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(800 mils, 6000 mils): Symbol WH1 [WireHole]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(5000 mils, 3464 mils): Vertical Wire, length 114 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(5000 mils, 3464 mils): Horizontal Wire, length 724 mils
+[footprint_link_issues]: Footprint 'WireHole_1.1mm_Annular1.9mm' not found in library 'PowerVerify'
+    ; warning
+    @(1100 mils, 6000 mils): Symbol WH2 [WireHole]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(1100 mils, 6000 mils): Symbol WH2 [WireHole]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(5000 mils, 3500 mils): Symbol R5 [R_THT]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(5000 mils, 3543 mils): Vertical Wire, length 7 mils
+[footprint_link_issues]: Footprint 'WireHole_1.1mm_Annular1.9mm' not found in library 'PowerVerify'
+    ; warning
+    @(1400 mils, 6000 mils): Symbol WH3 [WireHole]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(1400 mils, 6000 mils): Symbol WH3 [WireHole]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(5000 mils, 3621 mils): Horizontal Wire, length 724 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(5000 mils, 3621 mils): Vertical Wire, length 158 mils
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(5000 mils, 3700 mils): Symbol R6 [R_THT]
+[footprint_link_issues]: Footprint 'WireHole_1.1mm_Annular1.9mm' not found in library 'PowerVerify'
+    ; warning
+    @(1700 mils, 6000 mils): Symbol WH4 [WireHole]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(1700 mils, 6000 mils): Symbol WH4 [WireHole]
+[footprint_link_issues]: Footprint 'WireHole_1.1mm_Annular1.9mm' not found in library 'PowerVerify'
+    ; warning
+    @(2000 mils, 6000 mils): Symbol WH5 [WireHole]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(2000 mils, 6000 mils): Symbol WH5 [WireHole]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(5000 mils, 3900 mils): Symbol R7 [R_THT]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(5000 mils, 3850 mils): Vertical Wire, length 126 mils
+[footprint_link_issues]: Footprint 'WireHole_1.1mm_Annular1.9mm' not found in library 'PowerVerify'
+    ; warning
+    @(2300 mils, 6000 mils): Symbol WH6 [WireHole]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(2300 mils, 6000 mils): Symbol WH6 [WireHole]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(5000 mils, 4050 mils): Vertical Wire, length 123 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(5724 mils, 3464 mils): Symbol U1 Pin 1 [CFG3, Input, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(5724 mils, 3543 mils): Horizontal Wire, length 724 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(5724 mils, 3700 mils): Horizontal Wire, length 291 mils
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(6000 mils, 3700 mils): Symbol U1 [CH224K]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(3000 mils, 6850 mils): Vertical Wire, length 354 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(6276 mils, 3464 mils): Horizontal Wire, length 417 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(6276 mils, 3543 mils): Horizontal Wire, length 417 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(6276 mils, 3621 mils): Horizontal Wire, length 417 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(6276 mils, 3700 mils): Horizontal Wire, length 417 mils
+[pin_to_pin]: Pins of type Bidirectional and Power output are connected
+    ; warning
+    @(6276 mils, 3700 mils): Symbol U1 Pin 8 [CC2, Bidirectional, Line]
+    @(4724 mils, 2559 mils): Symbol #PWR01 Pin 1 [pwr, Power output, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(3800 mils, 6850 mils): Vertical Wire, length 354 mils
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(3000 mils, 7000 mils): Symbol TP1 [TestPoint_Edge]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(7500 mils, 2200 mils): Symbol R1 [R_THT]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(4600 mils, 6850 mils): Vertical Wire, length 354 mils
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(3800 mils, 7000 mils): Symbol TP2 [TestPoint_Edge]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(7500 mils, 2700 mils): Symbol R2 [R_THT]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(7500 mils, 3200 mils): Symbol R12 [R_THT]
+[isolated_pin_label]: Label connected to only one pin
+    ; warning
+    @(7350 mils, 3700 mils): Label 'FLAG_5V'
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(7500 mils, 3700 mils): Symbol R8 [R_THT]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(4600 mils, 7000 mils): Symbol TP3 [TestPoint_Edge]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(5400 mils, 6850 mils): Vertical Wire, length 354 mils
+[isolated_pin_label]: Label connected to only one pin
+    ; warning
+    @(5400 mils, 6496 mils): Label 'DP_SRC'
+[isolated_pin_label]: Label connected to only one pin
+    ; warning
+    @(7350 mils, 4200 mils): Label 'FLAG_9V'
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(7500 mils, 4200 mils): Symbol R9 [R_THT]
+[isolated_pin_label]: Label connected to only one pin
+    ; warning
+    @(7350 mils, 4700 mils): Label 'FLAG_12V'
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(8500 mils, 2200 mils): Symbol LED1 [LED_3mm]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(5400 mils, 7000 mils): Symbol TP4 [TestPoint_Edge]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(7500 mils, 4700 mils): Symbol R10 [R_THT]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(8500 mils, 2700 mils): Symbol LED2 [LED_3mm]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(6200 mils, 6850 mils): Vertical Wire, length 354 mils
+[isolated_pin_label]: Label connected to only one pin
+    ; warning
+    @(6200 mils, 6496 mils): Label 'DM_SRC'
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(8500 mils, 3200 mils): Symbol LED7 [LED_3mm]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(7500 mils, 5200 mils): Symbol R11 [R_THT]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(8650 mils, 2200 mils): Horizontal Wire, length 208 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(8650 mils, 2700 mils): Horizontal Wire, length 208 mils
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(8500 mils, 3700 mils): Symbol LED3 [LED_3mm]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(6200 mils, 7000 mils): Symbol TP5 [TestPoint_Edge]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(8700 mils, 3465 mils): Vertical Wire, length 2385 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(8650 mils, 3200 mils): Horizontal Wire, length 208 mils
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(8500 mils, 4200 mils): Symbol LED4 [LED_3mm]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(7000 mils, 6850 mils): Vertical Wire, length 354 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(8650 mils, 3700 mils): Horizontal Wire, length 208 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(9000 mils, 5850 mils): Vertical Wire, length 2385 mils
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(8700 mils, 4300 mils): Symbol R3 [R_THT]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(8500 mils, 4700 mils): Symbol LED5 [LED_3mm]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(8650 mils, 4200 mils): Horizontal Wire, length 208 mils
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(8700 mils, 4600 mils): Symbol R4 [R_THT]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(7000 mils, 7000 mils): Symbol TP6 [TestPoint_Edge]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(8500 mils, 5200 mils): Symbol LED6 [LED_3mm]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(8650 mils, 4700 mils): Horizontal Wire, length 208 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(8650 mils, 5200 mils): Horizontal Wire, length 208 mils
+[multiple_net_names]: Both CC2_SRC and GND are attached to the same items; CC2_SRC will be used in the netlist
+    ; warning
+    @(6693 mils, 3700 mils): Label 'CC2_SRC'
+    @(8858 mils, 5200 mils): Label 'GND'
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(9900 mils, 5850 mils): Vertical Wire, length 2385 mils
+[footprint_link_issues]: Footprint 'WireHole_1.1mm_Annular1.9mm' not found in library 'PowerVerify'
+    ; warning
+    @(8700 mils, 6000 mils): Symbol WH7 [WireHole]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(8700 mils, 6000 mils): Symbol WH7 [WireHole]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(10200 mils, 5850 mils): Vertical Wire, length 2385 mils
+[footprint_link_issues]: Footprint 'WireHole_1.1mm_Annular1.9mm' not found in library 'PowerVerify'
+    ; warning
+    @(9000 mils, 6000 mils): Symbol WH8 [WireHole]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(9000 mils, 6000 mils): Symbol WH8 [WireHole]
+[footprint_link_issues]: Footprint 'WireHole_1.1mm_Annular1.9mm' not found in library 'PowerVerify'
+    ; warning
+    @(9300 mils, 6000 mils): Symbol WH9 [WireHole]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(9300 mils, 6000 mils): Symbol WH9 [WireHole]
+[footprint_link_issues]: Footprint 'WireHole_1.1mm_Annular1.9mm' not found in library 'PowerVerify'
+    ; warning
+    @(9600 mils, 6000 mils): Symbol WH10 [WireHole]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(9600 mils, 6000 mils): Symbol WH10 [WireHole]
+[footprint_link_issues]: Footprint 'WireHole_1.1mm_Annular1.9mm' not found in library 'PowerVerify'
+    ; warning
+    @(9900 mils, 6000 mils): Symbol WH11 [WireHole]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(9900 mils, 6000 mils): Symbol WH11 [WireHole]
+[footprint_link_issues]: Footprint 'WireHole_1.1mm_Annular1.9mm' not found in library 'PowerVerify'
+    ; warning
+    @(10200 mils, 6000 mils): Symbol WH12 [WireHole]
+[lib_symbol_issues]: The symbol library 'PowerVerify' was not found at '/home/mt/ZKNOT/06_HARDWARE_FULL/PCB_LOCAL/kicad-projects/PV-THT-V2-CANONICAL/PowerVerify.kicad_sym'
+    ; warning
+    @(10200 mils, 6000 mils): Symbol WH12 [WireHole]
+
+ ** ERC messages: 102  Errors 0  Warnings 102
+
+ ** Ignored checks:
+    - Global label only appears once in the schematic
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters

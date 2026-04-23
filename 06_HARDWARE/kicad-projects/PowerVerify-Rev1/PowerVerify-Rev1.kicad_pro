@@ -224,7 +224,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": "E"
+      "sch_revision": ""
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -433,6 +433,7 @@
       "footprint_filter": "ignore",
       "footprint_link_issues": "warning",
       "four_way_junction": "ignore",
+      "global_label_dangling": "warning",
       "ground_pin_not_ground": "warning",
       "hier_label_mismatch": "error",
       "isolated_pin_label": "warning",
@@ -472,7 +473,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "PV-THT-V2-CANONICAL.kicad_pro",
+    "filename": "PowerVerify-Rev1.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -490,22 +491,11 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.3,
+        "track_width": 0.2,
         "tuning_profile": "",
-        "via_diameter": 0.8,
-        "via_drill": 0.4,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
         "wire_width": 6
-      },
-      {
-        "clearance": 0.25,
-        "name": "Power",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.8,
-        "tuning_profile": "",
-        "via_diameter": 1.0,
-        "via_drill": 0.5
       }
     ],
     "meta": {
@@ -513,16 +503,7 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": [
-      {
-        "netclass": "Power",
-        "pattern": "VBUS*"
-      },
-      {
-        "netclass": "Power",
-        "pattern": "VBUS_IN"
-      }
-    ]
+    "netclass_patterns": []
   },
   "pcbnew": {
     "last_paths": {
@@ -630,30 +611,38 @@
       "intersheets_ref_show": false,
       "intersheets_ref_suffix": "",
       "junction_size_choice": 3,
-      "label_size_ratio": 0.25,
+      "label_size_ratio": 0.375,
       "operating_point_overlay_i_precision": 3,
       "operating_point_overlay_i_range": "~A",
       "operating_point_overlay_v_precision": 3,
       "operating_point_overlay_v_range": "~V",
       "overbar_offset_ratio": 1.23,
-      "pin_symbol_size": 0.0,
-      "text_offset_ratio": 0.08
+      "pin_symbol_size": 25.0,
+      "text_offset_ratio": 0.15
     },
     "legacy_lib_dir": "",
     "legacy_lib_list": [],
     "meta": {
       "version": 1
     },
+    "net_format_name": "",
     "page_layout_descr_file": "",
     "plot_directory": "",
     "reuse_designators": true,
+    "space_save_all_events": true,
+    "spice_current_sheet_as_root": false,
+    "spice_external_command": "spice \"%I\"",
+    "spice_model_current_sheet_as_root": true,
+    "spice_save_all_currents": false,
+    "spice_save_all_dissipations": false,
+    "spice_save_all_voltages": false,
     "subpart_first_id": 65,
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "PV-THT-V2-CANONICAL.kicad_sch",
-        "name": "PV-THT-V2-CANONICAL",
-        "uuid": "a79e7209-fae0-4c91-888c-11cd9e75469b"
+        "filename": "PowerVerify-Rev1.kicad_sch",
+        "name": "PowerVerify-Rev1",
+        "uuid": "0a4d44cd-aae3-449c-a747-9c0925d85a01"
       }
     ],
     "used_designators": "",
@@ -661,8 +650,8 @@
   },
   "sheets": [
     [
-      "a79e7209-fae0-4c91-888c-11cd9e75469b",
-      "PV-THT-V2-CANONICAL"
+      "0a4d44cd-aae3-449c-a747-9c0925d85a01",
+      "PowerVerify-Rev1"
     ]
   ],
   "text_variables": {},
