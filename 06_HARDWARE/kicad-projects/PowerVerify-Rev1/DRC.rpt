@@ -1,0 +1,65 @@
+** Drc report for PowerVerify-Rev1.kicad_pcb **
+** Created on 2026-04-23T18:13:25 **
+** Report includes: Errors, Warnings **
+
+** Found 14 DRC violations **
+[lib_footprint_mismatch]: Footprint 'Pigtail_USB-C_4wire_6pad_ZKNOT_THT_Arc' does not match copy in library 'ZKNOT'
+    Local override; warning
+    @(97.0000 mm, 63.0000 mm): Footprint J2
+[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5000 mm)
+    Rule: board setup constraints silk text height; warning
+    @(123.5000 mm, 69.0000 mm): PCB text 'SURGE
+PROTECT' on F.Silkscreen
+[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5000 mm)
+    Rule: board setup constraints silk text height; warning
+    @(132.0000 mm, 67.0000 mm): PCB text 'VBUS
+FILTER' on F.Silkscreen
+[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5000 mm)
+    Rule: board setup constraints silk text height; warning
+    @(157.0000 mm, 70.0000 mm): PCB text 'OUTPUT
+SURGE
+PROTECT' on F.Silkscreen
+[text_thickness]: Text thickness out of range (TrueType font characters with insufficient stroke weight)
+    Rule: board setup constraints silk text thickness; warning
+    @(146.5000 mm, 62.5000 mm): PCB text 'SAFE POWER ONLY' on F.Silkscreen
+[text_thickness]: Text thickness out of range (TrueType font characters with insufficient stroke weight)
+    Rule: board setup constraints silk text thickness; warning
+    @(146.0000 mm, 71.0000 mm): PCB text 'Your charger can't 
+spy through this.' on F.Silkscreen
+[text_thickness]: Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0625 mm)
+    Rule: board setup constraints silk text thickness; warning
+    @(126.5000 mm, 61.0000 mm): PCB text 'SMD V2' on B.Silkscreen
+[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5000 mm)
+    Rule: board setup constraints silk text height; warning
+    @(126.5000 mm, 61.0000 mm): PCB text 'SMD V2' on B.Silkscreen
+[text_thickness]: Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0750 mm)
+    Rule: board setup constraints silk text thickness; warning
+    @(126.0000 mm, 64.5000 mm): PCB text 'TAMPER' on B.Silkscreen
+[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6000 mm)
+    Rule: board setup constraints silk text height; warning
+    @(126.0000 mm, 64.5000 mm): PCB text 'TAMPER' on B.Silkscreen
+[text_thickness]: Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0750 mm)
+    Rule: board setup constraints silk text thickness; warning
+    @(126.5000 mm, 62.5000 mm): PCB text 'SENSE' on B.Silkscreen
+[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6000 mm)
+    Rule: board setup constraints silk text height; warning
+    @(126.5000 mm, 62.5000 mm): PCB text 'SENSE' on B.Silkscreen
+[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7000 mm)
+    Rule: board setup constraints silk text height; warning
+    @(116.0000 mm, 63.0000 mm): Footprint text of J2 (--- DATA LINES PHYSICALLY ABSENT ---)
+[mirrored_text_on_front_layer]: Mirrored text on front layer
+    Local override; warning
+    @(81.5000 mm, 43.5000 mm): PCB text '5-20V DC POWER' on F.Silkscreen
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **
