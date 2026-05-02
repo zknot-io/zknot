@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — ZKNOT™</title>
+  <meta name="description" content="Frequently asked questions about ZKNOT™ hardware attestation, chain-of-custody products, independent verification, and government procurement." />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0b0d;
+      --bg-1: #0f1114;
+      --bg-2: #141720;
+      --bg-card: #111318;
+      --border: rgba(255,255,255,0.07);
+      --border-active: rgba(255,255,255,0.18);
+      --text: #e8eaed;
+      --text-muted: #6b7280;
+      --text-dim: #9ca3af;
+      --accent: #22c55e;
+      --amber: #f59e0b;
+      --blue: #3b82f6;
+      --purple: #a855f7;
+      --mono: 'DM Mono', monospace;
+      --sans: 'DM Sans', sans-serif;
+      --display: 'Syne', sans-serif;
+      --sidebar-w: 240px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999; opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 64px;
+      background: rgba(10,11,13,0.92); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-text { font-family: var(--display); font-size: 18px; font-weight: 800; letter-spacing: 0.05em; color: var(--text); }
+    .nav-logo-text sup { font-size: 10px; font-weight: 400; color: var(--text-muted); vertical-align: super; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-cta { color: var(--accent) !important; border: 1px solid rgba(34,197,94,0.3); padding: 6px 16px; border-radius: 2px; }
+    .nav-cta:hover { color: #000 !important; background: var(--accent) !important; }
+
+    /* ── LAYOUT ── */
+    .faq-layout {
+      display: grid;
+      grid-template-columns: var(--sidebar-w) 1fr;
+      min-height: 100vh;
+      padding-top: 64px;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed;
+      top: 64px; left: 0; bottom: 0;
+      width: var(--sidebar-w);
+      background: var(--bg-1);
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      padding: 32px 0 40px;
+      z-index: 50;
+    }
+    .sidebar::-webkit-scrollbar { width: 3px; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    .sidebar-label {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--text-muted);
+      padding: 10px 24px 6px; display: block;
+    }
+    .sidebar-link {
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 24px; font-family: var(--mono); font-size: 12px;
+      letter-spacing: 0.03em; color: var(--text-muted); text-decoration: none;
+      border-left: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .sidebar-link:hover { color: var(--text); background: rgba(255,255,255,0.02); }
+    .sidebar-link.active { color: var(--accent); border-left-color: var(--accent); background: rgba(34,197,94,0.04); }
+    .sidebar-divider { height: 1px; background: var(--border); margin: 12px 24px; }
+
+    /* ── MAIN ── */
+    .faq-main {
+      margin-left: var(--sidebar-w);
+      padding: 56px 64px 100px;
+      max-width: 860px;
+    }
+
+    /* ── HERO ── */
+    .faq-hero {
+      margin-bottom: 64px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+    }
+    .faq-eyebrow::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
+    .faq-title {
+      font-family: var(--display); font-size: clamp(36px, 5vw, 60px);
+      font-weight: 800; letter-spacing: -0.025em; line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .faq-sub {
+      font-size: 17px; color: var(--text-muted); line-height: 1.75; max-width: 600px;
+    }
+
+    /* ── CATEGORY ── */
+    .faq-category {
+      margin-bottom: 64px;
+      scroll-margin-top: 88px;
+    }
+    .category-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 28px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .category-icon {
+      width: 32px; height: 32px; border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .category-title {
+      font-family: var(--display); font-size: 22px; font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .category-count {
+      font-family: var(--mono); font-size: 11px; color: var(--text-muted);
+      margin-left: auto;
+    }
+
+    /* ── FAQ ITEM ── */
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      margin-bottom: 8px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .faq-item.open { border-color: var(--border-active); }
+
+    .faq-q {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      cursor: pointer;
+      background: var(--bg-card);
+      transition: background 0.2s;
+      user-select: none;
+    }
+    .faq-q:hover { background: var(--bg-2); }
+    .faq-item.open .faq-q { background: var(--bg-2); }
+
+    .faq-q-text {
+      font-size: 15px; font-weight: 500; color: var(--text);
+      line-height: 1.5; flex: 1;
+    }
+    .faq-chevron {
+      width: 20px; height: 20px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); margin-top: 1px;
+      transition: transform 0.2s;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--accent); }
+
+    .faq-a {
+      display: none;
+      padding: 0 24px 24px;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+    }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a-inner { padding-top: 20px; }
+
+    .faq-a p {
+      font-size: 15px; color: var(--text-muted); line-height: 1.8;
+      margin-bottom: 14px;
+    }
+    .faq-a p:last-child { margin-bottom: 0; }
+    .faq-a strong { color: var(--text-dim); font-weight: 600; }
+    .faq-a code {
+      font-family: var(--mono); font-size: 12px;
+      background: var(--bg-2); border: 1px solid var(--border);
+      padding: 2px 6px; border-radius: 2px; color: var(--text-dim);
+    }
+    .faq-a a { color: var(--accent); text-decoration: none; }
+    .faq-a a:hover { text-decoration: underline; }
+
+    .faq-a-list {
+      display: flex; flex-direction: column; gap: 8px;
+      margin: 12px 0;
+    }
+    .faq-a-list-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: var(--text-muted); line-height: 1.65;
+    }
+    .faq-a-list-item::before {
+      content: '→'; font-family: var(--mono); font-size: 12px;
+      color: var(--accent); flex-shrink: 0; padding-top: 2px;
+    }
+
+    .faq-callout {
+      margin: 16px 0; padding: 14px 18px;
+      border-radius: 3px; font-size: 14px; line-height: 1.7;
+    }
+    .faq-callout.green { background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.2); color: var(--text-dim); }
+    .faq-callout.amber { background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.2); color: var(--text-dim); }
+    .faq-callout.blue { background: rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.2); color: var(--text-dim); }
+
+    /* ── VERIFY STRIP ── */
+    .verify-strip {
+      display: flex; align-items: center; gap: 16px;
+      background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 3px; padding: 16px 20px; margin: 20px 0;
+    }
+    .verify-strip-code {
+      font-family: var(--mono); font-size: 14px; color: var(--accent);
+      font-weight: 500; flex-shrink: 0;
+    }
+    .verify-strip-desc { font-size: 13px; color: var(--text-muted); }
+    .verify-strip-link {
+      margin-left: auto; font-family: var(--mono); font-size: 12px;
+      color: var(--accent); text-decoration: none; flex-shrink: 0;
+      letter-spacing: 0.06em;
+    }
+    .verify-strip-link:hover { text-decoration: underline; }
+
+    /* ── CTA ── */
+    .faq-cta {
+      margin-top: 64px; padding: 48px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 4px; text-align: center; position: relative; overflow: hidden;
+    }
+    .faq-cta::before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 400px; height: 300px;
+      background: radial-gradient(ellipse, rgba(34,197,94,0.05) 0%, transparent 70%);
+    }
+    .faq-cta h2 {
+      font-family: var(--display); font-size: 28px; font-weight: 700;
+      letter-spacing: -0.02em; margin-bottom: 12px; position: relative;
+    }
+    .faq-cta p { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px; position: relative; }
+    .faq-cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; font-weight: 500; color: #000; background: var(--accent); border: none; padding: 12px 24px; border-radius: 2px; text-decoration: none; transition: all 0.2s; }
+    .btn-primary:hover { background: #16a34a; }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; color: var(--text-muted); background: transparent; border: 1px solid var(--border); padding: 12px 24px; border-radius: 2px; text-decoration: none; transition: all 0.2s; }
+    .btn-secondary:hover { color: var(--text); border-color: var(--border-active); }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); padding: 40px 40px 40px calc(var(--sidebar-w) + 40px); }
+    .footer-inner { max-width: 860px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .footer-brand { font-family: var(--display); font-size: 15px; font-weight: 700; }
+    .footer-meta { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--text-muted); line-height: 1.8; margin-top: 6px; }
+    .footer-right { display: flex; gap: 28px; }
+    .footer-right a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--text-muted); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+    .footer-right a:hover { color: var(--text); }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .sidebar { display: none; }
+      .faq-layout { grid-template-columns: 1fr; }
+      .faq-main { margin-left: 0; padding: 80px 20px 64px; max-width: 100%; }
+      footer { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="2" fill="#111318"/><path d="M8 8L16 16L24 8" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 24L16 16L24 24" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/><circle cx="16" cy="16" r="2.5" fill="#22c55e"/></svg>
+    <span class="nav-logo-text">ZKNOT<sup>™</sup></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#products">Products</a></li>
+    <li><a href="/protocol">Protocol</a></li>
+    <li><a href="/#verticals">Verticals</a></li>
+    <li><a href="/docs">Docs</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="mailto:ops@zknot.io" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="faq-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <span class="sidebar-label">Categories</span>
+    <a href="#what-is" class="sidebar-link active">What is ZKNOT™</a>
+    <a href="#how-it-works" class="sidebar-link">How It Works</a>
+    <a href="#products" class="sidebar-link">Products</a>
+    <a href="#verification" class="sidebar-link">Verification</a>
+    <div class="sidebar-divider"></div>
+    <span class="sidebar-label">Technical</span>
+    <a href="#security" class="sidebar-link">Security & Cryptography</a>
+    <a href="#integration" class="sidebar-link">Integration & API</a>
+    <a href="#offline" class="sidebar-link">Offline & Field Ops</a>
+    <div class="sidebar-divider"></div>
+    <span class="sidebar-label">Procurement</span>
+    <a href="#government" class="sidebar-link">Government & SDVOSB</a>
+    <a href="#legal" class="sidebar-link">Legal & Court Admissibility</a>
+    <a href="#procurement" class="sidebar-link">Pricing & Procurement</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="faq-main">
+
+    <div class="faq-hero">
+      <div class="faq-eyebrow">Support</div>
+      <h1 class="faq-title">Frequently Asked Questions</h1>
+      <p class="faq-sub">Answers to the questions contracting officers, forensic examiners, acquirers, and legal teams ask most. If your question isn't here, email <a href="mailto:ops@zknot.io" style="color:var(--accent);">ops@zknot.io</a>.</p>
+    </div>
+
+    <!-- ── WHAT IS ZKNOT ── -->
+    <div class="faq-category" id="what-is">
+      <div class="category-header">
+        <div class="category-icon" style="background:rgba(34,197,94,0.1);">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#22c55e" stroke-width="1.5"/><path d="M8 5v3l2 1" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="category-title">What is ZKNOT™</div>
+        <div class="category-count">6 questions</div>
+      </div>
+
+      <div class="faq-item open">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What does ZKNOT™ actually do?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>ZKNOT™ builds hardware and software that makes evidence self-proving. Every custody event — connecting a device, signing an artifact, applying a seal, transferring custody — is recorded as a cryptographically unforgeable chain entry that any party can independently verify without contacting ZKNOT™.</p>
+          <p>The result: a chain of custody where the math and physics do the testifying, not the operator. Any party with a short code can verify at <a href="https://verifyknot.io">verifyknot.io</a> in seconds.</p>
+          <div class="verify-strip">
+            <div class="verify-strip-code">ZK-6GUA-7DV</div>
+            <div class="verify-strip-desc">Live chain record — tap to verify</div>
+            <a href="https://verifyknot.io/ZK-6GUA-7DV" class="verify-strip-link" target="_blank">verifyknot.io →</a>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">Is ZKNOT™ a security company?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>No. ZKNOT™ is an evidence company. The distinction matters.</p>
+          <p>Security companies prevent bad things from happening. Evidence companies prove what happened — and when, by whom, and in what state. ZKNOT™ products are designed so that the chain of custody is self-proving regardless of whether any security control worked correctly. Even if a device was compromised, the ZKNOT™ chain record shows exactly what was attested and when.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What problem does ZKNOT™ solve that existing tools don't?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Existing chain-of-custody tools enforce constraints through software policy — write-blockers that run firmware, databases that restrict edits, access controls that prevent deletion. The problem: any software control can be misconfigured, exploited, or overridden by someone with sufficient access. In court, this means the examiner testifies to a software state. Defense challenges it.</p>
+          <p>ZKNOT™ enforces constraints at two levels that cannot be overridden:</p>
+          <div class="faq-a-list">
+            <div class="faq-a-list-item"><strong>Physics</strong> — PowerVerify™ severs the write data path at the PCB level. No firmware, no configuration, no administrator can restore it. Testable with a multimeter.</div>
+            <div class="faq-a-list-item"><strong>Mathematics</strong> — ZK-LocalChain™ hash-chains every entry. Retroactive modification is computationally impossible — detectable by any party with two consecutive entries.</div>
+          </div>
+          <p>The verification is also structural: anyone verifies at verifyknot.io without vendor involvement, eliminating the conflict-of-interest argument.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">Does ZKNOT™ use blockchain?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>No. ZK-LocalChain™ is a hash-chained ledger — it uses the same underlying cryptographic principle (SHA-256 chain linkage) without any of the blockchain infrastructure: no distributed network, no consensus mechanism, no tokens, no miners.</p>
+          <p>The result is an append-only ledger that is faster, simpler, fully offline-capable, and independently auditable. A single exported JSON file contains everything needed to verify the entire chain — no node required, no network call, no third party.</p>
+          <div class="faq-callout green">The chain is independently verifiable from any exported entry. You do not need ZKNOT™ infrastructure, a full node, or network access to verify a record.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What does "independently verifiable" actually mean?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>It means any party — opposing counsel, a judge, a regulatory auditor, a journalist — can verify a ZKNOT™ chain record without:</p>
+          <div class="faq-a-list">
+            <div class="faq-a-list-item">Contacting ZKNOT™ or requesting data from us</div>
+            <div class="faq-a-list-item">Creating an account or logging in anywhere</div>
+            <div class="faq-a-list-item">Trusting the operator or the collecting agency</div>
+            <div class="faq-a-list-item">Understanding cryptography</div>
+          </div>
+          <p>They enter a short code at <a href="https://verifyknot.io">verifyknot.io</a> and see the full chain entry: device ID, timestamp, artifact hash, chain position, and verification status. The page itself contains the public key and the math to verify the signature independently if they want to go deeper.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">Who is ZKNOT™ built for?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <div class="faq-a-list">
+            <div class="faq-a-list-item"><strong>Law enforcement and federal agencies</strong> — digital forensics chain of custody that holds in court without vendor testimony</div>
+            <div class="faq-a-list-item"><strong>Election officials</strong> — ballot equipment attestation and audit chain records</div>
+            <div class="faq-a-list-item"><strong>Investigative journalists</strong> — cryptographic provenance for sensitive documents at point of receipt</div>
+            <div class="faq-a-list-item"><strong>Pharmaceutical supply chain</strong> — controlled substance and clinical trial custody attestation</div>
+            <div class="faq-a-list-item"><strong>Corporate legal and compliance teams</strong> — internal investigation evidence integrity</div>
+            <div class="faq-a-list-item"><strong>DoD forward-deployed operations</strong> — offline-capable evidence attestation in intermittently-connected environments</div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- ── HOW IT WORKS ── -->
+    <div class="faq-category" id="how-it-works">
+      <div class="category-header">
+        <div class="category-icon" style="background:rgba(245,158,11,0.1);">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="category-title">How It Works</div>
+        <div class="category-count">5 questions</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What is EvidenceProtocol™ and how does it work end to end?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>EvidenceProtocol™ is the end-to-end ZKNOT™ workflow. Six steps, each enforced by a different mechanism:</p>
+          <div class="faq-a-list">
+            <div class="faq-a-list-item"><strong>01 PowerVerify™ connect</strong> — write data path severed at hardware level before any software runs</div>
+            <div class="faq-a-list-item"><strong>02 Forensic capture</strong> — image using any standard tool; hardware enforces write protection below the tool layer</div>
+            <div class="faq-a-list-item"><strong>03 TrustSeal™ application</strong> — physical seal applied and simultaneously bound to a chain entry; atomic event</div>
+            <div class="faq-a-list-item"><strong>04 ZKKey™ sign</strong> — operator presses physical button; ECDSA P-256 signature produced by secure element</div>
+            <div class="faq-a-list-item"><strong>05 Chain record written</strong> — entry written to ZK-LocalChain™, hash-linked to all prior entries</div>
+            <div class="faq-a-list-item"><strong>06 PDF report exported</strong> — signed chain-of-custody report with QR codes linking to verifyknot.io for each entry</div>
+          </div>
+          <p>Full details at <a href="/protocol">zknot.io/protocol</a>.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What is a short code and where does it appear?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>A short code is a human-readable identifier assigned to every chain entry at write time. Format: <code>ZK-XXXX-XXX</code>. It appears:</p>
+          <div class="faq-a-list">
+            <div class="faq-a-list-item">Printed on every TrustSeal™ label</div>
+            <div class="faq-a-list-item">Displayed on the ZKKey™ OLED screen after signing</div>
+            <div class="faq-a-list-item">Included in every PDF chain-of-custody report as text and QR code</div>
+            <div class="faq-a-list-item">Returned by the API on every attestation event</div>
+          </div>
+          <p>Anyone with the short code can resolve the full chain entry at <a href="https://verifyknot.io">verifyknot.io</a> — no account, no login.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">How does the hash chain work? What does it actually prove?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Each chain entry contains a <code>prev_hash</code> field — the SHA-256 hash of the immediately preceding entry. This means every entry is mathematically bound to every entry before it.</p>
+          <p>What this proves: if anyone modifies any prior entry, the <code>prev_hash</code> in the next entry no longer matches. The modification is detectable by any party with two consecutive entries — no ZKNOT™ infrastructure required. The detection is mathematical, not institutional.</p>
+          <div class="faq-callout blue">To verify chain integrity: compute SHA-256 of entry N (excluding its own <code>entry_hash</code> field) and check it matches <code>prev_hash</code> in entry N+1. Two entries, a SHA-256 library, and the math proves the chain is intact.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What happens to the chain if ZKNOT™ goes offline or ceases to exist?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Nothing happens to records that have already been attested. Every chain entry is self-contained in the exported JSON artifact — it includes the full attestation data, the device public key, and the ECDSA signature. Any party can verify any record independently using a SHA-256 library and an ECDSA verification function.</p>
+          <p>ZKNOT™ infrastructure (api.zknot.io, verifyknot.io) provides convenience — fast lookup, public resolution, PDF export. It does not provide the proof. The proof is in the mathematics of the chain entry itself.</p>
+          <div class="faq-callout green">Design principle: the chain is verifiable by anyone, from any exported entry, without ZKNOT™. This is not a feature — it is a structural guarantee.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">Can a chain entry be deleted or modified after the fact?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>No delete operation exists at any layer of the stack.</strong> ZK-LocalChain™ is append-only — the ledger format has no delete command. The database schema has no delete operation. The API has no delete endpoint.</p>
+          <p>Modification: any change to a chain entry invalidates its <code>entry_hash</code>, which breaks the <code>prev_hash</code> of every subsequent entry. Silent modification is mathematically impossible — it is detectable from any two consecutive entries.</p>
+          <p>This is not a policy restriction. It is a structural property of the system.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- ── PRODUCTS ── -->
+    <div class="faq-category" id="products">
+      <div class="category-header">
+        <div class="category-icon" style="background:rgba(59,130,246,0.1);">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="2" stroke="#3b82f6" stroke-width="1.5"/><path d="M6 3V2M10 3V2" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="category-title">Products</div>
+        <div class="category-count">6 questions</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What is ZKKey™ and what makes it different from a software signing tool?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>ZKKey™ is a hardware signing device built on an STM32F411 microcontroller and a Microchip ATECC608B secure element. The private ECDSA P-256 key is generated inside the secure element and cannot be exported — by anyone, under any condition, including ZKNOT™.</p>
+          <p>What makes it structurally different from software signing:</p>
+          <div class="faq-a-list">
+            <div class="faq-a-list-item"><strong>Physical presence required</strong> — only a button press on the physical device produces a signature. No remote signing, no scripted automation, no administrator override.</div>
+            <div class="faq-a-list-item"><strong>Post-nonce enforcement</strong> — after the session nonce expires, the signing circuit is physically open. No software command can re-enable it for that session.</div>
+            <div class="faq-a-list-item"><strong>Hardware key isolation</strong> — the ATECC608B zone-locks the key at provisioning. Export is prohibited at the silicon level.</div>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">How does PowerVerify™ differ from a software write-blocker?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Software write-blockers intercept write commands in the firmware or driver layer and deny them. PowerVerify™ does not intercept anything — it physically severs the write data lines at the PCB trace level. There is no firmware path, no driver to exploit, no configuration to misconfigure.</p>
+          <p>The critical difference in court: a software write-blocker requires the examiner to testify that it was correctly configured and free from vulnerabilities. PowerVerify™ requires only a continuity test — a multimeter measurement that any party can perform, in any courtroom, with no technical expertise required.</p>
+          <div class="faq-callout amber">Defense argument against software write-blockers: "How do we know the firmware had no vulnerability that permitted writes?" — This argument does not apply to a severed PCB trace.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What artifact types does ZK-LocalChain™ support?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Five artifact types are defined in schema v1:</p>
+          <div class="faq-a-list">
+            <div class="faq-a-list-item"><code>COMBINED_SESSION</code> — full end-to-end session attestation combining PowerVerify and ZKKey events</div>
+            <div class="faq-a-list-item"><code>POWER_SESSION</code> — PowerVerify™ device connection and write-path attestation event</div>
+            <div class="faq-a-list-item"><code>ZKEY_SIGN</code> — individual ZKKey™ hardware signing event</div>
+            <div class="faq-a-list-item"><code>TRUST_SEAL</code> — TrustSeal™ physical seal application event, bound to artifact hash</div>
+            <div class="faq-a-list-item"><code>CHAIN_EXPORT</code> — signed PDF report export event</div>
+          </div>
+          <p>All types follow the same attestation artifact JSON schema v1. See <a href="/docs#schema-artifact">docs</a> for the full field reference.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">How does TrustSeal™ bind a physical item to the digital chain?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The binding event is atomic — the seal scan and the chain write happen simultaneously. When the barcode on the TrustSeal™ is scanned, the ZKKey™ immediately writes a <code>TRUST_SEAL</code> chain entry containing the seal's unique ID, the artifact hash, the operator device ID, and the timestamp. There is no window between physical application and digital record.</p>
+          <p>The seal itself carries the short code, printed and encoded as a QR code. If the seal is removed, a permanent VOID pattern appears on both the item surface and the seal backing. The chain entry persists regardless — proving the seal existed, when it was applied, and who applied it.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">Can ZKNOT™ products work together, or do I need to use all of them?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Products are modular. Each enforces a specific constraint and can be used independently or in combination. Common deployments:</p>
+          <div class="faq-a-list">
+            <div class="faq-a-list-item"><strong>ZKKey™ + ZK-LocalChain™ only</strong> — document attestation and chain record for journalism or legal use cases</div>
+            <div class="faq-a-list-item"><strong>PowerVerify™ + ZKKey™ + ZK-LocalChain™</strong> — full digital forensics acquisition workflow</div>
+            <div class="faq-a-list-item"><strong>ZKKey™ + TrustSeal™ + ZK-LocalChain™</strong> — physical item custody with cryptographic binding</div>
+            <div class="faq-a-list-item"><strong>Full EvidenceProtocol™</strong> — all four products in the complete six-step workflow</div>
+          </div>
+          <p>Contact <a href="mailto:ops@zknot.io">ops@zknot.io</a> to scope the right configuration for your use case.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What happens if a ZKKey™ device is lost or stolen?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Each ZKKey™ has a unique device ID and corresponding ECDSA public key registered in the chain. If a device is lost or stolen:</p>
+          <div class="faq-a-list">
+            <div class="faq-a-list-item">The device can be revoked in the registry — all future signatures from that device ID are flagged</div>
+            <div class="faq-a-list-item">Prior chain entries signed by the device remain valid — the signatures are mathematically sound</div>
+            <div class="faq-a-list-item">The attacker cannot extract the private key from the ATECC608B — the key is hardware-locked and non-exportable</div>
+            <div class="faq-a-list-item">Any signature produced by the stolen device still requires a physical button press — remote or automated signing is structurally impossible</div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- ── VERIFICATION ── -->
+    <div class="faq-category" id="verification">
+      <div class="category-header">
+        <div class="category-icon" style="background:rgba(34,197,94,0.1);">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#22c55e" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="category-title">Verification</div>
+        <div class="category-count">4 questions</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">How do I verify a ZKNOT™ record right now?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Go to <a href="https://verifyknot.io">verifyknot.io</a> and enter a short code. No account. No login. Try a live record from the production chain right now:</p>
+          <div class="verify-strip">
+            <div class="verify-strip-code">ZK-6GUA-7DV</div>
+            <div class="verify-strip-desc">COMBINED_SESSION — Demo record</div>
+            <a href="https://verifyknot.io/ZK-6GUA-7DV" class="verify-strip-link" target="_blank">Verify →</a>
+          </div>
+          <div class="verify-strip">
+            <div class="verify-strip-code">ZK-4Z7Y-D3N</div>
+            <div class="verify-strip-desc">POWER_SESSION — Election / PowerVerify</div>
+            <a href="https://verifyknot.io/ZK-4Z7Y-D3N" class="verify-strip-link" target="_blank">Verify →</a>
+          </div>
+          <div class="verify-strip">
+            <div class="verify-strip-code">ZK-69DT-HUS</div>
+            <div class="verify-strip-desc">TRUST_SEAL — Pharma / TrustSeal</div>
+            <a href="https://verifyknot.io/ZK-69DT-HUS" class="verify-strip-link" target="_blank">Verify →</a>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">Can I verify a record without using verifyknot.io?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes. The API is public and unauthenticated for verification:</p>
+          <div class="faq-callout blue"><code>GET https://api.zknot.io/v1/verify/{short_code}</code><br/><br/>Returns the full attestation artifact JSON including device public key and ECDSA signature. No API key required.</div>
+          <p>From there, independent cryptographic verification requires only a SHA-256 library and an ECDSA P-256 verification function — both available in every major language. See <a href="/docs#schema-device-sig">docs</a> for the verification algorithm.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What does "VERIFIED — CHAIN INTACT" mean vs a failure state?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>VERIFIED — CHAIN INTACT</strong> means three things checked out on lookup:</p>
+          <div class="faq-a-list">
+            <div class="faq-a-list-item">The entry hash matches — the entry data hasn't been modified since writing</div>
+            <div class="faq-a-list-item">The ECDSA signature verifies — the registered ZKKey™ device produced this signature</div>
+            <div class="faq-a-list-item">The chain linkage is intact — prev_hash matches the prior entry's entry_hash</div>
+          </div>
+          <p>A failure state (<code>CHAIN_INTEGRITY_FAILURE</code> or <code>SIGNATURE_INVALID</code>) would indicate tampering — something that should never occur in normal operation. If you ever see one, contact <a href="mailto:ops@zknot.io">ops@zknot.io</a> immediately.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">Is verification access logged? Who can see what records I look up?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The verification API is public and unauthenticated — no login, no account. Standard server logs may record the request IP and short code accessed, consistent with normal web server logging. ZKNOT™ does not sell, share, or analyze verification lookup data for commercial purposes.</p>
+          <p>For sensitive operational use cases requiring private verification (where the short code itself should not be disclosed to ZKNOT™ servers), contact ops@zknot.io to discuss on-premise or air-gapped verification options.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- ── SECURITY ── -->
+    <div class="faq-category" id="security">
+      <div class="category-header">
+        <div class="category-icon" style="background:rgba(168,85,247,0.1);">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l5 2v5c0 3-5 5-5 5S3 12 3 9V4l5-2z" stroke="#a855f7" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="category-title">Security &amp; Cryptography</div>
+        <div class="category-count">5 questions</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What cryptographic algorithms does ZKNOT™ use?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <div class="faq-a-list">
+            <div class="faq-a-list-item"><strong>ECDSA P-256</strong> — device signing, per NIST FIPS 186-4. Keys generated and stored in ATECC608B secure element.</div>
+            <div class="faq-a-list-item"><strong>SHA-256</strong> — artifact hashing and chain linkage. Per NIST FIPS 180-4.</div>
+            <div class="faq-a-list-item"><strong>Hardware TRNG</strong> — nonce generation uses the ATECC608B's hardware true random number generator.</div>
+          </div>
+          <p>All algorithms are NIST-approved and suitable for federal use. No proprietary or unreviewed cryptography is used anywhere in the stack.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">Can ZKNOT™ staff access or read my chain records?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Chain records written to the hosted ZK-LocalChain™ are stored on ZKNOT™ infrastructure and are accessible to ZKNOT™ staff with database access. This is consistent with any SaaS provider.</p>
+          <p>For deployments where chain records must be fully private and ZKNOT™ must have zero access, ZK-LocalChain™ supports on-premise deployment — the ledger runs entirely on your hardware with no data leaving your environment. Contact <a href="mailto:ops@zknot.io">ops@zknot.io</a> to discuss on-premise licensing.</p>
+          <div class="faq-callout green">Key point: even if ZKNOT™ staff accessed your records, they could not alter them without breaking the hash chain — which would be detectable by you from any exported entry.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">Has ZKNOT™ been independently audited?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>ZKNOT™ is an early-stage company and has not yet undergone a formal third-party security audit. The cryptographic algorithms (ECDSA P-256, SHA-256) are NIST-approved and extensively reviewed. The ATECC608B secure element is a widely-deployed commercial component used in production security systems globally.</p>
+          <p>We welcome and actively seek independent technical review. Researchers and potential government customers interested in technical evaluation should contact <a href="mailto:ops@zknot.io">ops@zknot.io</a>.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">Is ZKNOT™ FIPS 140-2 certified?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Not currently. The ATECC608B secure element is a FIPS 140-2 candidate-class component — it implements NIST-approved algorithms (ECDSA P-256, SHA-256, HMAC) with hardware key isolation. Full FIPS 140-2 validation of the ZKNOT™ system as a whole is on the product roadmap, prioritized for federal procurement opportunities.</p>
+          <p>For agencies with a hard FIPS 140-2 requirement, contact <a href="mailto:ops@zknot.io">ops@zknot.io</a> to discuss your specific procurement path and timeline.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What is ZKNOT™'s ITAR / export control status?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>ZKNOT™ products use standard commercial cryptography (ECDSA P-256, SHA-256) implemented in a commercially available secure element (Microchip ATECC608B). We are evaluating ITAR and EAR classification for our hardware products. Customers with specific export control requirements should contact <a href="mailto:ops@zknot.io">ops@zknot.io</a> for current classification status before procurement.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- ── INTEGRATION ── -->
+    <div class="faq-category" id="integration">
+      <div class="category-header">
+        <div class="category-icon" style="background:rgba(59,130,246,0.1);">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="6" width="4" height="4" rx="1" stroke="#3b82f6" stroke-width="1.5"/><rect x="10" y="6" width="4" height="4" rx="1" stroke="#3b82f6" stroke-width="1.5"/><path d="M6 8h4" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="category-title">Integration &amp; API</div>
+        <div class="category-count">4 questions</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What does the ZKNOT™ API look like?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>REST API hosted at <code>api.zknot.io</code>. Two core endpoints in production:</p>
+          <div class="faq-callout blue">
+            <code>POST /v1/attest</code> — ingest a signed artifact and write to chain<br/><br/>
+            <code>GET /v1/verify/{short_code}</code> — resolve any short code to a verified chain entry (public, no auth)
+          </div>
+          <p>Full API reference including request/response schemas, error codes, and SDK examples at <a href="/docs">zknot.io/docs</a>.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">Can ZKNOT™ integrate with existing forensic tools like FTK or Cellebrite?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes. PowerVerify™ operates below the software layer — it works with any imaging tool without modification. FTK Imager, Cellebrite, dd, custom tools — all work identically because PowerVerify™ enforces write protection at the hardware level before any software runs.</p>
+          <p>ZK-LocalChain™ integrates via API. A thin SDK wrapper can post attestation events from any forensic workflow that supports outbound API calls or scripted post-acquisition steps. Contact <a href="mailto:ops@zknot.io">ops@zknot.io</a> to discuss specific integration requirements.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">Is there a SDK?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Python and JavaScript SDKs are in development. In the meantime, the API is simple enough to integrate directly with any HTTP client. A full curl example:</p>
+          <div class="faq-callout blue"><code>curl https://api.zknot.io/v1/verify/ZK-6GUA-7DV | jq .</code></div>
+          <p>SDK early access is available for pilot customers and teaming partners. Contact <a href="mailto:ops@zknot.io">ops@zknot.io</a>.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What are the API rate limits?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The public verification endpoint (<code>GET /v1/verify</code>) is rate-limited at 60 requests per minute per IP for unauthenticated callers. Authenticated API access has higher limits. Contact <a href="mailto:ops@zknot.io">ops@zknot.io</a> for authenticated access credentials and enterprise rate limits.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- ── OFFLINE ── -->
+    <div class="faq-category" id="offline">
+      <div class="category-header">
+        <div class="category-icon" style="background:rgba(245,158,11,0.1);">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h2M12 8h2M8 2v2M8 12v2" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="8" r="3" stroke="#f59e0b" stroke-width="1.5"/></svg>
+        </div>
+        <div class="category-title">Offline &amp; Field Operations</div>
+        <div class="category-count">3 questions</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">Does ZKNOT™ work without an internet connection?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes. ZK-LocalChain™ is offline-capable by design. The full attestation workflow — PowerVerify™ connect, ZKKey™ sign, TrustSeal™ apply, chain write — operates entirely on local hardware with no network dependency. Chain entries are stored locally and sync to api.zknot.io when connectivity is available.</p>
+          <p>This is not a degraded mode. Offline operation is a first-class deployment scenario specifically designed for forward-deployed, field, and secure-facility use.</p>
+          <div class="faq-callout green">ZKNOT™ does not use the term "air-gapped." The correct term is offline-capable or intermittently-connected — the system is designed for environments where network connectivity is unreliable or unavailable, not permanently isolated.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">How does chain sync work when connectivity is restored?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>When the ZKKey™ or local ZK-LocalChain™ instance regains connectivity, it posts pending chain entries to api.zknot.io via <code>POST /v1/attest</code> in sequence order. Chain position and hash linkage are preserved exactly — the sync does not modify any entry. After sync, all entries are publicly resolvable at verifyknot.io.</p>
+          <p>Entries created offline are fully valid before sync — chain integrity can be verified locally from the device export at any time without network access.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What are the hardware requirements for field deployment?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <div class="faq-a-list">
+            <div class="faq-a-list-item"><strong>ZKKey™</strong> — compact handheld device, USB-A powered from any host, no external power required</div>
+            <div class="faq-a-list-item"><strong>PowerVerify™</strong> — passive passthrough, bus-powered, no external power</div>
+            <div class="faq-a-list-item"><strong>Host device</strong> — any laptop or workstation with a USB-A port and Python or the ZKKey™ client software</div>
+            <div class="faq-a-list-item"><strong>TrustSeal™ scanner</strong> — USB HID barcode scanner (DE2120), plug-and-play, no driver install</div>
+          </div>
+          <p>The full field kit fits in a standard evidence bag. No rack hardware, no server, no dedicated workstation required.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- ── GOVERNMENT ── -->
+    <div class="faq-category" id="government">
+      <div class="category-header">
+        <div class="category-icon" style="background:rgba(34,197,94,0.1);">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="7" width="12" height="7" rx="1" stroke="#22c55e" stroke-width="1.5"/><path d="M5 7V5a3 3 0 016 0v2" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="category-title">Government &amp; SDVOSB</div>
+        <div class="category-count">4 questions</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What is ZKNOT™'s SDVOSB status?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>ZKNOT, Inc. is a Service-Disabled Veteran-Owned Small Business. Key registrations:</p>
+          <div class="faq-a-list">
+            <div class="faq-a-list-item"><strong>SAM.gov</strong> — Active (registered March 2026)</div>
+            <div class="faq-a-list-item"><strong>UEI</strong> — C4SKW13JPEL5</div>
+            <div class="faq-a-list-item"><strong>CAGE Code</strong> — 1AHZ4</div>
+            <div class="faq-a-list-item"><strong>EIN</strong> — 36-5165991</div>
+            <div class="faq-a-list-item"><strong>VetCert</strong> — SBA application under review</div>
+          </div>
+          <p>Founder William Shane Wilkinson is a U.S. Army veteran (CBRNe) with an honorable discharge and service-connected disability rating.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What contract vehicles can agencies use to buy ZKNOT™?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <div class="faq-a-list">
+            <div class="faq-a-list-item"><strong>SAM.gov Direct Award</strong> — SDVOSB set-aside eligible (FAR 19.14). Available now.</div>
+            <div class="faq-a-list-item"><strong>Sole-source</strong> — available upon VetCert certification for awards up to $4.5M (services) / $7.5M (manufacturing)</div>
+            <div class="faq-a-list-item"><strong>SBIR Phase I</strong> — DoD and DHS topics in preparation. R&amp;D contract pathway.</div>
+            <div class="faq-a-list-item"><strong>Teaming / subcontract</strong> — available as subcontractor or teaming partner on larger vehicles now</div>
+            <div class="faq-a-list-item"><strong>Direct pilot purchase</strong> — hardware pilot units available for qualified agencies without a contracting vehicle</div>
+            <div class="faq-a-list-item"><strong>GSA Schedule</strong> — planned for 2026 post-CAGE assignment</div>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What NAICS codes apply to ZKNOT™?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <div class="faq-a-list">
+            <div class="faq-a-list-item"><strong>334419</strong> — Other Electronic Component Manufacturing (primary)</div>
+            <div class="faq-a-list-item"><strong>334118</strong> — Computer Terminal &amp; Other Computer Hardware Manufacturing</div>
+            <div class="faq-a-list-item"><strong>541519</strong> — Other Computer Related Services</div>
+            <div class="faq-a-list-item"><strong>541512</strong> — Computer Systems Design Services</div>
+            <div class="faq-a-list-item"><strong>541330</strong> — Engineering Services</div>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">How do I get a capability briefing or technical evaluation?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Email <a href="mailto:ops@zknot.io?subject=Capability%20Briefing%20Request">ops@zknot.io</a> with subject line "Capability Briefing Request." Include your agency, role, and a brief description of your use case. Response within one business day.</p>
+          <p>We are available for:</p>
+          <div class="faq-a-list">
+            <div class="faq-a-list-item">Technical capability briefings (30–60 min, remote or in-person)</div>
+            <div class="faq-a-list-item">Live demonstration using the production chain (verifyknot.io)</div>
+            <div class="faq-a-list-item">Pilot unit deployment for hands-on evaluation</div>
+            <div class="faq-a-list-item">Written responses to RFI and market research questions</div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- ── LEGAL ── -->
+    <div class="faq-category" id="legal">
+      <div class="category-header">
+        <div class="category-icon" style="background:rgba(168,85,247,0.1);">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M4 6l4-4 4 4M5 14h6" stroke="#a855f7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="category-title">Legal &amp; Court Admissibility</div>
+        <div class="category-count">3 questions</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">Is ZKNOT™ evidence admissible in court?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>ZKNOT™ is not a law firm and cannot provide legal advice on admissibility. Admissibility depends on jurisdiction, court rules, and the specific facts of the case.</p>
+          <p>What we can say is that ZKNOT™ records are designed to satisfy the technical foundations that courts use to evaluate digital evidence integrity: chain of custody documentation, write-protection verification, hash-based integrity proof, and timestamp attestation. The PowerVerify™ continuity test provides a physically verifiable fact that does not require expert testimony to explain.</p>
+          <div class="faq-callout amber">Consult qualified legal counsel for guidance on admissibility in your specific jurisdiction and case.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">Does using ZKNOT™ require an expert witness to testify?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>That is a decision for counsel, but ZKNOT™ is specifically designed to reduce dependence on expert testimony by making the proof physical and mathematical rather than institutional.</p>
+          <div class="faq-a-list">
+            <div class="faq-a-list-item"><strong>PowerVerify™</strong> — write protection is a continuity test. Any witness can perform it. No cryptography expertise required.</div>
+            <div class="faq-a-list-item"><strong>Hash verification</strong> — SHA-256 is a publicly documented, court-accepted algorithm. The comparison is deterministic: hash matches or it doesn't.</div>
+            <div class="faq-a-list-item"><strong>verifyknot.io</strong> — opposing counsel can verify the record themselves, in the courtroom, on their phone.</div>
+          </div>
+          <p>ZKNOT™ staff can provide technical declarations or expert testimony when required. Contact <a href="mailto:ops@zknot.io">ops@zknot.io</a>.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">What happens if ZKNOT™ is subpoenaed for chain records?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>ZKNOT™ will comply with valid legal process. For customers with on-premise deployment, ZKNOT™ has no access to chain records and cannot be compelled to produce records it does not hold.</p>
+          <p>For cloud-hosted chains, ZKNOT™ maintains records in accordance with our data retention policy. Customers requiring zero third-party access to chain data should use on-premise deployment. Contact <a href="mailto:ops@zknot.io">ops@zknot.io</a> for details.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- ── PROCUREMENT ── -->
+    <div class="faq-category" id="procurement">
+      <div class="category-header">
+        <div class="category-icon" style="background:rgba(34,197,94,0.1);">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h10" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="category-title">Pricing &amp; Procurement</div>
+        <div class="category-count">3 questions</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">How is ZKNOT™ priced?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>ZKNOT™ pricing is structured in two components: hardware (ZKKey™ and PowerVerify™ units) and software (ZK-LocalChain™ API access and verifyknot.io resolution). Pilot pricing is available for qualified agencies and evaluation customers.</p>
+          <p>We do not publish list prices publicly at this stage. Contact <a href="mailto:ops@zknot.io?subject=Pricing%20Inquiry">ops@zknot.io</a> with your use case, deployment scale, and contracting vehicle and we will respond with a detailed quote within two business days.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">Can I get a pilot unit to evaluate before procurement?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes. Pilot units of ZKKey™ and PowerVerify™ are available for qualified government agencies, forensic labs, and teaming partners. The pilot includes hardware units, API access, full documentation, and technical support for the evaluation period.</p>
+          <p>Email <a href="mailto:ops@zknot.io?subject=Pilot%20Unit%20Request">ops@zknot.io</a> with subject "Pilot Unit Request." Include your agency and intended use case. Lead time for pilot units is 4–6 weeks from order.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          <div class="faq-q-text">Is ZKNOT™ available for teaming on larger contracts?</div>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes. ZKNOT™ actively seeks teaming arrangements with system integrators pursuing DoD, DHS, and DOJ contracts where hardware attestation, forensic evidence integrity, or chain-of-custody requirements are present. As an SDVOSB, ZKNOT™ brings both technical capability and set-aside eligibility to teaming arrangements.</p>
+          <p>Email <a href="mailto:ops@zknot.io?subject=Teaming%20Inquiry">ops@zknot.io</a> with subject "Teaming Inquiry" to discuss specific opportunities.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="faq-cta">
+      <h2>Still have questions?</h2>
+      <p>Email the team directly. We respond within one business day and welcome technical questions, RFI responses, and briefing requests.</p>
+      <div class="faq-cta-actions">
+        <a href="mailto:ops@zknot.io" class="btn-primary">ops@zknot.io</a>
+        <a href="/docs" class="btn-secondary">Technical Docs →</a>
+        <a href="https://verifyknot.io/ZK-6GUA-7DV" class="btn-secondary" target="_blank">Live Demo →</a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">ZKNOT™</div>
+      <div class="footer-meta">ZKNOT, Inc. — Utah-based SDVOSB · UEI: C4SKW13JPEL5 · CAGE: 1AHZ4<br/>ops@zknot.io · William Shane Wilkinson, Founder & CEO</div>
+    </div>
+    <div class="footer-right">
+      <a href="/">Home</a>
+      <a href="/#products">Products</a>
+      <a href="/protocol">Protocol</a>
+      <a href="https://verifyknot.io">Verify</a>
+      <a href="/docs">Docs</a>
+      <a href="/about">About</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggle(qEl) {
+    const item = qEl.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    // Open clicked if it was closed
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Sidebar active state on scroll
+  const categories = document.querySelectorAll('.faq-category');
+  const sidebarLinks = document.querySelectorAll('.sidebar-link');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        sidebarLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.sidebar-link[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-64px 0px -60% 0px', threshold: 0 });
+  categories.forEach(c => observer.observe(c));
+</script>
+</body>
+</html>
