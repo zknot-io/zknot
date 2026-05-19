@@ -1,0 +1,290 @@
+(footprint "Pigtail_USB-C_4wire_6pad_ZKNOT_THT_Arc"
+	(version 20240108)
+	(generator "zknot_powerverify")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "ZKNOT USB-C male pigtail termination, 4-wire 20AWG VBUS/GND + 28AWG CC1/CC2. 6 THT pads arranged on a 15mm arc centered on the cable entry point; D+/D- pads present as NC terminations for PAT-002 compliance. Strain relief: two 3mm-diameter half-moon cutouts flanking cable entry for zip tie + adhesive heat shrink. Origin = cable entry point (zip-tie anchor).")
+	(tags "zknot powerverify airgap pigtail usb-c tht 20awg 100W pd patent-002")
+	(property "Reference" "J**"
+		(at 0 -4 0)
+		(layer "F.SilkS")
+		(uuid "a1b2c3d4-0000-0000-0000-000000000001")
+		(effects (font (size 1 1) (thickness 0.15)))
+	)
+	(property "Value" "Pigtail_USB-C_4wire_6pad_ZKNOT_THT_Arc"
+		(at 0 20 0)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-0000-0000-0000-000000000002")
+		(effects (font (size 1 1) (thickness 0.15)))
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a1b2c3d4-0000-0000-0000-000000000003")
+		(effects (font (size 1.27 1.27) (thickness 0.15)))
+	)
+	(property "Datasheet" "https://verifyknot.io/datasheet/pigtail-v1"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a1b2c3d4-0000-0000-0000-000000000004")
+		(effects (font (size 1.27 1.27) (thickness 0.15)))
+	)
+	(property "Description" "ZKNOT pigtail 6-pad THT arc layout, PAT-002"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a1b2c3d4-0000-0000-0000-000000000005")
+		(effects (font (size 1.27 1.27) (thickness 0.15)))
+	)
+	(attr through_hole)
+
+	; ==========================================================
+	; COORDINATE SYSTEM
+	; Origin (0, 0) = cable entry point / zip-tie anchor
+	; +Y direction = INTO the board (pads are at +Y)
+	; -Y direction = OUT to the cable
+	; +X / -X = left/right across the board
+	;
+	; PAD LAYOUT - 6 pads on 15mm radius arc, 80° total span
+	; Pad 1 D+_NC at angle -40° (outer left)    -> (-9.642, 11.491)
+	; Pad 2 CC1   at angle -24° (inner left)    -> (-6.101, 13.703)
+	; Pad 3 VBUS  at angle  -8° (center-left)   -> (-2.088, 14.854)
+	; Pad 4 GND   at angle  +8° (center-right)  -> ( 2.088, 14.854)
+	; Pad 5 CC2   at angle +24° (inner right)   -> ( 6.101, 13.703)
+	; Pad 6 D-_NC at angle +40° (outer right)   -> ( 9.642, 11.491)
+	;
+	; All pads equidistant (15mm) from cable entry point.
+	; Center-to-center spacing: 4.18mm between all adjacent pads.
+	; Minimum edge-to-edge gap: 0.98mm (between VBUS and GND pads).
+	; ==========================================================
+
+	; Pin 1 - D+_NC (outer left, NO WIRE attached, pad exists for patent marking)
+	(pad "1" thru_hole circle
+		(at -9.642 11.491)
+		(size 2.0 2.0)
+		(drill 1.0)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(net 0 "")
+		(uuid "a1b2c3d4-0001-0000-0000-000000000000")
+	)
+	; Pin 2 - CC1 (28 AWG)
+	(pad "2" thru_hole circle
+		(at -6.101 13.703)
+		(size 2.0 2.0)
+		(drill 1.0)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(net 0 "")
+		(uuid "a1b2c3d4-0002-0000-0000-000000000000")
+	)
+	; Pin 3 - VBUS (20 AWG, red wire)
+	(pad "3" thru_hole circle
+		(at -2.088 14.854)
+		(size 3.2 3.2)
+		(drill 1.8)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(net 0 "")
+		(uuid "a1b2c3d4-0003-0000-0000-000000000000")
+	)
+	; Pin 4 - GND (20 AWG, black wire)
+	(pad "4" thru_hole circle
+		(at 2.088 14.854)
+		(size 3.2 3.2)
+		(drill 1.8)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(net 0 "")
+		(uuid "a1b2c3d4-0004-0000-0000-000000000000")
+	)
+	; Pin 5 - CC2 (28 AWG)
+	(pad "5" thru_hole circle
+		(at 6.101 13.703)
+		(size 2.0 2.0)
+		(drill 1.0)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(net 0 "")
+		(uuid "a1b2c3d4-0005-0000-0000-000000000000")
+	)
+	; Pin 6 - D-_NC (outer right, NO WIRE attached, pad exists for patent marking)
+	(pad "6" thru_hole circle
+		(at 9.642 11.491)
+		(size 2.0 2.0)
+		(drill 1.0)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(net 0 "")
+		(uuid "a1b2c3d4-0006-0000-0000-000000000000")
+	)
+
+	; ==========================================================
+	; STRAIN RELIEF - two half-moon cutouts flanking cable entry
+	; Located on Edge.Cuts to cut the board.
+	; Each half-moon: 1.5mm radius, opens away from cable center.
+	; LEFT cutout centered at (-3, 0), opens to the LEFT.
+	; RIGHT cutout centered at (+3, 0), opens to the RIGHT.
+	; The zip tie wraps through both cutouts around the cable.
+	; ==========================================================
+
+	; LEFT half-moon (opens left): arc from (-3, +1.5) through (-4.5, 0) to (-3, -1.5)
+	(fp_arc
+		(start -3 1.5)
+		(mid -4.5 0)
+		(end -3 -1.5)
+		(stroke (width 0.15) (type solid))
+		(layer "Edge.Cuts")
+		(uuid "a1b2c3d4-0100-0000-0000-000000000001")
+	)
+	; Close the LEFT half-moon with a straight line across the opening
+	(fp_line
+		(start -3 -1.5) (end -3 1.5)
+		(stroke (width 0.15) (type solid))
+		(layer "Edge.Cuts")
+		(uuid "a1b2c3d4-0100-0000-0000-000000000003")
+	)
+
+	; RIGHT half-moon (opens right): arc from (+3, -1.5) through (+4.5, 0) to (+3, +1.5)
+	(fp_arc
+		(start 3 -1.5)
+		(mid 4.5 0)
+		(end 3 1.5)
+		(stroke (width 0.15) (type solid))
+		(layer "Edge.Cuts")
+		(uuid "a1b2c3d4-0100-0000-0000-000000000002")
+	)
+	; Close the RIGHT half-moon with a straight line
+	(fp_line
+		(start 3 1.5) (end 3 -1.5)
+		(stroke (width 0.15) (type solid))
+		(layer "Edge.Cuts")
+		(uuid "a1b2c3d4-0100-0000-0000-000000000004")
+	)
+
+	; ==========================================================
+	; SILKSCREEN - pin labels and patent markings
+	; Labels sit slightly outside each pad so they don't get covered by solder.
+	; ==========================================================
+
+	; Pin 1 label "D+ NC" - outer left, bold-style for prominence
+	(fp_text user "D+ NC"
+		(at -10.5 9.5 -25)
+		(layer "F.SilkS")
+		(uuid "a1b2c3d4-0200-0000-0000-000000000001")
+		(effects (font (size 0.8 0.8) (thickness 0.15)))
+	)
+	; Pin 2 label "CC1"
+	(fp_text user "CC1"
+		(at -7 12 -15)
+		(layer "F.SilkS")
+		(uuid "a1b2c3d4-0200-0000-0000-000000000002")
+		(effects (font (size 0.8 0.8) (thickness 0.12)))
+	)
+	; Pin 3 label "VBUS" - below pad
+	(fp_text user "VBUS"
+		(at -2.088 17)
+		(layer "F.SilkS")
+		(uuid "a1b2c3d4-0200-0000-0000-000000000003")
+		(effects (font (size 1 1) (thickness 0.15)))
+	)
+	; Pin 4 label "GND" - below pad
+	(fp_text user "GND"
+		(at 2.088 17)
+		(layer "F.SilkS")
+		(uuid "a1b2c3d4-0200-0000-0000-000000000004")
+		(effects (font (size 1 1) (thickness 0.15)))
+	)
+	; Pin 5 label "CC2"
+	(fp_text user "CC2"
+		(at 7 12 15)
+		(layer "F.SilkS")
+		(uuid "a1b2c3d4-0200-0000-0000-000000000005")
+		(effects (font (size 0.8 0.8) (thickness 0.12)))
+	)
+	; Pin 6 label "D- NC"
+	(fp_text user "D- NC"
+		(at 10.5 9.5 25)
+		(layer "F.SilkS")
+		(uuid "a1b2c3d4-0200-0000-0000-000000000006")
+		(effects (font (size 0.8 0.8) (thickness 0.15)))
+	)
+
+	; Patent-evidence callout - "DATA ABSENT" between D+ and D-_NC labels
+	(fp_text user "--- DATA ABSENT ---"
+		(at 0 19)
+		(layer "F.SilkS")
+		(uuid "a1b2c3d4-0200-0000-0000-000000000007")
+		(effects (font (size 0.7 0.7) (thickness 0.12) italic))
+	)
+
+	; Reference designator (placed above the cable entry on front silkscreen)
+	(fp_text reference "${REFERENCE}"
+		(at 0 -2.5 0)
+		(layer "F.SilkS")
+		(uuid "a1b2c3d4-0200-0000-0000-000000000008")
+		(effects (font (size 0.9 0.9) (thickness 0.15)))
+	)
+
+	; ==========================================================
+	; F.Fab layer - assembly drawing helper
+	; Shows the arc path and cable entry for assembly workers
+	; ==========================================================
+
+	; Draw the 15mm reference arc on F.Fab for visual guidance
+	(fp_arc
+		(start -9.642 11.491)
+		(mid 0 15)
+		(end 9.642 11.491)
+		(stroke (width 0.1) (type dash))
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-0300-0000-0000-000000000001")
+	)
+	; Mark cable entry point
+	(fp_text user "CABLE"
+		(at 0 1.5)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-0300-0000-0000-000000000002")
+		(effects (font (size 0.5 0.5) (thickness 0.1)))
+	)
+	(fp_text user "Pigtail Arc 4W ZKNOT"
+		(at 0 -6)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-0300-0000-0000-000000000003")
+		(effects (font (size 0.6 0.6) (thickness 0.1)))
+	)
+
+	; ==========================================================
+	; COURTYARD - F.CrtYd layer
+	; Bounds: -12 to +12 on X, -3 to +19 on Y (includes labels + cutouts + pads)
+	; ==========================================================
+	(fp_line
+		(start -12 -3) (end 12 -3)
+		(stroke (width 0.05) (type solid))
+		(layer "F.CrtYd")
+		(uuid "a1b2c3d4-0400-0000-0000-000000000001")
+	)
+	(fp_line
+		(start 12 -3) (end 12 19)
+		(stroke (width 0.05) (type solid))
+		(layer "F.CrtYd")
+		(uuid "a1b2c3d4-0400-0000-0000-000000000002")
+	)
+	(fp_line
+		(start 12 19) (end -12 19)
+		(stroke (width 0.05) (type solid))
+		(layer "F.CrtYd")
+		(uuid "a1b2c3d4-0400-0000-0000-000000000003")
+	)
+	(fp_line
+		(start -12 19) (end -12 -3)
+		(stroke (width 0.05) (type solid))
+		(layer "F.CrtYd")
+		(uuid "a1b2c3d4-0400-0000-0000-000000000004")
+	)
+)
