@@ -66,3 +66,12 @@ __pycache__/
 .DS_Store
 node_modules/
 *.tmp
+
+# KiCad
+7_ENG/hw/**/*-backups/
+7_ENG/hw/**/*.bak
+7_ENG/hw/**/*.kicad_prl
+7_ENG/hw/**/_autosave-*
+7_ENG/hw/**/fp-info-cache
+7_ENG/hw/**/*.lck
+7_ENG/hw/**/fab-output/
