@@ -289,3 +289,15 @@ Standard DK continuous labels peel cleanly — not actually tamper-evident. For 
 **Current production product: PAT-002 PowerVerify** (dumb power-only board, 4 functional pins, D+/D− present-but-not-connected). PAT-018 PowerVerifyPlus is filed IP but not yet built — months away.
 
 **This document supersedes v1 and v2. If a future session contradicts what's here, this doc wins unless explicitly revised.**
+
+---
+
+## v3.1 Addendum — 2026-05-19 — Per-unit ZK numbers
+
+Supersedes the "shared short_code" pattern used on PV1-00042/43/44.
+
+- Each unit gets its own 12-char ZK number from `zksign sign`
+- ZK number goes on internal label (replaces shared short_code line)
+- Signing device pubkey (ZK-EW6E-EERX, fw 0.1-pc-keys) is the verification anchor for all Rev 0 units
+- See thread handoff brief 2026-05-19 for full signing workflow
+- Rev 0 customers get free Rev 1 swap when ATECC-backed signing ships
