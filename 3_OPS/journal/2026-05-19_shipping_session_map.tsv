@@ -1,0 +1,18 @@
+# Session map for 2026-05-19 production batch
+# Columns: serial | stage | zk | session_id | puf_hash | puf_file
+
+# === Potted units (PUF + sign pending) ===
+PV1-00043	potted-needs-puf-sign	-	-	-	-
+PV1-00044	potted-needs-puf-sign	-	-	-	-
+PV1-00045	potted-needs-puf-sign	-	-	-	-
+
+# === Pre-pot signed, awaiting cure + post-pot sign ===
+PV1-00046	pre-pot-signed	501C-LPR0-FSAC	31974108ae115030c9a41d3dbbc846c2	-	-
+PV1-00047	pre-pot-signed	PGLB-GN2D-F4EW	723301ec40b1c18e831b9cb61369a50f	-	-
+PV1-00048	pre-pot-signed	QG6M-EK0D-25QY	483708ac6e5001c1f36a863782bd6f42	-	-
+
+# === Physical identification notes ===
+# PV1-00043: labeled internally (ZK-6GUA-7DV legacy code visible through pot)
+# PV1-00044: TOP unlabeled potted unit (per 2026-05-19 photo)
+# PV1-00045: bottom unlabeled potted unit (per 2026-05-19 photo)
+# PV1-00042: dead/defective, not shipping
