@@ -108,3 +108,6 @@ docs.html's original shell rendered unstyled (white/Times), so it was **rebuilt 
 ## Note to self
 
 The honesty is the asset. A `/protocol` page that names its own relay gap and optical-PUF spoof surface is the artifact that earns a second read from Green / Schneier / Pfefferkorn — the pages don't oversell, so the claims that remain are believable. The personal monopoly here isn't the device; it's the credibility of describing it plainly. Carry that tone into the outreach drafts.
+
+## Deploy path CORRECTION
+- zknot-site is NOT a Cloudflare Pages project (only hashstamp + verifyknot exist as Pages). It's a WORKER: wrangler.jsonc has main=router.js + assets binding. Deploy = `wrangler deploy` (NOT `pages deploy`), or git-connected Workers Build. Need to read router.js + confirm before deploying. Push acc3a98 is on origin regardless.
