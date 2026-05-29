@@ -75,3 +75,6 @@ node_modules/
 7_ENG/hw/**/fp-info-cache
 7_ENG/hw/**/*.lck
 7_ENG/hw/**/fab-output/
+
+# Filed patent records — backed up off-repo, intentionally not tracked
+01_PATENTS/
