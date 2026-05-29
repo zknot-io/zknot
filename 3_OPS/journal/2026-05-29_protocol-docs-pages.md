@@ -111,3 +111,9 @@ The honesty is the asset. A `/protocol` page that names its own relay gap and op
 
 ## Deploy path CORRECTION
 - zknot-site is NOT a Cloudflare Pages project (only hashstamp + verifyknot exist as Pages). It's a WORKER: wrangler.jsonc has main=router.js + assets binding. Deploy = `wrangler deploy` (NOT `pages deploy`), or git-connected Workers Build. Need to read router.js + confirm before deploying. Push acc3a98 is on origin regardless.
+
+## Deploy path RESOLVED + deployed
+- zknot-site = Cloudflare WORKER (router.js maps clean URLs → .html via env.ASSETS). NOT Pages, NOT git-connected (last auto/CLI deploy was 2026-03-28 — today's push did NOT auto-deploy).
+- Deploy command: `cd ~/zknot-site && npx wrangler deploy` (reads wrangler.jsonc name=zknot-site, uploads router.js + ./public). Account: shane.systems@gmail.com.
+- Router note: /protocol AND /evidence-protocol both → protocol.html; /docs → docs.html. Edge cache 300s (hard-refresh to verify).
+- Verified live: [fill after Shift-R check].
