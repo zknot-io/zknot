@@ -1,0 +1,8 @@
+# ATECC608 Tier-0 self-assertion provisioning ledger | pipe-delimited | one row per chip
+# Tier 0 (SelfKnot/DIY) — NOT official ZKNOT, NOT ZK-numbered, NOT PUF-tracked. Records are SELF-ASSERTED.
+# pubkey = slot-0 P256 public (X||Y, 64B hex). Private key is on-chip, non-extractable. NO secrets in this file.
+# cfg_lock / data_lock: ISO date when that zone was locked (irreversible). testsig: PASS/FAIL/-.
+#
+n | serial            | addr | sign_slot | pubkey_x||y (64B hex)                                                                                                             | cfg_lock   | keygen     | data_lock  | testsig | notes
+1 | 012337d1a9f0eb45ee | 0x60 | 0         | fc9e498d9a69f93a3f2bb5902faf4b33c83a1ae668a12260c24c528916819d28d3f07c20b80483228e2ce36fbe1508f0e335d0cabdc42f48e7da7b9b30bd6289 | 2026-06-01 | 2026-06-01 | -          | -       | test article; known-good batch
+2 | <serial> | 0x60 | 0 | <pubkey> | <date> | <date> | - | - | 
