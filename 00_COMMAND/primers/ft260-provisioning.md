@@ -1,62 +1,67 @@
 <!--
 PROJECT PRIMER — ft260-provisioning
 - Paste the ROOT primer (CONTEXT.md) first, THEN this, to brief any AI.
-- This is a BENCH + DEBUG file: technical state, what's tried, what's stuck. Keep it current as you debug.
-- >>FILL<< = needs your input. The blanks are where I'd be guessing about your physical setup.
+- STATUS CHANGED 2026-06-01: bring-up SOLVED. Recipe proven on part #1. Remaining work = batch replay (9 parts).
+- >>FILL<< = needs your input.
 -->
 
-# PRIMER — FT260 ATECC Provisioning  (🔥 THE UNBLOCKER)
+# PRIMER — FT260 ATECC Provisioning  (✅ RECIPE PROVEN — now a batch task)
 
 ## Why this matters (1 line)
-This gates everything: SelfKnot builds AND the commercial HSM2 ceremony both wait on FT260 provisioning working.
+Unblocks SelfKnot builds AND the commercial HSM2 ceremony. As of 2026-06-01 the bring-up is DONE — this is no longer the blocker, it's a mechanical replay.
 
-## Goal
-Provision bare TrustCUSTOM ATECC chips over USB using the **FT260 USB-I2C bridge** (UMFT260EV1A board), applying the **TFLXTLS slot configuration**, repeatably.
+## Status: SOLVED on part #1 (2026-06-01)
+- First Tier-0 self-assertion device fully provisioned end-to-end and signature-verified.
+- `lock_data_zone -> ATCA_SUCCESS`, data zone `LockValue 0x00 -> LOCKED`. Slot-0 P256 key permanent + non-extractable.
+- Recipe validated; the other 9 known-good parts are a mechanical replay (see "Batch replay" below).
 
-## Current state
-- **Hardware:** wired up. Software bottleneck — no working script yet.
-- **Why FT260 at all:** Trust&GO (pre-provisioned) ATECC chips unavailable at distributors -> pivoted to provisioning bare TrustCUSTOM chips ourselves. FT260 is the USB->I2C path that replaces the dead MCP2221A clones / Pico-bridge attempts.
-- >>FILL: exact chip part number — ATECC608B TrustCUSTOM? confirm.<<
-- >>FILL: FT260 mode in use — is the EV board strapped for I2C (not UART)? DCNF0/DCNF1 jumpers?<<
-- >>FILL: wiring — SDA/SCL pins used, pull-up resistors present (value?), target I2C address (default 0x6A / 0xC0 8-bit for ATECC?), Vcc source.<<
+## The architecture that worked (the non-obvious part)
+- **Transport: the mainline `hid_ft260` kernel driver** — NOT hidraw, NOT a cryptoauthlib HID/kit shim.
+  `hid_ft260` binds the FT260's HID interface (USB `0403:6030`) and exposes a real Linux **`/dev/i2c-N` adapter**.
+- That means the ATECC becomes a standard kernel I2C device, and cryptoauthlib's **stock `/dev/i2c` HAL** talks to it directly. No HID bridging needed. This sidesteps the whole transport problem most FT260+ATECC attempts get stuck on.
+- Working config in cryptoauthlib: `cfg_ateccx08a_i2c_default()`, `cfg.atcai2c.bus = 6` (the FT260 adapter number — verify yours via `i2cdetect -l`), `cfg.atcai2c.address = 0xC0` (8-bit form; chip enumerated at 7-bit `0x60` on the bus scan).
+- >>FILL: confirm your adapter number is stable across replug, or note how to re-find it.<<
 
-## The actual blocker (what "no working script" means)
->>FILL: which is it?<<
-- [ ] FT260 not enumerating / not seen by OS
-- [ ] FT260 seen, but I2C scan finds no device (wiring / pull-ups / address)
-- [ ] Device ACKs, but library/auth handshake fails
-- [ ] Reads work, but applying TFLXTLS config / lock fails
-- [ ] Other: >>describe<<
+## The PROVEN provisioning sequence (config-lock → GenKey → host-verify → data-lock)
+1. `atcab_init` against `/dev/i2c-N` at the chip address; `atcab_read_serial_number` — confirm seated serial.
+2. `atcab_read_config_zone` — verify config BEFORE locking. (read-verify-then-lock discipline)
+3. Lock CONFIG zone (irreversible gate #1).
+4. `GenKey` on slot 0 — keypair born on-chip, private key non-extractable by design. Record the 64B (X||Y) pubkey.
+5. **Host-side verify** the test signature (see gotcha below) — sign on chip, verify on host against the GenKey pubkey.
+6. Lock DATA zone (irreversible gate #2) — freezes slot-0 key forever. Do this LAST, behind a serial guard + 5s abort window.
 
-## Environment / toolchain
-- Host: Debian Trixie 13 (zsh).
-- >>FILL: library stack — cryptoauthlib (Python `cryptoauthlib` / `python -m ...`)? Does it have an FT260/HID transport, or are you driving FT260 via its own HID interface (ftd2xx / libft260 / hidapi)? This is the key architecture question — cryptoauthlib's stock HALs are I2C/SWI/Kit-protocol; FT260 needs a HID->I2C shim.<<
-- >>FILL: how the OS exposes the FT260 — `/dev/hidraw*`? `lsusb` shows VID 0x0403 PID 0x6030? udev rule for non-root access?<<
+## ⚠️ Key gotcha — chip-verify vs host-verify
+- On-chip `verify_extern` returned **ATCA_COMM_FAIL** — but that's a COMM error, NOT a crypto failure. Don't read it as "signature invalid."
+- **Host-side verify** (verify the chip's signature on the host against the recorded pubkey) PASSED: `signature valid? -> True`.
+- This is the correct test anyway: a real verifier checks the signature host-side against the recorded pubkey, which is exactly what the ledger exists to enable. >>Worth understanding WHY chip-verify glitched — that understanding is the moat, not the command.<<
 
-## First-principles debug ladder (cheapest checks first)
-1. `lsusb | grep -i future` — does the FT260 enumerate at all? (FTDI VID 0403)
-2. `ls /dev/hidraw*` and permissions — can you read it without sudo? (udev rule may be needed)
-3. I2C scan via the FT260's HID interface — does the ATECC ACK at its address? (proves wiring + pull-ups before any crypto)
-4. Pull-up sanity: ATECC I2C needs pull-ups on SDA/SCL — confirm present (the EV board may or may not populate them).
-5. Only after a clean ACK: attempt cryptoauthlib `atcab_init` with the FT260/HID transport, then read config zone (read before write — never lock until the config reads back correct).
-6. Apply TFLXTLS config -> verify -> THEN lock. Locking is irreversible.
+## Safety patterns that worked (keep for the batch)
+- **Serial guard:** script aborts if the seated serial != expected `EXPECT` value — refuses to lock the wrong part.
+- **Precondition check:** aborts if the zone is already locked (reads lock byte before acting).
+- **5-second Ctrl-C window** before each irreversible lock, with the serial printed.
+- **Test-article discipline:** full recipe proven on ONE sacrificial part before batching.
 
-## ⚠️ Irreversibility flags (chips are cheap but not free)
-- **Config/data zone lock is PERMANENT.** Read-verify-then-lock. Never lock on a guessed config.
-- Burn through the cheapest bare chips first; keep known-good provisioned units aside as references.
-- >>FILL: how many bare chips on hand to experiment with?<<
+## The ledger — sole serial↔pubkey record
+- File: `3_OPS/km/systems/atecc-provisioning-ledger.psv` (pipe-delimited, one row per chip).
+- Tier 0 = SelfKnot/DIY, self-asserted, NOT official ZK# / NOT PUF-tracked. NO secrets in the file (pubkey only; private key is on-chip).
+- ⚠️ This is the ONLY off-chip record mapping a permanently-locked chip to its pubkey. A truncated/abbreviated pubkey can't verify a signature — store the FULL 128-char (X||Y) value.
+- Part #1: serial `012337d1a9f0eb45ee`, addr `0x60`, slot 0, cfg_lock + keygen + data_lock 2026-06-01, testsig PASS.
+- ⚠️ BACKUP: vault is single-copy on ~2-day manual Drive upload. After each provisioning session, upload the ledger to ops@zknot.io + shane.systems@gmail.com SAME session — these records exist nowhere else and the chip can never be re-keyed.
 
-## Patent / IP note
-PAT-001 is chip-agnostic ("hardware secure element" generically); FT260 vs other bridges is an implementation detail, not a claims issue. Provisioning method doesn't affect the FSM-gated human-actuation novelty.
+## Batch replay (the remaining 9 — fresh-energy task, not end-of-session)
+- 9 known-good parts left. Each is the same gated sequence; the recipe is fixed.
+- Per part: set new `EXPECT` serial in the lock script(s), fresh `read_config_zone` to confirm what's seated, run the gated sequence, add a ledger row with the FULL pubkey, commit, back up.
+- Failure mode to respect: fat-fingered serial guard or mis-seated part locked to the wrong ledger row. Clear-headed task — don't batch tired.
 
-## Done = (definition of "this is unblocked")
-- [ ] One bare chip provisioned with TFLXTLS config via FT260, end to end
-- [ ] Process written down repeatably (-> feeds the HSM2 ceremony design later)
-- [ ] Known-good unit set aside as reference
+## Done = (this project's exit criteria)
+- [x] One part fully provisioned + signature-verified (2026-06-01)
+- [x] Recipe written down repeatably (this file)
+- [ ] >>Batch the remaining 9 (or however many you want now)<<
+- [ ] Ledger backed up off-box after the latest session
 
-## Pointers
-- Hardware context, ZK/PUF concepts -> vault `6_SIG/`, `7_ENG/`
-- Downstream that unblocks -> ROOT primer critical path (SelfKnot, commercial provisioning)
+## What this unblocks (back to ROOT critical path)
+- SelfKnot builds + content — the FT260-as-kernel-i2c trick + proven lock sequence IS the "protect your ideas" guide material.
+- Commercial provisioning — this Tier-0 recipe is the rehearsal for the HSM2 ceremony + ZK#/PUF tracking.
 
-**Last verified:** 2026-06-01 (scaffold — >>FILL<< fields are hardware state only Shane can confirm)
+**Last verified:** 2026-06-01 (recipe proven on part #1; >>FILL<< fields are config/understanding notes)
 Page 1 of 1
