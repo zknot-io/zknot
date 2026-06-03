@@ -1,0 +1,672 @@
+(kicad_pcb
+  (version 20231120)
+  (generator "pcbnew")
+  (generator_version "7.0")
+  (general
+    (thickness 1.6)
+    (legacy_teardrops no)
+  )
+  (paper "A4")
+  (title_block
+    (title "ZKKey Air RevA")
+    (date "2026-04-16")
+    (rev "A")
+    (company "ZKNOT, INC.")
+    (comment 1 "STM32F072CBT6 + ATECC608A + GM65 + ST7789 240x240 TFT")
+    (comment 2 "PAT-009 App# 63/995,740 | PAT-001 App# 63/960,933")
+    (comment 3 "FULLY AIR-GAPPED — D+/D- PHYSICALLY ABSENT")
+  )
+
+  (layers
+    (0 "F.Cu" signal)
+    (31 "B.Cu" signal)
+    (32 "B.Adhes" user "B.Adhesive")
+    (33 "F.Adhes" user "F.Adhesive")
+    (34 "B.Paste" user)
+    (35 "F.Paste" user)
+    (36 "B.SilkS" user "B.Silkscreen")
+    (37 "F.SilkS" user "F.Silkscreen")
+    (38 "B.Mask" user)
+    (39 "F.Mask" user)
+    (40 "Dwgs.User" user "User.Drawings")
+    (41 "Cmts.User" user "User.Comments")
+    (44 "Edge.Cuts" user)
+    (45 "Margin" user)
+    (46 "B.CrtYd" user "B.Courtyard")
+    (47 "F.CrtYd" user "F.Courtyard")
+    (48 "B.Fab" user "B.Fabrication")
+    (49 "F.Fab" user "F.Fabrication")
+  )
+
+  (setup
+    (pad_to_mask_clearance 0.1)
+    (pcbplotparams
+      (layerselection 0x00010fc_ffffffff)
+      (usegerberattributes yes)
+      (usegerberadvancedattributes yes)
+      (creategerberjobfile yes)
+      (subtractmaskfromsilk yes)
+      (outputformat 1)
+      (outputdirectory "gerbers/")
+    )
+  )
+
+  ;; ============================================================
+  ;; NETS
+  ;; ============================================================
+  (net 0 "")
+  (net 1 "+5V")
+  (net 2 "+3.3V")
+  (net 3 "GND")
+  (net 4 "VBUS")
+  (net 5 "CC1_5V1K")
+  (net 6 "CC2_5V1K")
+  (net 7 "I2C_SCL")
+  (net 8 "I2C_SDA")
+  (net 9 "UART_TX")
+  (net 10 "UART_RX")
+  (net 11 "GM65_TRIG")
+  (net 12 "SPI_SCK")
+  (net 13 "SPI_MOSI")
+  (net 14 "TFT_CS")
+  (net 15 "TFT_DC")
+  (net 16 "TFT_RST")
+  (net 17 "TFT_BL")
+  (net 18 "BTN_PA0")
+  (net 19 "LED_PWR_PA1")
+  (net 20 "LED_ARMED_PA2")
+  (net 21 "LED_SIGNED_PA3")
+  (net 22 "LED_ERROR_PA6")
+  (net 23 "SWDIO")
+  (net 24 "SWCLK")
+  (net 25 "NRST")
+  (net 26 "BOOT0")
+  (net 27 "ATEC_ALERT")
+
+  ;; ============================================================
+  ;; BOARD OUTLINE — 80mm x 55mm landscape
+  ;; Wider than Connect to accommodate GM65 module + TFT side by side
+  ;; ============================================================
+  (gr_rect (start 0 0) (end 80 55) (layer "Edge.Cuts") (stroke (width 0.05) (type default)))
+
+  ;; ============================================================
+  ;; MOUNTING HOLES — M3, 4 corners, 3.5mm from edge
+  ;; ============================================================
+  (footprint "MountingHole:MountingHole_3.2mm_M3" (layer "F.Cu") (at 3.5 3.5)
+    (reference "H1") (value "M3")
+    (pad "" np_thru_hole circle (at 0 0) (size 3.2 3.2) (drill 3.2) (layers "*.Cu" "*.Mask")))
+  (footprint "MountingHole:MountingHole_3.2mm_M3" (layer "F.Cu") (at 76.5 3.5)
+    (reference "H2") (value "M3")
+    (pad "" np_thru_hole circle (at 0 0) (size 3.2 3.2) (drill 3.2) (layers "*.Cu" "*.Mask")))
+  (footprint "MountingHole:MountingHole_3.2mm_M3" (layer "F.Cu") (at 3.5 51.5)
+    (reference "H3") (value "M3")
+    (pad "" np_thru_hole circle (at 0 0) (size 3.2 3.2) (drill 3.2) (layers "*.Cu" "*.Mask")))
+  (footprint "MountingHole:MountingHole_3.2mm_M3" (layer "F.Cu") (at 76.5 51.5)
+    (reference "H4") (value "M3")
+    (pad "" np_thru_hole circle (at 0 0) (size 3.2 3.2) (drill 3.2) (layers "*.Cu" "*.Mask")))
+
+  ;; ============================================================
+  ;; EDGE TEST POINTS — left edge, 1.5mm pads
+  ;; GND 3V3 5V SCL SDA TX RX TRIG
+  ;; ============================================================
+  (footprint "TestPoint:TestPoint_Pad_D1.5mm" (layer "F.Cu") (at 0 12)
+    (reference "TP1") (value "GND")
+    (pad "1" smd rect (at 0 0) (size 1.5 1.5) (layers "F.Cu" "F.Mask") (net 3 "GND")))
+  (footprint "TestPoint:TestPoint_Pad_D1.5mm" (layer "F.Cu") (at 0 15)
+    (reference "TP2") (value "3V3")
+    (pad "1" smd rect (at 0 0) (size 1.5 1.5) (layers "F.Cu" "F.Mask") (net 2 "+3.3V")))
+  (footprint "TestPoint:TestPoint_Pad_D1.5mm" (layer "F.Cu") (at 0 18)
+    (reference "TP3") (value "5V")
+    (pad "1" smd rect (at 0 0) (size 1.5 1.5) (layers "F.Cu" "F.Mask") (net 1 "+5V")))
+  (footprint "TestPoint:TestPoint_Pad_D1.5mm" (layer "F.Cu") (at 0 21)
+    (reference "TP4") (value "SCL")
+    (pad "1" smd rect (at 0 0) (size 1.5 1.5) (layers "F.Cu" "F.Mask") (net 7 "I2C_SCL")))
+  (footprint "TestPoint:TestPoint_Pad_D1.5mm" (layer "F.Cu") (at 0 24)
+    (reference "TP5") (value "SDA")
+    (pad "1" smd rect (at 0 0) (size 1.5 1.5) (layers "F.Cu" "F.Mask") (net 8 "I2C_SDA")))
+  (footprint "TestPoint:TestPoint_Pad_D1.5mm" (layer "F.Cu") (at 0 27)
+    (reference "TP6") (value "UART_TX")
+    (pad "1" smd rect (at 0 0) (size 1.5 1.5) (layers "F.Cu" "F.Mask") (net 9 "UART_TX")))
+  (footprint "TestPoint:TestPoint_Pad_D1.5mm" (layer "F.Cu") (at 0 30)
+    (reference "TP7") (value "UART_RX")
+    (pad "1" smd rect (at 0 0) (size 1.5 1.5) (layers "F.Cu" "F.Mask") (net 10 "UART_RX")))
+  (footprint "TestPoint:TestPoint_Pad_D1.5mm" (layer "F.Cu") (at 0 33)
+    (reference "TP8") (value "GM65_TRIG")
+    (pad "1" smd rect (at 0 0) (size 1.5 1.5) (layers "F.Cu" "F.Mask") (net 11 "GM65_TRIG")))
+
+  ;; ============================================================
+  ;; J1 — USB-C POWER-ONLY PIGTAIL — THT
+  ;; VBUS + CC1 + CC2 + GND — D+/D- wires NOT PRESENT
+  ;; Bottom-left, cable exits board bottom face
+  ;; ============================================================
+  (footprint "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" (layer "F.Cu") (at 10 40)
+    (reference "J1") (value "USB-C_Power_Only")
+    (fp_text reference "J1" (at 0 -5) (layer "F.SilkS") (effects (font (size 1 1))))
+    (fp_text value "USB-C_PWR_ONLY" (at 0 6) (layer "F.Fab") (effects (font (size 0.7 0.7))))
+    (fp_rect (start -1.5 -3.81) (end 1.5 5.08) (layer "F.Fab") (stroke (width 0.1) (type default)))
+    (pad "1" thru_hole rect   (at 0 -3.81) (size 3.2 3.2) (drill 1.5) (layers "*.Cu" "*.Mask") (net 4 "VBUS"))
+    (pad "2" thru_hole circle (at 0 -1.27) (size 3.2 3.2) (drill 1.5) (layers "*.Cu" "*.Mask") (net 5 "CC1_5V1K"))
+    (pad "3" thru_hole circle (at 0  1.27) (size 3.2 3.2) (drill 1.5) (layers "*.Cu" "*.Mask") (net 6 "CC2_5V1K"))
+    (pad "4" thru_hole circle (at 0  3.81) (size 3.2 3.2) (drill 1.5) (layers "*.Cu" "*.Mask") (net 3 "GND"))
+  )
+  ;; Strain relief holes
+  (pad "" np_thru_hole oval (at 10 33) (size 3.0 3.0) (drill 3.0) (layers "*.Cu" "*.Mask"))
+  (pad "" np_thru_hole oval (at 10 47) (size 3.0 3.0) (drill 3.0) (layers "*.Cu" "*.Mask"))
+
+  ;; CC pull-downs R8/R9
+  (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu") (at 16 40)
+    (reference "R8") (value "5.1k")
+    (fp_text reference "R8" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 5 "CC1_5V1K"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+  (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu") (at 16 43)
+    (reference "R9") (value "5.1k")
+    (fp_text reference "R9" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 6 "CC2_5V1K"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+
+  ;; ============================================================
+  ;; U3 — AMS1117-3.3 LDO — SOT-223, near J1
+  ;; ============================================================
+  (footprint "Package_TO_SOT_SMD:SOT-223-3_TabPin2" (layer "F.Cu") (at 22 40)
+    (reference "U3") (value "AMS1117-3.3")
+    (fp_text reference "U3" (at 0 -3.5) (layer "F.SilkS") (effects (font (size 1 1))))
+    (fp_text value "AMS1117-3.3" (at 0 3.5) (layer "F.Fab") (effects (font (size 0.8 0.8))))
+    (pad "1" smd rect (at -2.3 1.5) (size 1.5 2.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND"))
+    (pad "2" smd rect (at 0   1.5) (size 1.5 2.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    (pad "2" smd rect (at 0  -1.5) (size 3.6 2.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    (pad "3" smd rect (at 2.3  1.5) (size 1.5 2.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 1 "+5V")))
+
+  (footprint "Capacitor_SMD:C_0805_2012Metric" (layer "F.Cu") (at 16 36)
+    (reference "C8") (value "10uF")
+    (fp_text reference "C8" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 1 "+5V"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+  (footprint "Capacitor_SMD:C_0805_2012Metric" (layer "F.Cu") (at 28 40)
+    (reference "C9") (value "10uF")
+    (fp_text reference "C9" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+
+  ;; ============================================================
+  ;; MOD1 — GM65 QR DECODER MODULE — THT 8-pin header
+  ;; Left side of board, lens faces LEFT through enclosure window
+  ;; Module body ~30x17mm, connector at right edge of module
+  ;; Header at x=8, module extends left toward board edge
+  ;; ============================================================
+  (footprint "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical" (layer "F.Cu") (at 8 22)
+    (reference "MOD1") (value "GM65-S_QR_Decoder")
+    (fp_text reference "MOD1" (at 0 -12) (layer "F.SilkS") (effects (font (size 1 1))))
+    (fp_text value "GM65-S" (at 0 12) (layer "F.Fab") (effects (font (size 0.8 0.8))))
+    ;; Module outline on Fab layer (30x17mm body, lens side faces left/board edge)
+    (fp_rect (start -18 -8.5) (end 8 8.5) (layer "F.Fab") (stroke (width 0.15) (type default)))
+    ;; Lens window annotation — centered on module body, near left edge
+    (fp_circle (center -12 0) (end -9 0) (layer "F.Fab") (stroke (width 0.2) (type default)))
+    (fp_text user "LENS" (at -12 3) (layer "F.Fab") (effects (font (size 0.7 0.7)) (justify center)))
+    (fp_text user "→ ENCLOSURE WINDOW" (at -12 -3) (layer "F.Fab") (effects (font (size 0.6 0.6)) (justify center)))
+    ;; 8-pin header — 2.54mm pitch
+    (pad "1" thru_hole rect   (at 0  8.89) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 2 "+3.3V"))
+    (pad "2" thru_hole circle (at 0  6.35) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 3 "GND"))
+    (pad "3" thru_hole circle (at 0  3.81) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 10 "UART_RX"))
+    (pad "4" thru_hole circle (at 0  1.27) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 9 "UART_TX"))
+    (pad "5" thru_hole circle (at 0 -1.27) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 11 "GM65_TRIG"))
+    (pad "6" thru_hole circle (at 0 -3.81) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 0 ""))
+    (pad "7" thru_hole circle (at 0 -6.35) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 0 ""))
+    (pad "8" thru_hole circle (at 0 -8.89) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 0 ""))
+  )
+
+  ;; ============================================================
+  ;; U1 — STM32F072CBT6 — LQFP-48 — center-right of board
+  ;; ============================================================
+  (footprint "Package_QFP:LQFP-48_7x7mm_P0.5mm" (layer "F.Cu") (at 48 27)
+    (reference "U1") (value "STM32F072CBT6")
+    (fp_text reference "U1" (at 0 -6.5) (layer "F.SilkS") (effects (font (size 1 1))))
+    (fp_text value "STM32F072CBT6" (at 0 6.5) (layer "F.Fab") (effects (font (size 0.7 0.7))))
+    (fp_rect (start -3.5 -3.5) (end 3.5 3.5) (layer "F.Fab") (stroke (width 0.1) (type default)))
+    (fp_circle (center -3.5 -3.5) (end -3.0 -3.5) (layer "F.Fab") (stroke (width 0.15) (type default)))
+    ;; Bottom side pins 1-12
+    (pad "1"  smd rect (at -2.75 4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    (pad "2"  smd rect (at -2.25 4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    (pad "3"  smd rect (at -1.75 4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "4"  smd rect (at -1.25 4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "5"  smd rect (at -0.75 4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "6"  smd rect (at -0.25 4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "7"  smd rect (at  0.25 4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 25 "NRST"))
+    (pad "8"  smd rect (at  0.75 4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND"))
+    (pad "9"  smd rect (at  1.25 4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    (pad "10" smd rect (at  1.75 4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 18 "BTN_PA0"))
+    (pad "11" smd rect (at  2.25 4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 19 "LED_PWR_PA1"))
+    (pad "12" smd rect (at  2.75 4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 20 "LED_ARMED_PA2"))
+    ;; Right side pins 13-24
+    (pad "13" smd rect (at 4.75  2.75) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 21 "LED_SIGNED_PA3"))
+    (pad "14" smd rect (at 4.75  2.25) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 14 "TFT_CS"))
+    (pad "15" smd rect (at 4.75  1.75) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 12 "SPI_SCK"))
+    (pad "16" smd rect (at 4.75  1.25) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 22 "LED_ERROR_PA6"))
+    (pad "17" smd rect (at 4.75  0.75) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 13 "SPI_MOSI"))
+    (pad "18" smd rect (at 4.75  0.25) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "19" smd rect (at 4.75 -0.25) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "20" smd rect (at 4.75 -0.75) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "21" smd rect (at 4.75 -1.25) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 17 "TFT_BL"))
+    (pad "22" smd rect (at 4.75 -1.75) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "23" smd rect (at 4.75 -2.25) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND"))
+    (pad "24" smd rect (at 4.75 -2.75) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    ;; Top side pins 25-36
+    (pad "25" smd rect (at  2.75 -4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "26" smd rect (at  2.25 -4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 15 "TFT_DC"))
+    (pad "27" smd rect (at  1.75 -4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 16 "TFT_RST"))
+    (pad "28" smd rect (at  1.25 -4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "29" smd rect (at  0.75 -4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 11 "GM65_TRIG"))
+    (pad "30" smd rect (at  0.25 -4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 9 "UART_TX"))
+    (pad "31" smd rect (at -0.25 -4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 10 "UART_RX"))
+    (pad "32" smd rect (at -0.75 -4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "33" smd rect (at -1.25 -4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "34" smd rect (at -1.75 -4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 23 "SWDIO"))
+    (pad "35" smd rect (at -2.25 -4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "36" smd rect (at -2.75 -4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    ;; Left side pins 37-48
+    (pad "37" smd rect (at -4.75 -2.75) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 24 "SWCLK"))
+    (pad "38" smd rect (at -4.75 -2.25) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "39" smd rect (at -4.75 -1.75) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 27 "ATEC_ALERT"))
+    (pad "40" smd rect (at -4.75 -1.25) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "41" smd rect (at -4.75 -0.75) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "42" smd rect (at -4.75 -0.25) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 7 "I2C_SCL"))
+    (pad "43" smd rect (at -4.75  0.25) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 8 "I2C_SDA"))
+    (pad "44" smd rect (at -4.75  0.75) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 26 "BOOT0"))
+    (pad "45" smd rect (at -4.75  1.25) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "46" smd rect (at -4.75  1.75) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "47" smd rect (at -4.75  2.25) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND"))
+    (pad "48" smd rect (at -4.75  2.75) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+  )
+
+  ;; VDD decoupling — right next to U1
+  (footprint "Capacitor_SMD:C_0805_2012Metric" (layer "F.Cu") (at 42 27)
+    (reference "C2") (value "10uF")
+    (fp_text reference "C2" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+  (footprint "Capacitor_SMD:C_0805_2012Metric" (layer "F.Cu") (at 42 30)
+    (reference "C3") (value "100nF")
+    (fp_text reference "C3" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+  (footprint "Capacitor_SMD:C_0805_2012Metric" (layer "F.Cu") (at 42 33)
+    (reference "C4") (value "100nF")
+    (fp_text reference "C4" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+  (footprint "Capacitor_SMD:C_0805_2012Metric" (layer "F.Cu") (at 54 20)
+    (reference "C5") (value "100nF")
+    (fp_text reference "C5" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+  (footprint "Capacitor_SMD:C_0805_2012Metric" (layer "F.Cu") (at 54 23)
+    (reference "C6") (value "1uF")
+    (fp_text reference "C6" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+  (footprint "Capacitor_SMD:C_0805_2012Metric" (layer "F.Cu") (at 54 26)
+    (reference "C7") (value "10nF")
+    (fp_text reference "C7" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+  (footprint "Capacitor_SMD:C_0805_2012Metric" (layer "F.Cu") (at 48 20)
+    (reference "C1") (value "100nF")
+    (fp_text reference "C1" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 25 "NRST"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+
+  ;; ============================================================
+  ;; Y1 — 8MHz Crystal + load caps
+  ;; ============================================================
+  (footprint "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm" (layer "F.Cu") (at 40 12)
+    (reference "Y1") (value "8MHz")
+    (fp_text reference "Y1" (at 0 -2.5) (layer "F.SilkS") (effects (font (size 1 1))))
+    (pad "1" smd rect (at -1.8 0) (size 1.6 1.2) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "2" smd rect (at  1.8 0) (size 1.6 1.2) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "3" smd rect (at 0 -1.6) (size 1.2 1.0) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND"))
+    (pad "4" smd rect (at 0  1.6) (size 1.2 1.0) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+  (footprint "Capacitor_SMD:C_0805_2012Metric" (layer "F.Cu") (at 36 12)
+    (reference "C10") (value "12pF")
+    (fp_text reference "C10" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+  (footprint "Capacitor_SMD:C_0805_2012Metric" (layer "F.Cu") (at 44 12)
+    (reference "C11") (value "12pF")
+    (fp_text reference "C11" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+
+  ;; ============================================================
+  ;; U2 — ATECC608A — SOIC-8, upper right, close to U1 I2C pins
+  ;; ============================================================
+  (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (layer "F.Cu") (at 66 12)
+    (reference "U2") (value "ATECC608A-MAHDA-T")
+    (fp_text reference "U2" (at 0 -4) (layer "F.SilkS") (effects (font (size 1 1))))
+    (fp_text value "ATECC608A" (at 0 4) (layer "F.Fab") (effects (font (size 0.7 0.7))))
+    (fp_rect (start -2.0 -2.5) (end 2.0 2.5) (layer "F.Fab") (stroke (width 0.1) (type default)))
+    (fp_line (start -2.0 -2.5) (end -1.0 -2.5) (layer "F.SilkS") (stroke (width 0.3) (type default)))
+    (pad "1" smd rect (at -3.0 -1.905) (size 1.55 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "2" smd rect (at -3.0 -0.635) (size 1.55 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 27 "ATEC_ALERT"))
+    (pad "3" smd rect (at -3.0  0.635) (size 1.55 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND"))
+    (pad "4" smd rect (at -3.0  1.905) (size 1.55 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "5" smd rect (at  3.0  1.905) (size 1.55 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 8 "I2C_SDA"))
+    (pad "6" smd rect (at  3.0  0.635) (size 1.55 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))
+    (pad "7" smd rect (at  3.0 -0.635) (size 1.55 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 7 "I2C_SCL"))
+    (pad "8" smd rect (at  3.0 -1.905) (size 1.55 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V")))
+  (footprint "Capacitor_SMD:C_0805_2012Metric" (layer "F.Cu") (at 66 7)
+    (reference "C12") (value "100nF")
+    (fp_text reference "C12" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+
+  ;; I2C pull-ups R5/R6
+  (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu") (at 59 18)
+    (reference "R5") (value "4.7k")
+    (fp_text reference "R5" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 7 "I2C_SCL")))
+  (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu") (at 59 21)
+    (reference "R6") (value "4.7k")
+    (fp_text reference "R6" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 8 "I2C_SDA")))
+
+  ;; ============================================================
+  ;; DSP1 — ST7789 1.54" TFT MODULE — 8-pin THT header
+  ;; Right side of board, display face points UP through enclosure window
+  ;; Module body ~35x35mm, header at bottom edge of module
+  ;; ============================================================
+  (footprint "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical" (layer "F.Cu") (at 66 38)
+    (reference "DSP1") (value "ST7789_1.54in_240x240")
+    (fp_text reference "DSP1" (at 0 -20) (layer "F.SilkS") (effects (font (size 1 1))))
+    (fp_text value "ST7789 TFT" (at 0 12) (layer "F.Fab") (effects (font (size 0.8 0.8))))
+    ;; Display module outline on Fab (35x35mm, sits above header)
+    (fp_rect (start -17.5 -39) (end 17.5 -4) (layer "F.Fab") (stroke (width 0.15) (type default)))
+    ;; Active display area annotation
+    (fp_rect (start -15 -37) (end 15 -6) (layer "F.Fab") (stroke (width 0.3) (type default)))
+    (fp_text user "240x240 TFT" (at 0 -21) (layer "F.Fab") (effects (font (size 1 1)) (justify center)))
+    (fp_text user "DISPLAY FACE UP" (at 0 -18) (layer "F.Fab") (effects (font (size 0.8 0.8)) (justify center)))
+    (fp_text user "→ ENCLOSURE WINDOW" (at 0 -16) (layer "F.Fab") (effects (font (size 0.7 0.7)) (justify center)))
+    ;; 8-pin header
+    (pad "1" thru_hole rect   (at -8.89 0) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 3 "GND"))
+    (pad "2" thru_hole circle (at -6.35 0) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 2 "+3.3V"))
+    (pad "3" thru_hole circle (at -3.81 0) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 12 "SPI_SCK"))
+    (pad "4" thru_hole circle (at -1.27 0) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 13 "SPI_MOSI"))
+    (pad "5" thru_hole circle (at  1.27 0) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 16 "TFT_RST"))
+    (pad "6" thru_hole circle (at  3.81 0) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 15 "TFT_DC"))
+    (pad "7" thru_hole circle (at  6.35 0) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 14 "TFT_CS"))
+    (pad "8" thru_hole circle (at  8.89 0) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 17 "TFT_BL")))
+
+  ;; TFT decoupling C13/C14
+  (footprint "Capacitor_SMD:C_0805_2012Metric" (layer "F.Cu") (at 58 38)
+    (reference "C13") (value "10uF")
+    (fp_text reference "C13" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+  (footprint "Capacitor_SMD:C_0805_2012Metric" (layer "F.Cu") (at 58 41)
+    (reference "C14") (value "100nF")
+    (fp_text reference "C14" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 2 "+3.3V"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+
+  ;; TFT backlight resistor R10
+  (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu") (at 58 44)
+    (reference "R10") (value "10R")
+    (fp_text reference "R10" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 17 "TFT_BL"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 17 "TFT_BL")))
+
+  ;; ============================================================
+  ;; J2 — SWD Header — top-right
+  ;; ============================================================
+  (footprint "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" (layer "F.Cu") (at 74 8)
+    (reference "J2") (value "SWD_3V3_DIO_GND_CLK")
+    (fp_text reference "J2" (at 0 -3) (layer "F.SilkS") (effects (font (size 1 1))))
+    (fp_text value "SWD" (at 0 5) (layer "F.Fab") (effects (font (size 0.8 0.8))))
+    (pad "1" thru_hole rect   (at 0 -3.81) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 2 "+3.3V"))
+    (pad "2" thru_hole circle (at 0 -1.27) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 23 "SWDIO"))
+    (pad "3" thru_hole circle (at 0  1.27) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 3 "GND"))
+    (pad "4" thru_hole circle (at 0  3.81) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 24 "SWCLK")))
+
+  ;; ============================================================
+  ;; J3 — BOOT0 Jumper
+  ;; ============================================================
+  (footprint "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" (layer "F.Cu") (at 66 4)
+    (reference "J3") (value "BOOT0_JP")
+    (fp_text reference "J3" (at 0 -2.5) (layer "F.SilkS") (effects (font (size 1 1))))
+    (pad "1" thru_hole rect   (at 0 -1.27) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 26 "BOOT0"))
+    (pad "2" thru_hole circle (at 0  1.27) (size 2.54 2.54) (drill 1.0) (layers "*.Cu" "*.Mask") (net 2 "+3.3V")))
+
+  ;; ============================================================
+  ;; SW1 — SIGN Button — center-bottom, between GM65 and TFT zones
+  ;; ============================================================
+  (footprint "Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645" (layer "F.Cu") (at 36 48)
+    (reference "SW1") (value "SIGN")
+    (fp_text reference "SW1" (at 0 -3) (layer "F.SilkS") (effects (font (size 1 1))))
+    (fp_text value "SIGN" (at 0 3.5) (layer "F.SilkS") (effects (font (size 1.2 1.2) (bold yes))))
+    (pad "1" thru_hole circle (at -2.5 0) (size 3.0 3.0) (drill 1.3) (layers "*.Cu" "*.Mask") (net 18 "BTN_PA0"))
+    (pad "2" thru_hole circle (at  2.5 0) (size 3.0 3.0) (drill 1.3) (layers "*.Cu" "*.Mask") (net 3 "GND")))
+
+  ;; Button pull-down R7
+  (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu") (at 30 48)
+    (reference "R7") (value "10k")
+    (fp_text reference "R7" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 18 "BTN_PA0"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 3 "GND")))
+
+  ;; ============================================================
+  ;; LEDs D1-D4 — bottom-right row, consistent with Connect language
+  ;; PWR=GRN, ARMED=YLW, SIGNED=BLU, ERROR=RED
+  ;; ============================================================
+  (footprint "LED_THT:LED_D3.0mm" (layer "F.Cu") (at 46 50)
+    (reference "D1") (value "PWR_GRN")
+    (fp_text reference "D1" (at 0 -3) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (fp_text value "PWR" (at 0 3) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (pad "1" thru_hole rect   (at -1.27 0) (size 2.0 2.0) (drill 0.8) (layers "*.Cu" "*.Mask") (net 3 "GND"))
+    (pad "2" thru_hole circle (at  1.27 0) (size 2.0 2.0) (drill 0.8) (layers "*.Cu" "*.Mask") (net 19 "LED_PWR_PA1")))
+  (footprint "LED_THT:LED_D3.0mm" (layer "F.Cu") (at 52 50)
+    (reference "D2") (value "ARMED_YLW")
+    (fp_text reference "D2" (at 0 -3) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (fp_text value "ARMED" (at 0 3) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (pad "1" thru_hole rect   (at -1.27 0) (size 2.0 2.0) (drill 0.8) (layers "*.Cu" "*.Mask") (net 3 "GND"))
+    (pad "2" thru_hole circle (at  1.27 0) (size 2.0 2.0) (drill 0.8) (layers "*.Cu" "*.Mask") (net 20 "LED_ARMED_PA2")))
+  (footprint "LED_THT:LED_D3.0mm" (layer "F.Cu") (at 58 50)
+    (reference "D3") (value "SIGNED_BLU")
+    (fp_text reference "D3" (at 0 -3) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (fp_text value "SIGNED" (at 0 3) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (pad "1" thru_hole rect   (at -1.27 0) (size 2.0 2.0) (drill 0.8) (layers "*.Cu" "*.Mask") (net 3 "GND"))
+    (pad "2" thru_hole circle (at  1.27 0) (size 2.0 2.0) (drill 0.8) (layers "*.Cu" "*.Mask") (net 21 "LED_SIGNED_PA3")))
+  (footprint "LED_THT:LED_D3.0mm" (layer "F.Cu") (at 64 50)
+    (reference "D4") (value "ERROR_RED")
+    (fp_text reference "D4" (at 0 -3) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (fp_text value "ERROR" (at 0 3) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+    (pad "1" thru_hole rect   (at -1.27 0) (size 2.0 2.0) (drill 0.8) (layers "*.Cu" "*.Mask") (net 3 "GND"))
+    (pad "2" thru_hole circle (at  1.27 0) (size 2.0 2.0) (drill 0.8) (layers "*.Cu" "*.Mask") (net 22 "LED_ERROR_PA6")))
+
+  ;; LED current limiting resistors R1-R4
+  (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu") (at 46 45)
+    (reference "R1") (value "270R")
+    (fp_text reference "R1" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 19 "LED_PWR_PA1"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 19 "LED_PWR_PA1")))
+  (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu") (at 52 45)
+    (reference "R2") (value "270R")
+    (fp_text reference "R2" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 20 "LED_ARMED_PA2"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 20 "LED_ARMED_PA2")))
+  (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu") (at 58 45)
+    (reference "R3") (value "270R")
+    (fp_text reference "R3" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 21 "LED_SIGNED_PA3"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 21 "LED_SIGNED_PA3")))
+  (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu") (at 64 45)
+    (reference "R4") (value "270R")
+    (fp_text reference "R4" (at 0 -1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+    (pad "1" smd rect (at -1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 22 "LED_ERROR_PA6"))
+    (pad "2" smd rect (at  1.1 0) (size 1.4 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 22 "LED_ERROR_PA6")))
+
+  ;; ============================================================
+  ;; GND POUR — both layers + stitching vias
+  ;; ============================================================
+  (zone (net 3) (net_name "GND") (layer "F.Cu") (tstamp "zone-gnd-f-air")
+    (hatch style "edge" pitch 0.508)
+    (connect_pads (clearance 0.3))
+    (min_thickness 0.25)
+    (fill yes (thermal_gap 0.5) (thermal_bridge_width 0.5))
+    (polygon (pts (xy 0.5 0.5) (xy 79.5 0.5) (xy 79.5 54.5) (xy 0.5 54.5))))
+  (zone (net 3) (net_name "GND") (layer "B.Cu") (tstamp "zone-gnd-b-air")
+    (hatch style "edge" pitch 0.508)
+    (connect_pads (clearance 0.3))
+    (min_thickness 0.25)
+    (fill yes (thermal_gap 0.5) (thermal_bridge_width 0.5))
+    (polygon (pts (xy 0.5 0.5) (xy 79.5 0.5) (xy 79.5 54.5) (xy 0.5 54.5))))
+
+  (via (at 20 25) (size 0.8) (drill 0.4) (layers "F.Cu" "B.Cu") (net 3))
+  (via (at 35 15) (size 0.8) (drill 0.4) (layers "F.Cu" "B.Cu") (net 3))
+  (via (at 50 40) (size 0.8) (drill 0.4) (layers "F.Cu" "B.Cu") (net 3))
+  (via (at 70 30) (size 0.8) (drill 0.4) (layers "F.Cu" "B.Cu") (net 3))
+  (via (at 25 48) (size 0.8) (drill 0.4) (layers "F.Cu" "B.Cu") (net 3))
+  (via (at 75 45) (size 0.8) (drill 0.4) (layers "F.Cu" "B.Cu") (net 3))
+
+  ;; ============================================================
+  ;; KEY TRACES
+  ;; ============================================================
+  ;; I2C — U1 left pins 42,43 to U2 SOIC right pins 7,5
+  (segment (start 43.25 26.75) (end 59 18) (width 0.25) (layer "F.Cu") (net 7))
+  (segment (start 59 18) (end 63 12.635) (width 0.25) (layer "F.Cu") (net 7))
+  (segment (start 43.25 27.25) (end 59 21) (width 0.25) (layer "F.Cu") (net 8))
+  (segment (start 59 21) (end 63 13.905) (width 0.25) (layer "F.Cu") (net 8))
+  ;; UART — U1 top pins 30,31 to MOD1 header
+  (segment (start 48.25 22.25) (end 8 3.81) (width 0.25) (layer "F.Cu") (net 9))
+  (segment (start 47.75 22.25) (end 8 1.27) (width 0.25) (layer "F.Cu") (net 10))
+  ;; GM65 TRIG — U1 pin 29 to MOD1 pin 5
+  (segment (start 48.75 22.25) (end 8 -1.27) (width 0.25) (layer "F.Cu") (net 11))
+  ;; SPI — U1 right pins to DSP1 header
+  (segment (start 52.75 24.75) (end 57.11 38) (width 0.25) (layer "F.Cu") (net 12))
+  (segment (start 52.75 24.25) (end 58.89 38) (width 0.25) (layer "F.Cu") (net 13))
+  (segment (start 52.75 24.75) (end 74.65 38) (width 0.25) (layer "F.Cu") (net 14))
+  (segment (start 52.75 22.75) (end 62.19 38) (width 0.25) (layer "F.Cu") (net 15))
+  (segment (start 52.75 22.25) (end 60.27 38) (width 0.25) (layer "F.Cu") (net 16))
+  (segment (start 52.75 21.25) (end 77.89 38) (width 0.25) (layer "F.Cu") (net 17))
+  ;; SWD
+  (segment (start 47.25 22.25) (end 74 4.19) (width 0.25) (layer "F.Cu") (net 23))
+  (segment (start 43.25 24.25) (end 74 8.81) (width 0.25) (layer "F.Cu") (net 24))
+
+  ;; ============================================================
+  ;; SILKSCREEN — F.SilkS
+  ;; Same instrument-panel language as Connect, adapted for Air
+  ;; ============================================================
+
+  ;; TOP BAND
+  (gr_text "ZKNOT" (at 5 1.5) (layer "F.SilkS") (effects (font (size 1.4 1.4) (bold yes))))
+  (gr_text "ZKKey Air" (at 22 1.5) (layer "F.SilkS") (effects (font (size 1.2 1.2) (bold yes))))
+  (gr_text "REV A" (at 52 1.5) (layer "F.SilkS") (effects (font (size 0.8 0.8))))
+  (gr_text "PAT. PEND." (at 79 1.5) (layer "F.SilkS") (effects (font (size 0.7 0.7)) (justify right)))
+  (gr_line (start 1 2.8) (end 79 2.8) (layer "F.SilkS") (stroke (width 0.1) (type default)))
+
+  ;; NO USB DATA PATH — critical safety/trust callout, top-center
+  (gr_rect (start 22 3.5) (end 55 7.5) (layer "F.SilkS") (stroke (width 0.15) (type default)))
+  (gr_text "NO USB DATA PATH" (at 38.5 4.8) (layer "F.SilkS") (effects (font (size 0.8 0.8) (bold yes)) (justify center)))
+  (gr_text "POWER ONLY" (at 38.5 6.2) (layer "F.SilkS") (effects (font (size 0.7 0.7)) (justify center)))
+
+  ;; GM65 OPTICAL INPUT zone
+  (gr_rect (start 1.5 9.5) (end 19 32) (layer "F.SilkS") (stroke (width 0.12) (type default)))
+  (gr_text "OPTICAL" (at 10.5 10.5) (layer "F.SilkS") (effects (font (size 0.65 0.65) (bold yes)) (justify center)))
+  (gr_text "INPUT" (at 10.5 11.5) (layer "F.SilkS") (effects (font (size 0.65 0.65) (bold yes)) (justify center)))
+  (gr_text "QR DECODER" (at 10.5 12.5) (layer "F.SilkS") (effects (font (size 0.55 0.55)) (justify center)))
+  (gr_text "GM65-S" (at 10.5 13.5) (layer "F.SilkS") (effects (font (size 0.55 0.55)) (justify center)))
+  (gr_text "LENS →" (at 10.5 29.5) (layer "F.SilkS") (effects (font (size 0.6 0.6) (bold yes)) (justify center)))
+  (gr_text "ENCLOSURE" (at 10.5 30.8) (layer "F.SilkS") (effects (font (size 0.55 0.55)) (justify center)))
+  (gr_text "WINDOW" (at 10.5 31.8) (layer "F.SilkS") (effects (font (size 0.55 0.55)) (justify center)))
+
+  ;; USB-C POWER ONLY zone
+  (gr_rect (start 1.5 33.5) (end 19 48.5) (layer "F.SilkS") (stroke (width 0.12) (type default)))
+  (gr_text "USB-C" (at 10.5 34.5) (layer "F.SilkS") (effects (font (size 0.65 0.65) (bold yes)) (justify center)))
+  (gr_text "POWER ONLY" (at 10.5 35.5) (layer "F.SilkS") (effects (font (size 0.6 0.6)) (justify center)))
+  (gr_text "VBUS" (at 13 38.19) (layer "F.SilkS") (effects (font (size 0.6 0.6))))
+  (gr_text "CC1" (at 13 40.73) (layer "F.SilkS") (effects (font (size 0.6 0.6))))
+  (gr_text "CC2" (at 13 43.27) (layer "F.SilkS") (effects (font (size 0.6 0.6))))
+  (gr_text "GND" (at 13 45.81) (layer "F.SilkS") (effects (font (size 0.6 0.6))))
+  (gr_text "D+/D- ABSENT" (at 10.5 47.5) (layer "F.SilkS") (effects (font (size 0.55 0.55) (bold yes)) (justify center)))
+
+  ;; MCU zone
+  (gr_text "CONTROLLER" (at 48 19.5) (layer "F.SilkS") (effects (font (size 0.65 0.65)) (justify center)))
+  (gr_text "STM32F072" (at 48 20.5) (layer "F.SilkS") (effects (font (size 0.6 0.6)) (justify center)))
+
+  ;; SECURE ELEMENT zone
+  (gr_rect (start 59 6.5) (end 75 18.5) (layer "F.SilkS") (stroke (width 0.12) (type default)))
+  (gr_text "SECURE ELEMENT" (at 67 7.5) (layer "F.SilkS") (effects (font (size 0.65 0.65) (bold yes)) (justify center)))
+  (gr_text "ATECC608A" (at 67 8.5) (layer "F.SilkS") (effects (font (size 0.6 0.6)) (justify center)))
+  (gr_text "PRIVATE KEY" (at 67 16.5) (layer "F.SilkS") (effects (font (size 0.6 0.6) (bold yes)) (justify center)))
+  (gr_text "NEVER LEAVES" (at 67 17.5) (layer "F.SilkS") (effects (font (size 0.6 0.6) (bold yes)) (justify center)))
+
+  ;; TFT DISPLAY OUTPUT zone
+  (gr_rect (start 46 10) (end 80 35.5) (layer "F.SilkS") (stroke (width 0.12) (type default)))
+  (gr_text "OPTICAL" (at 63 11) (layer "F.SilkS") (effects (font (size 0.65 0.65) (bold yes)) (justify center)))
+  (gr_text "OUTPUT" (at 63 12) (layer "F.SilkS") (effects (font (size 0.65 0.65) (bold yes)) (justify center)))
+  (gr_text "1.54\" TFT  240x240" (at 63 13) (layer "F.SilkS") (effects (font (size 0.55 0.55)) (justify center)))
+  (gr_text "QR CODE →" (at 63 33.5) (layer "F.SilkS") (effects (font (size 0.6 0.6) (bold yes)) (justify center)))
+  (gr_text "PHONE CAMERA READS" (at 63 34.5) (layer "F.SilkS") (effects (font (size 0.55 0.55)) (justify center)))
+
+  ;; SWD + BOOT0
+  (gr_rect (start 68.5 1.5) (end 79.5 14) (layer "F.SilkS") (stroke (width 0.1) (type default)))
+  (gr_text "DEBUG" (at 74 2.8) (layer "F.SilkS") (effects (font (size 0.6 0.6) (bold yes)) (justify center)))
+  (gr_text "SWD" (at 74 3.8) (layer "F.SilkS") (effects (font (size 0.6 0.6)) (justify center)))
+  (gr_text "3V3" (at 77 4.19) (layer "F.SilkS") (effects (font (size 0.55 0.55))))
+  (gr_text "DIO" (at 77 6.73) (layer "F.SilkS") (effects (font (size 0.55 0.55))))
+  (gr_text "GND" (at 77 9.27) (layer "F.SilkS") (effects (font (size 0.55 0.55))))
+  (gr_text "CLK" (at 77 11.81) (layer "F.SilkS") (effects (font (size 0.55 0.55))))
+  (gr_text "BOOT0" (at 66 1.5) (layer "F.SilkS") (effects (font (size 0.6 0.6) (bold yes)) (justify center)))
+  (gr_text "SHORT=DFU" (at 63 3) (layer "F.SilkS") (effects (font (size 0.55 0.55)) (justify center)))
+
+  ;; SIGN BUTTON
+  (gr_text "SIGN" (at 36 43.5) (layer "F.SilkS") (effects (font (size 1.8 1.8) (bold yes)) (justify center)))
+  (gr_text "one press  ·  one signature" (at 36 45.5) (layer "F.SilkS") (effects (font (size 0.65 0.65)) (justify center)))
+
+  ;; LED ROW
+  (gr_text "PWR"    (at 46 42.5) (layer "F.SilkS") (effects (font (size 0.65 0.65)) (justify center)))
+  (gr_text "ARMED"  (at 52 42.5) (layer "F.SilkS") (effects (font (size 0.65 0.65)) (justify center)))
+  (gr_text "SIGNED" (at 58 42.5) (layer "F.SilkS") (effects (font (size 0.65 0.65)) (justify center)))
+  (gr_text "ERROR"  (at 64 42.5) (layer "F.SilkS") (effects (font (size 0.65 0.65)) (justify center)))
+  (gr_text "GRN" (at 46 43.5) (layer "F.SilkS") (effects (font (size 0.5 0.5)) (justify center)))
+  (gr_text "YLW" (at 52 43.5) (layer "F.SilkS") (effects (font (size 0.5 0.5)) (justify center)))
+  (gr_text "BLU" (at 58 43.5) (layer "F.SilkS") (effects (font (size 0.5 0.5)) (justify center)))
+  (gr_text "RED" (at 64 43.5) (layer "F.SilkS") (effects (font (size 0.5 0.5)) (justify center)))
+
+  ;; LEFT EDGE test points
+  (gr_text "TEST POINTS" (at 1.2 22.5) (layer "F.SilkS") (effects (font (size 0.55 0.55)) (justify center) (rotate 90)))
+  (gr_text "GND"  (at 2.2 12) (layer "F.SilkS") (effects (font (size 0.5 0.5)) (justify center) (rotate 90)))
+  (gr_text "3V3"  (at 2.2 15) (layer "F.SilkS") (effects (font (size 0.5 0.5)) (justify center) (rotate 90)))
+  (gr_text "5V"   (at 2.2 18) (layer "F.SilkS") (effects (font (size 0.5 0.5)) (justify center) (rotate 90)))
+  (gr_text "SCL"  (at 2.2 21) (layer "F.SilkS") (effects (font (size 0.5 0.5)) (justify center) (rotate 90)))
+  (gr_text "SDA"  (at 2.2 24) (layer "F.SilkS") (effects (font (size 0.5 0.5)) (justify center) (rotate 90)))
+  (gr_text "TX"   (at 2.2 27) (layer "F.SilkS") (effects (font (size 0.5 0.5)) (justify center) (rotate 90)))
+  (gr_text "RX"   (at 2.2 30) (layer "F.SilkS") (effects (font (size 0.5 0.5)) (justify center) (rotate 90)))
+  (gr_text "TRIG" (at 2.2 33) (layer "F.SilkS") (effects (font (size 0.5 0.5)) (justify center) (rotate 90)))
+
+  ;; BOTTOM BAND
+  (gr_line (start 1 51.5) (end 79 51.5) (layer "F.SilkS") (stroke (width 0.1) (type default)))
+  (gr_text "SN:" (at 2 52.3) (layer "F.SilkS") (effects (font (size 0.7 0.7) (bold yes))))
+  (gr_text "____________________" (at 8 52.3) (layer "F.SilkS") (effects (font (size 0.7 0.7))))
+  (gr_text "verifyknot.io" (at 77 52.3) (layer "F.SilkS") (effects (font (size 0.7 0.7)) (justify right)))
+  (gr_text "Physics enforces.  Math proves.  You verify." (at 40 53.8) (layer "F.SilkS") (effects (font (size 0.7 0.7) (italic yes)) (justify center)))
+
+  ;; ============================================================
+  ;; SILKSCREEN — B.SilkS BACK
+  ;; ============================================================
+  (gr_text "ZKKey Air" (at 40 2.5) (layer "B.SilkS") (effects (font (size 1.1 1.1) (bold yes)) (justify center) (mirror yes)))
+  (gr_text "ZKNOT, INC." (at 40 4.5) (layer "B.SilkS") (effects (font (size 0.8 0.8)) (justify center) (mirror yes)))
+  (gr_text "zknot.io" (at 40 6.0) (layer "B.SilkS") (effects (font (size 0.8 0.8)) (justify center) (mirror yes)))
+  (gr_text "Patent Pending — App# 63/995,740" (at 40 9.0) (layer "B.SilkS") (effects (font (size 0.65 0.65)) (justify center) (mirror yes)))
+  (gr_text "ZKNOT, INC.  EIN 36-5165991" (at 40 10.5) (layer "B.SilkS") (effects (font (size 0.65 0.65)) (justify center) (mirror yes)))
+  (gr_text "Veteran-Owned  SDVOSB" (at 40 12.0) (layer "B.SilkS") (effects (font (size 0.65 0.65)) (justify center) (mirror yes)))
+  (gr_text "SN:" (at 15 28) (layer "B.SilkS") (effects (font (size 0.8 0.8) (bold yes)) (mirror yes)))
+  (gr_text "____________________" (at 25 28) (layer "B.SilkS") (effects (font (size 0.8 0.8)) (mirror yes)))
+  (gr_text "Air-gapped cryptographic attestation." (at 40 48.0) (layer "B.SilkS") (effects (font (size 0.65 0.65)) (justify center) (mirror yes)))
+  (gr_text "No cable. No contact. No compromise." (at 40 49.5) (layer "B.SilkS") (effects (font (size 0.65 0.65) (italic yes)) (justify center) (mirror yes)))
+  (gr_text "When physics is policy, trust is optional." (at 40 51.5) (layer "B.SilkS") (effects (font (size 0.65 0.65) (italic yes)) (justify center) (mirror yes)))
+
+  ;; Assembly zone and courtyard
+  (gr_rect (start 5 5) (end 78 53) (layer "F.Fab") (stroke (width 0.1) (type default)))
+  (gr_rect (start 0.25 0.25) (end 79.75 54.75) (layer "F.CrtYd") (stroke (width 0.05) (type default)))
+)

@@ -1,0 +1,24 @@
+Comment,Designator,Footprint,LCSC Part #,Qty,Assembly,Notes
+STM32F072CBT6,U1,Package_QFP:LQFP-48_7x7mm_P0.5mm,C81720,1,SMT,Reflow — core MCU native USB
+ATECC608A-MAHDA-T,U2,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm,C3395330,1,SMT,Reflow — secure element
+AMS1117-3.3,U3,Package_TO_SOT_SMD:SOT-223-3_TabPin2,C6186,1,SMT,Reflow — 3.3V LDO
+Crystal 8MHz,Y1,Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm,C9002,1,SMT,Reflow — HSE oscillator
+100nF 0805,C1 C3 C4 C5 C12,Capacitor_SMD:C_0805_2012Metric,C49678,5,SMT,Decoupling — NRST/VDD/VDD_USB/ATECC
+10uF 0805,C2 C8 C9,Capacitor_SMD:C_0805_2012Metric,C17024,3,SMT,Bulk decoupling — VDD/LDO in/LDO out
+1uF 0805,C6,Capacitor_SMD:C_0805_2012Metric,C15849,1,SMT,VDDA bulk
+10nF 0805,C7,Capacitor_SMD:C_0805_2012Metric,C57112,1,SMT,VDDA HF
+12pF 0805,C10 C11,Capacitor_SMD:C_0805_2012Metric,C1557,2,SMT,Crystal load caps — verify against Y1 datasheet
+270R 0805,R1 R2 R3 R4,Resistor_SMD:R_0805_2012Metric,C17630,4,SMT,LED current limit — (3.3V-2.0V)/270=4.8mA
+4.7k 0805,R5 R6,Resistor_SMD:R_0805_2012Metric,C23162,2,SMT,I2C pull-ups SCL/SDA
+10k 0805,R7,Resistor_SMD:R_0805_2012Metric,C17414,1,SMT,Button pull-down PA0
+5.1k 0805,R8 R9,Resistor_SMD:R_0805_2012Metric,C23186,2,SMT,USB-C CC1/CC2 pull-downs — UFP identification
+LED 3mm Green,D1,LED_THT:LED_D3.0mm,,1,THT,PWR indicator — source locally
+LED 3mm Yellow,D2,LED_THT:LED_D3.0mm,,1,THT,ARMED indicator — source locally
+LED 3mm Blue,D3,LED_THT:LED_D3.0mm,,1,THT,SIGNED indicator — source locally
+LED 3mm Red,D4,LED_THT:LED_D3.0mm,,1,THT,ERROR indicator — source locally
+Tactile Switch 6x6mm,SW1,Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645,,1,THT,SIGN button — source locally PTS645SK43SMTR92LFS or equiv
+PinHeader 1x04 2.54mm,J2,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,,1,THT,SWD debug — source locally
+PinHeader 1x02 2.54mm,J3,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,,1,THT,BOOT0 jumper — source locally
+Jumper shunt 2.54mm,J3_shunt,,,,THT,BOOT0 jumper shunt — keep one on board
+USB-C Male Pigtail 5-wire,J1,Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical,,1,THT,Source: Adafruit 4831 or equiv — VBUS DM DP CC1 CC2 GND — wire through THT holes flood solder bottom
+M3 Standoff Nylon 10mm,H1 H2 H3 H4,MountingHole:MountingHole_3.2mm_M3,,4,THT,Optional — for enclosure / bench mounting

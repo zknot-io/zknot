@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZKNOT CFO Status Report — April 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #0a0f1e;
+    color: #e2e8f0;
+    padding: 32px 24px;
+    max-width: 960px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .header {
+    border-left: 4px solid #3b82f6;
+    padding-left: 20px;
+    margin-bottom: 36px;
+  }
+  .header h1 { font-size: 1.6rem; color: #f1f5f9; font-weight: 700; letter-spacing: 0.02em; }
+  .header .sub { font-size: 0.85rem; color: #64748b; margin-top: 4px; }
+  .header .motto { font-size: 0.8rem; color: #3b82f6; margin-top: 6px; font-style: italic; }
+
+  .snapshot-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .snap-card {
+    background: #111827;
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .snap-card .val { font-size: 1.5rem; font-weight: 700; color: #38bdf8; }
+  .snap-card .val.warn { color: #f59e0b; }
+  .snap-card .val.danger { color: #ef4444; }
+  .snap-card .val.good { color: #22c55e; }
+  .snap-card .lbl { font-size: 0.72rem; color: #64748b; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  section { margin-bottom: 32px; }
+  .section-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #3b82f6;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #1e293b;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  th {
+    text-align: left;
+    padding: 8px 12px;
+    background: #0f172a;
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  td { padding: 10px 12px; border-bottom: 1px solid #1a2236; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #111827; }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+  .badge-red    { background: #7f1d1d; color: #fca5a5; }
+  .badge-yellow { background: #78350f; color: #fcd34d; }
+  .badge-green  { background: #14532d; color: #86efac; }
+  .badge-blue   { background: #1e3a5f; color: #93c5fd; }
+  .badge-gray   { background: #1e293b; color: #94a3b8; }
+
+  .priority-block {
+    background: #111827;
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .priority-block .num {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1e293b;
+    min-width: 32px;
+    line-height: 1;
+    margin-top: 2px;
+  }
+  .priority-block.p1 .num { color: #ef4444; }
+  .priority-block.p2 .num { color: #f59e0b; }
+  .priority-block.p3 .num { color: #3b82f6; }
+  .priority-block .content { flex: 1; }
+  .priority-block .title { font-weight: 700; color: #f1f5f9; font-size: 0.95rem; }
+  .priority-block .detail { font-size: 0.82rem; color: #94a3b8; margin-top: 4px; }
+  .priority-block .action { font-size: 0.8rem; color: #38bdf8; margin-top: 6px; }
+
+  .suggestion-block {
+    background: #0d1f2d;
+    border: 1px solid #164e63;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+  }
+  .suggestion-block .s-title { font-weight: 700; color: #38bdf8; font-size: 0.9rem; }
+  .suggestion-block .s-body { font-size: 0.82rem; color: #94a3b8; margin-top: 6px; }
+  .suggestion-block .s-why { font-size: 0.78rem; color: #64748b; margin-top: 6px; font-style: italic; }
+
+  .risk-row td:first-child { color: #f1f5f9; font-weight: 600; }
+  .runway-bar-wrap { margin: 14px 0; }
+  .runway-bar-label { font-size: 0.75rem; color: #64748b; margin-bottom: 4px; }
+  .runway-bar { background: #1e293b; border-radius: 6px; height: 12px; overflow: hidden; }
+  .runway-bar-fill { height: 100%; border-radius: 6px; }
+
+  .footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid #1e293b;
+    font-size: 0.72rem;
+    color: #334155;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>ZKNOT, INC. — CFO STATUS REPORT</h1>
+  <div class="sub">For CEO Review &nbsp;·&nbsp; April 6, 2026 &nbsp;·&nbsp; Document: ZKNOT_CFO-SR-001</div>
+  <div class="motto">"Physics enforces. Math proves. You verify."</div>
+</div>
+
+<!-- SNAPSHOT -->
+<div class="snapshot-grid">
+  <div class="snap-card">
+    <div class="val warn">~$13,248</div>
+    <div class="lbl">Capital Remaining</div>
+  </div>
+  <div class="snap-card">
+    <div class="val danger">$0</div>
+    <div class="lbl">Revenue to Date</div>
+  </div>
+  <div class="snap-card">
+    <div class="val good">12–14 mo</div>
+    <div class="lbl">Runway (no revenue)</div>
+  </div>
+  <div class="snap-card">
+    <div class="val">Sep 18, 2026</div>
+    <div class="lbl">Gate 8 Target</div>
+  </div>
+</div>
+
+<!-- GATE STATUS -->
+<section>
+  <div class="section-title">Gate Status — Acquisition Roadmap</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Gate</th>
+        <th>Target Date</th>
+        <th>Milestone</th>
+        <th>Status</th>
+        <th>CFO Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>G1–G2</strong></td>
+        <td>Jan–Feb 2026</td>
+        <td>Entity formed, EIN, SAM, CAGE</td>
+        <td><span class="badge badge-green">DONE</span></td>
+        <td>All federal registrations confirmed. CAGE 1AHZ4 active.</td>
+      </tr>
+      <tr>
+        <td><strong>G3</strong></td>
+        <td>Apr 20, 2026</td>
+        <td>Working demo + first revenue ($299+)</td>
+        <td><span class="badge badge-yellow">IN PROGRESS</span></td>
+        <td>14 days out. PCB order placed. No revenue yet — <strong>first sale is the #1 CEO action item.</strong></td>
+      </tr>
+      <tr>
+        <td><strong>G4</strong></td>
+        <td>Jun 30, 2026</td>
+        <td>PAT-001 non-prov filed + $1,000 revenue</td>
+        <td><span class="badge badge-blue">PLANNED</span></td>
+        <td>~$3,500 attorney spend required. Largest single cost event. Pre-approved.</td>
+      </tr>
+      <tr>
+        <td><strong>G5</strong></td>
+        <td>Jul 2026</td>
+        <td>PAT-007 non-prov filed</td>
+        <td><span class="badge badge-gray">FUTURE</span></td>
+        <td>Bundle negotiation with PAT-001 attorney — target $500+ discount.</td>
+      </tr>
+      <tr>
+        <td><strong>G6</strong></td>
+        <td>Aug 31, 2026</td>
+        <td>$5,000 revenue OR pilot contract/LOI</td>
+        <td><span class="badge badge-gray">FUTURE</span></td>
+        <td>Pilot contract changes valuation model. SaaS subscriber = highest signal.</td>
+      </tr>
+      <tr>
+        <td><strong>G7</strong></td>
+        <td>Sep 2026</td>
+        <td>PAT-002 + PAT-005 non-provs filed</td>
+        <td><span class="badge badge-gray">FUTURE</span></td>
+        <td>$6,000 combined attorney spend. Funded by reserve bucket.</td>
+      </tr>
+      <tr>
+        <td><strong>G8</strong></td>
+        <td>Sep 18, 2026</td>
+        <td>Data room complete — acquisition ready</td>
+        <td><span class="badge badge-gray">FUTURE</span></td>
+        <td>All financial docs, IP docs, VetCert, projections must be assembled.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- CAPITAL -->
+<section>
+  <div class="section-title">Capital & Burn Rate</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Bucket</th>
+        <th>Allocated</th>
+        <th>Spent (Est.)</th>
+        <th>Remaining</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bucket 1 — Patent Defense</td>
+        <td>$13,000</td>
+        <td>$1,500 (retainer)</td>
+        <td>~$11,500</td>
+        <td><span class="badge badge-yellow">ACTIVE — Attorney work imminent</span></td>
+      </tr>
+      <tr>
+        <td>Bucket 2 — Product Proof</td>
+        <td>$1,500</td>
+        <td>~$385 (PCB + stencil est.)</td>
+        <td>~$1,115</td>
+        <td><span class="badge badge-yellow">ACTIVE — SMT run in progress</span></td>
+      </tr>
+      <tr>
+        <td>Bucket 3 — Federal Pipeline</td>
+        <td>$500</td>
+        <td>$0</td>
+        <td>$500</td>
+        <td><span class="badge badge-gray">IDLE — COO to activate</span></td>
+      </tr>
+      <tr>
+        <td>Bucket 4 — Revenue Infra</td>
+        <td>$500</td>
+        <td>~$83–93/mo</td>
+        <td>Ongoing</td>
+        <td><span class="badge badge-green">LEAN — Within model</span></td>
+      </tr>
+      <tr>
+        <td>Reserve — Acquisition Buffer</td>
+        <td>~$4,748</td>
+        <td>$0</td>
+        <td>$4,748</td>
+        <td><span class="badge badge-green">INTACT — CEO authorization only</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="runway-bar-wrap" style="margin-top:20px;">
+    <div class="runway-bar-label">Capital Runway Scenarios (to Gate 8 — Sep 18, 2026)</div>
+    <div style="display:grid; gap:8px; margin-top:8px;">
+      <div>
+        <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#94a3b8; margin-bottom:3px;"><span>Best Case (with revenue)</span><span style="color:#22c55e;">Comfortable — &gt;$4,000 buffer</span></div>
+        <div class="runway-bar"><div class="runway-bar-fill" style="width:90%; background:linear-gradient(90deg,#22c55e,#16a34a);"></div></div>
+      </div>
+      <div>
+        <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#94a3b8; margin-bottom:3px;"><span>Base Case ($300/mo burn, $0 revenue)</span><span style="color:#3b82f6;">Reaches G8 — ~$2,700 buffer</span></div>
+        <div class="runway-bar"><div class="runway-bar-fill" style="width:70%; background:linear-gradient(90deg,#3b82f6,#1d4ed8);"></div></div>
+      </div>
+      <div>
+        <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#94a3b8; margin-bottom:3px;"><span>Stress Case ($500/mo burn)</span><span style="color:#f59e0b;">Tight — ~$900 buffer at G8</span></div>
+        <div class="runway-bar"><div class="runway-bar-fill" style="width:45%; background:linear-gradient(90deg,#f59e0b,#d97706);"></div></div>
+      </div>
+      <div>
+        <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#94a3b8; margin-bottom:3px;"><span>Danger Case ($800+/mo burn)</span><span style="color:#ef4444;">Capital crisis before G8</span></div>
+        <div class="runway-bar"><div class="runway-bar-fill" style="width:20%; background:linear-gradient(90deg,#ef4444,#b91c1c);"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOP PRIORITIES -->
+<section>
+  <div class="section-title">CFO Priority Stack — This Sprint</div>
+
+  <div class="priority-block p1">
+    <div class="num">1</div>
+    <div class="content">
+      <div class="title">MAKE THE FIRST SALE — Remove "Pre-Revenue" from Every Future Conversation</div>
+      <div class="detail">A single ZKKey at $299 to a journalist, investigator, or attorney in your network changes the acquisition pitch permanently. It is not a revenue event — it is a credibility event. $0 revenue at G3 is an avoidable weakness.</div>
+      <div class="action">→ CEO personally calls 3 network contacts this week. CFO documents the sale immediately with receipt, customer record, and date. Target: first revenue before Apr 20.</div>
+    </div>
+  </div>
+
+  <div class="priority-block p1">
+    <div class="num">2</div>
+    <div class="content">
+      <div class="title">OPEN BUSINESS CHECKING ACCOUNT — Financial Separation is Non-Negotiable</div>
+      <div class="detail">All ZKNOT transactions must run through a dedicated business account from this point forward. Commingled personal/business funds are a data room disqualifier. Acquirers need clean, auditable financials from Day 1.</div>
+      <div class="action">→ Open account this week (1 hour). Then backfill all expense records from inception into the bookkeeping sheet.</div>
+    </div>
+  </div>
+
+  <div class="priority-block p1">
+    <div class="num">3</div>
+    <div class="content">
+      <div class="title">SDVOSB / VetCert CERTIFICATE — Most Valuable Single Document in the Data Room</div>
+      <div class="detail">The SDVOSB certification is listed as PENDING and is identified as the highest-value single item in the data room — worth an estimated $1–4M in acquisition premium. Every week this is unresolved is risk to the G8 timeline.</div>
+      <div class="action">→ Confirm current status of certify.sba.gov application. If blocked, identify the specific issue and resolve this week.</div>
+    </div>
+  </div>
+
+  <div class="priority-block p2">
+    <div class="num">4</div>
+    <div class="content">
+      <div class="title">BOOKKEEPING — Set Up Now, Before It Becomes a Scramble</div>
+      <div class="detail">Wave (free) or a Google Sheet. Every expense from January 26 onward must be recorded: USPTO fees, PCB orders, subscriptions. Clean books are a fast-close signal to acquirers. Messy books = discount or walkaway.</div>
+      <div class="action">→ 3 hours this week. Upload all receipts to Google Drive /ZKNOT-BIZ/Financials/. CFO reconciles monthly from here forward.</div>
+    </div>
+  </div>
+
+  <div class="priority-block p2">
+    <div class="num">5</div>
+    <div class="content">
+      <div class="title">QSBS ELIGIBILITY — Potential $2–3M Personal Tax Savings on Exit</div>
+      <div class="detail">Section 1202 Qualified Small Business Stock exclusion may make up to $10M of the $15M acquisition gain tax-free at the federal level. This must be verified and structured BEFORE any sale. It cannot be retroactively applied.</div>
+      <div class="action">→ Schedule CPA consultation this month. Low cost, massive upside. Do not let this slip past the acquisition close.</div>
+    </div>
+  </div>
+
+  <div class="priority-block p3">
+    <div class="num">6</div>
+    <div class="content">
+      <div class="title">IP ASSIGNMENT VERIFICATION — Confirm ZKNOT Inc. Owns All Patents</div>
+      <div class="detail">All USPTO filings must list "ZKNOT, Inc." as assignee — not the founder's personal name. If any filings list a personal name, a formal assignment document must be executed and recorded now. This is a standard acquirer due diligence check that kills deals if wrong.</div>
+      <div class="action">→ 30-minute review of all 10 provisional filing confirmations. Fix any discrepancies immediately.</div>
+    </div>
+  </div>
+</section>
+
+<!-- RISKS -->
+<section>
+  <div class="section-title">Risk Register — Active Threats to Gate 8</div>
+  <table class="risk-row">
+    <thead>
+      <tr>
+        <th>Risk</th>
+        <th>Severity</th>
+        <th>Likelihood</th>
+        <th>Mitigation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Zero revenue at G8</td>
+        <td><span class="badge badge-yellow">HIGH</span></td>
+        <td>Moderate if no outreach</td>
+        <td>CEO personal outreach this week. Even 1 sale changes the narrative.</td>
+      </tr>
+      <tr>
+        <td>SDVOSB cert not complete before G8</td>
+        <td><span class="badge badge-red">CRITICAL</span></td>
+        <td>Unknown — status unclear</td>
+        <td>Resolve certify.sba.gov application immediately. This is irreplaceable acquisition value.</td>
+      </tr>
+      <tr>
+        <td>Burn exceeds $400/mo trigger</td>
+        <td><span class="badge badge-yellow">MEDIUM</span></td>
+        <td>Low at current spend</td>
+        <td>CFO trigger is defined. Cut Bucket 3 + 4 immediately if triggered. Present CEO within 48 hrs.</td>
+      </tr>
+      <tr>
+        <td>Attorney overruns on non-provisionals</td>
+        <td><span class="badge badge-yellow">MEDIUM</span></td>
+        <td>Moderate — no fixed fee yet</td>
+        <td>Negotiate bundled rate for PAT-001 + PAT-007 before engagement. Get fixed fee in writing.</td>
+      </tr>
+      <tr>
+        <td>SBIR reauthorization delayed past G8</td>
+        <td><span class="badge badge-blue">LOW-MEDIUM</span></td>
+        <td>Likely — still in limbo</td>
+        <td>Acquisition plan does not depend on SBIR. Treat as upside only. Budget template ready to fire.</td>
+      </tr>
+      <tr>
+        <td>IP assigned to founder personally</td>
+        <td><span class="badge badge-red">CRITICAL</span></td>
+        <td>Unknown — unverified</td>
+        <td>Verify all 10 provisional filings this week. Assignment errors are deal-killers.</td>
+      </tr>
+      <tr>
+        <td>No comparable transactions researched</td>
+        <td><span class="badge badge-yellow">MEDIUM</span></td>
+        <td>High — not started</td>
+        <td>CFO researches 3–5 comps this month. Required for $15M ask to be credible in data room.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- LONGEVITY SUGGESTIONS -->
+<section>
+  <div class="section-title">CFO Suggestions — Longevity & Strategic Resilience</div>
+
+  <div class="suggestion-block">
+    <div class="s-title">① Build a SaaS Recurring Revenue Base — Even One Subscriber Rewrites the Story</div>
+    <div class="s-body">ZK-LocalChain at $49/month is 99%+ margin and creates ARR. A single subscriber before G8 lets you present an ARR trajectory rather than a revenue snapshot. At G8, $49/mo × 12 = $588 ARR at 10x multiple = $5,880 valuation contribution — from one customer. Ten subscribers = $58,800 added to your data room valuation at near-zero cost. This is the most capital-efficient revenue path available.</div>
+    <div class="s-why">Why it matters for longevity: If acquisition doesn't close at G8, SaaS revenue sustains the company indefinitely at low burn. Hardware revenue is one-time. SaaS is compounding.</div>
+  </div>
+
+  <div class="suggestion-block">
+    <div class="s-title">② Don't Build for One Acquirer — Cultivate Three</div>
+    <div class="s-body">Axon, Cellebrite, and Motorola Solutions are named targets. The CFO recommends identifying and making informal contact with at least 2 additional strategic acquirers (e.g., Axon's competitors, federal forensics software companies, or defense prime contractors with digital evidence gaps) before G8. A competitive acquisition process — even a perceived one — is worth $2–5M in negotiating leverage on the final price.</div>
+    <div class="s-why">Why it matters for longevity: A single-acquirer strategy is a single point of failure. If that acquirer walks, the company needs runway to find another. Multiple warm relationships eliminate that cliff.</div>
+  </div>
+
+  <div class="suggestion-block">
+    <div class="s-title">③ File the SBIR Application the Moment Reauthorization Passes</div>
+    <div class="s-body">The budget template exists (Section 5.2 of CFO-001). The narrative exists. When reauthorization passes, a 72-hour submission window is realistic only if the application shell is pre-written. CFO recommends drafting the full Phase I application narrative now — agency problem statement, technical approach, commercialization plan — so submission is a copy-paste + sign operation, not a writing sprint.</div>
+    <div class="s-why">Why it matters for longevity: $150–275K non-dilutive capital extends runway by 12–18 months and adds a federal validation stamp that standalone revenue cannot replicate. It also makes the company viable as a standalone if acquisition timing slips.</div>
+  </div>
+
+  <div class="suggestion-block">
+    <div class="s-title">④ Negotiate a Fixed-Fee Arrangement with the Patent Attorney Now</div>
+    <div class="s-body">The current model shows ~$9,500–12,000 in attorney fees with no fixed-fee agreements in place. Hourly billing on patent prosecution is unpredictable and the single largest budget risk. Before PAT-001 non-provisional work begins, negotiate a flat fee per non-provisional (target: $2,800–3,200 per filing for a straightforward hardware patent). Bundle PAT-001 and PAT-007 for a package discount.</div>
+    <div class="s-why">Why it matters for longevity: Uncapped attorney fees are the fastest path to the Danger Case scenario. A $500 attorney overage per filing across 4 filings = $2,000 gone from the reserve. Fixed fees convert the largest budget risk into a known cost.</div>
+  </div>
+
+  <div class="suggestion-block">
+    <div class="s-title">⑤ Create a Minimal Viable Standalone Plan for If G8 Slips</div>
+    <div class="s-body">The current plan assumes acquisition by or shortly after September 18, 2026. If the right acquirer isn't in the room by then, the company needs a Plan B that doesn't require additional capital raises. That plan exists in rough form in the projections (standalone 2027: $100–300K). CFO recommends formalizing it: what does ZKNOT look like as a $200K/year bootstrapped forensics tool vendor? That answer makes the CEO a better negotiator — acquirers can tell when a founder has no alternative.</div>
+    <div class="s-why">Why it matters for longevity: The best acquisition negotiation position is not needing the acquisition. A credible standalone path is leverage, not failure.</div>
+  </div>
+
+  <div class="suggestion-block">
+    <div class="s-title">⑥ Start the R&D Tax Credit Clock — Document Every Technical Hour Now</div>
+    <div class="s-body">Section 41 R&D credits apply to firmware development, cryptographic protocol work, and hardware testing — all of which are actively happening. Even pre-revenue, these credits accumulate and can either offset future tax liability or transfer to an acquirer as part of deal structuring. The cost of documentation is zero. The cost of not documenting is the entire credit.</div>
+    <div class="s-why">Why it matters for longevity: Documented R&D credits are a data room asset. They signal disciplined financial management and may reduce the acquirer's effective cost of the deal.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>ZKNOT, Inc. &nbsp;·&nbsp; EIN: 36-5165991 &nbsp;·&nbsp; CAGE: 1AHZ4 &nbsp;·&nbsp; Utah Corporation</span>
+  <span>CONFIDENTIAL — Not for Distribution Without Signed NDA</span>
+</div>
+
+</body>
+</html>

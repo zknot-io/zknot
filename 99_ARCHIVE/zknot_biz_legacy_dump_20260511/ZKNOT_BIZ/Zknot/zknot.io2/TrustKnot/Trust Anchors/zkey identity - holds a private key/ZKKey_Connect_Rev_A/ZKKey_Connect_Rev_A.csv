@@ -1,0 +1,16 @@
+Reference	Qty	DNP	Exclude from BOM	Exclude from Board	Footprint	Datasheet
+C1,C7,C8	3				Capacitor_SMD:C_1206_3216Metric	~
+C2,C3,C4,C5,C6	5				Capacitor_SMD:C_0805_2012Metric	~
+D1	1				LED_SMD:LED_0805_2012Metric	~
+D2	1				LED_SMD:LED_0603_1608Metric	~
+D3	1				Diode_SMD:Nexperia_DSN1608-2_1.6x0.8mm	https://assets.nexperia.com/documents/data-sheet/PTVS5V0Z1USK.pdf
+D4,D5	2				Diode_SMD:D_SOD-523	https://www.onsemi.com/pdf/datasheet/esd5z2.5t1-d.pdf
+F1	1				Fuse:Fuse_1206_3216Metric	~
+J1	1	DNP	Excluded from BOM			~
+J2	1				Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Horizontal	~
+JP1,JP2,JP3,JP4	4				Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm	~
+R1,R2,R3,R4,R5,R6	6				Resistor_SMD:R_0805_2012Metric	~
+SW1	1				Button_Switch_SMD:SW_SPST_TL3342	~
+U1	1				Package_DFN_QFN:DFN-8-1EP_3x2mm_P0.5mm_EP1.3x1.5mm	http://ww1.microchip.com/downloads/en/DeviceDoc/ATECC608A-CryptoAuthentication-Device-Summary-Data-Sheet-DS40001977B.pdf
+U2	1				Package_QFP:LQFP-48_7x7mm_P0.5mm	https://www.st.com/resource/en/datasheet/stm32f103cb.pdf
+U3	1				Package_TO_SOT_SMD:SOT-223-3_TabPin2	http://www.zlgmcu.com/Sipex/LDO/PDF/spx2920.pdf

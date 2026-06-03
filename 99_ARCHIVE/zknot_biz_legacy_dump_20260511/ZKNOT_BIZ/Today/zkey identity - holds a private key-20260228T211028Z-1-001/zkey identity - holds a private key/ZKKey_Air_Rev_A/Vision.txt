@@ -1,0 +1,10 @@
+2) ZKKey Air Rev-A (air-gapped, battery)
+Goal: no data connection to host at all. Output via optical / QR / blink / NFC depending on your constraint.
+Power
+    • Battery-operated is absolutely coherent. It reinforces your story: “connected transport is optional.”
+    • Use a coin cell (CR2032) only if you’re okay with slow refresh / low duty cycle; otherwise small LiPo.
+Best choices
+    • MCU family should pivot to low-power (STM32L0/L4, nRF52 if BLE ever, RP2040 is power-hungry so not ideal for Air).
+    • Display: small OLED is fine, but budget power. E-paper is even better for “air evidence” (power only on updates).
+Air Rev-A is the cleanest embodiment of zknot.io.
+

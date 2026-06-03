@@ -1,0 +1,109 @@
+REVISED CAPSTONE TOPIC APPROVAL FORM
+=====================================
+
+CHANGES TO MAKE TO YOUR EXISTING FORM:
+
+CHANGE 1: Project Name
+----------------------
+OLD: ZK-LocalChain: Tamper-Evident Security Logging Under Endpoint Compromise
+
+NEW: Cryptographic Event Chain Synchronization for Intermittently-Connected Distributed Systems
+
+
+CHANGE 2: Project Topic  
+-----------------------
+OLD: Design and implementation of a tamper-evident, cryptographically chained logging system to preserve integrity, authenticity, and verifiable ordering of security and evidence records.
+
+NEW: Design and implementation of a synchronization protocol for cryptographically chained event ledgers operating in environments with unreliable network connectivity.
+
+
+CHANGE 3: Summary of the Problem
+---------------------------------
+OLD: Modern organizations depend on endpoint-generated security logs for incident response, forensic investigation, and compliance audits. However, once an endpoint is compromised, the integrity of its locally generated logs cannot be trusted. An attacker with administrative or kernel-level access can delete, truncate, reorder, delay, or fabricate log entries, undermining investigations and creating uncertainty in audit and legal review. Centralized logging and SIEM solutions improve aggregation and retention, but they do not fully address the core failure: the log source itself may be hostile at the moment evidence is generated. This creates a cybersecurity gap where organizations cannot reliably prove what occurred on a compromised system.
+
+NEW: Distributed systems generating security and audit logs often operate in environments with intermittent network connectivity—rural field operations, mobile investigations, international deployments, and network-restricted facilities. Traditional centralized logging systems assume continuous connectivity to a log aggregation server. When connectivity is lost, logs are buffered locally without cryptographic integrity guarantees, making them vulnerable to tampering before synchronization occurs. When multiple systems operate concurrently during disconnection periods, their event chains diverge, requiring conflict resolution to merge them into a consistent view. There is no existing protocol that provides tamper-evident logging with offline operation and automated synchronization.
+
+
+CHANGE 4: Outline of Technology Solution
+-----------------------------------------
+OLD: This project will implement a lightweight, append-only event ledger for security logging using cryptographic hashing and digital signatures. Each event record will include relevant metadata and will be linked to the prior event using secure hash chaining, creating a tamper-evident sequence. Records will be digitally signed to authenticate origin, and verification logic will be implemented to detect manipulation such as deletion, truncation, reordering, or modification. The solution will provide a simple interface for creating and verifying event chains, enabling independent verification of log integrity without relying on centralized trust.
+
+NEW: This project will implement a synchronization protocol for cryptographically chained event ledgers. Each event will be hash-chained and digitally signed, allowing tamper detection. When devices reconnect after periods of disconnection, a synchronization protocol will exchange chain summaries, identify divergence points, transmit missing events, and resolve conflicts using vector clocks or Lamport timestamps. The solution will demonstrate that cryptographic integrity and offline operation are compatible, enabling verifiable logging in intermittent-connectivity scenarios.
+
+
+CHANGE 5: Context
+-----------------
+OLD: Security decisions and forensic conclusions often rely on logs even when the systems that produced them have been compromised. When logs can be silently altered or rewritten, their evidentiary value collapses, which delays response efforts and increases organizational risk. A cryptographically verifiable logging system allows security teams, auditors, and third parties to independently validate that records are complete, ordered, and unmodified. This strengthens incident response and auditability by shifting from trust-based logging to evidence-based verification.
+
+NEW: Field investigations, mobile operations, and compliance logging often occur in environments where network connectivity cannot be guaranteed. Current centralized logging systems fail during network outages, creating gaps in audit trails or requiring manual reconciliation. A synchronization protocol that maintains cryptographic integrity during disconnection enables verifiable logging in scenarios where continuous network access is impractical or impossible—rural law enforcement, international operations, network-restricted facilities, and mobile evidence collection.
+
+
+CHANGE 6: Stakeholders (minor update for broader appeal)
+---------------------------------------------------------
+OLD: 1. Security Operations / Incident Response Team 2. Digital Forensics and Investigations 3. IT/System Administrators 4. Governance, Risk, and Compliance (GRC) / Audit 5. Executive leadership (C-suite) 6. External auditors and legal reviewers
+
+NEW: 1. Security Operations / Incident Response Teams 2. Digital Forensics and Investigations 3. Compliance and Audit Functions 4. Field Investigation Units 5. Distributed Systems Operators 6. Legal and Regulatory Reviewers
+
+
+CHANGE 7: Implementation Plan (add synchronization phase)
+----------------------------------------------------------
+OLD: 
+P1: Define event schema, requirements, and threat model
+P2: Implement append-only storage and hash chaining
+P3: Implement digital signing and signature verification
+P4: Build verification engine and tamper-detection logic
+P5: Testing using simulated tampering scenarios
+P6: Final documentation and demonstration deliverables
+
+NEW:
+P1: Define event schema, requirements, and system architecture
+P2: Implement hash chaining and digital signing for local event chains
+P3: Design synchronization protocol (summary exchange, divergence detection)
+P4: Implement conflict resolution (vector clocks or Lamport timestamps)
+P5: Build verification engine for synchronized chains
+P6: Testing with multi-device scenarios and network disruption simulations
+P7: Final documentation and demonstration deliverables
+
+
+CHANGE 8: Project Outcomes (add synchronization deliverables)
+--------------------------------------------------------------
+OLD: This project will deliver a working prototype of a cryptographically verifiable event ledger designed to secure digital evidence logs. The system will allow users to create signed events, append them to an append-only hash-chained ledger, and verify the integrity and authenticity of the entire record set. Deliverables include: D1. A software library for event creation and chaining D2. A tamper-evident ledger structure D3.Digital signature generation and verification D4. A verification tool that detects deletion, reordering, or modification D5. Documentation and test cases demonstrating system behavior The outcome is a complete, cybersecurity-focused system that demonstrates secure system design, cryptographic integrity controls, and practical applicability to evidence-driven environments.
+
+NEW: This project will deliver a working prototype of a synchronization protocol for cryptographically chained event ledgers operating under intermittent network connectivity. The system will demonstrate offline event generation, automated synchronization when connectivity is restored, and conflict resolution for concurrent event chains. Deliverables include: D1. Event generation library with hash chaining and digital signatures D2. Synchronization protocol implementation (summary exchange, divergence detection, event transmission) D3. Conflict resolution mechanism using vector clocks or Lamport timestamps D4. Verification tool that detects tampering and validates synchronized chains D5. Multi-device demonstration showing offline operation and sync D6. Documentation and test cases demonstrating protocol behavior under various network conditions The outcome demonstrates distributed systems design, cryptographic protocols, and practical applicability to field operations and compliance scenarios.
+
+
+CHANGE 9: ADD SOURCES SECTION
+------------------------------
+Current form says "Click here to enter text" - replace with:
+
+[1] Lamport, L. (1978). Time, clocks, and the ordering of events in a distributed system. Communications of the ACM, 21(7), 558-565.
+
+[2] Fidge, C. J. (1988). Timestamps in message-passing systems that preserve the partial ordering. Australian Computer Science Communications, 10(1), 56-66.
+
+[3] Schneier, B., & Kelsey, J. (1999). Secure audit logs to support computer forensics. ACM Transactions on Information and System Security, 2(2), 159-176.
+
+[4] Laurie, B., Langley, A., & Kasper, E. (2013). Certificate transparency. RFC 6962.
+
+[5] Crosby, S. A., & Wallach, D. S. (2009). Efficient data structures for tamper-evident logging. USENIX Security Symposium.
+
+
+WHY THESE CHANGES MATTER:
+==========================
+
+1. REMOVES "ZK-LocalChain" - No link to your patent portfolio
+2. REMOVES "Endpoint Compromise" - No adversarial/hostile framing  
+3. ADDS "Intermittent Connectivity" - Matches white paper exactly
+4. ADDS "Synchronization Protocol" - Real technical contribution
+5. BROADER SCOPE - Distributed systems, not just security logging
+6. ACADEMICALLY STRONGER - Protocol design > tool implementation
+7. CLEANER IP SEPARATION - Capstone and patents don't overlap
+
+PERSONAL VALUE: HIGH
+====================
+
+✓ Write capstone proposal and white paper simultaneously (same content)
+✓ Easier instructor approval (well-known research problem)
+✓ Easier defense (standard distributed systems questions)
+✓ Better for publication (protocol papers > implementation papers)
+✓ Zero risk of university IP claims
+✓ Protects your business advantage (air-gapped stays secret)
