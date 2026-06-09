@@ -14,7 +14,7 @@ primary_sources_verified_2026-06-08:
   - Infineon OPTIGA Trust M Solution Reference Manual + KBA235163/235406 + personalize-optiga-trust (EAL6+, on-die GenKeyPair, ECDSA, cert slots, re-personalization)
 verify_before_build: see §9 (exact RM0456 RDP/option-byte mapping; OPTIGA personalization SKU/path; Secure Manager availability on U585)
 ---
-
+update: SIG-FW-ZKKEY-001 → v0.2 (close its §9): FW-S-05 → decide OEMiRoT (note STiRoT tamper-restrictiveness for Redoubt); FW-L-01 → RDP2 + HSM-custodied OEM2 password, set at pogo jig pre-pot; FW-P-02/03 → OPTIGA std-V3 DIY field-perso, pin identity curve (P-256 to match signing); add a Redoubt section: device SHOULD bind a signing-time TST when online, else emit log-ready records (already does via prior_event_hash); add rotating-key provisioning hook (R-19).
 # ZKKey Firmware & Secure-Configuration Enforcement Specification (Gate #3)
 
 ## 0. Purpose, scope, boundary
