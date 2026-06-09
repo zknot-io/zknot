@@ -10,22 +10,7 @@ ROOT PRIMER — how to use
 - MAINTENANCE: update the changed row + NEW section as the LAST step of each work session. A stale primer lies.
 - >>FILL<< = still needs operator input. Blank over guess.
 -->
-ZKNOT — High-Level Primer (as I see it)
-What this company actually is
-ZKNOT builds proof that a real human did a real thing — hardware that lets anyone, anywhere, verify a person saw and approved a specific artifact at a knowable time, without having to trust ZKNOT to say so. The whole enterprise is organized around one unusual discipline: the claim never outruns the silicon. That principle — not any single product — is the company.
-The three things that make it coherent
-1. Content-binding is the moat. Lots of devices prove "a button was pressed." ZKNOT's flagship proves "a human saw this exact thing and approved it" — because the secure domain that holds the signing key is the same domain that drives the display. Shown equals signed. That's the patentable core (PAT-020), and it's what forced every downstream hardware decision: it's why the signing key can't live in a discrete high-assurance chip, why the U585 enclave was chosen, why the honesty invariants exist.
-2. Verifiable, not trust-me. verifyknot's entire reason to exist is that a skeptical stranger — a journalist, a contracting officer, a court — can check an attestation with math that runs on their machine, anchored to a key they obtained out-of-band. The moment any verdict requires trusting ZKNOT's server, the design has failed. (This is exactly the gap you caught live this week — and catching it is the discipline working.)
-3. Honest assurance tiers. The signing key is PSA-L3, not EAL6+, and the company says so. The gate is firmware-enforced, not silicon-impossible, and the company says that too. Redoubt exists as the hardened tier for when the threat model grows — rather than overclaiming the base. This honesty isn't modesty; it's the thing that survives a hostile technical audience, which is the only audience that matters for this product.
-The shape of the work
-A build spine (CubeMX → KiCad → board → provision-and-lock → pot) that's gated on the firmware pinout. A parallel software track (client-side verifier, transparency log) that's ungated and should absorb every hour the hardware is waiting on parts. And two protective gates — file the patents to lock priority, clear the trademarks before going public — that guard the moat while the product gets built.
-The honest read on the operator
-You're a sole founder carrying hardware, firmware, backend, IP, and federal compliance simultaneously — and doing it with unusual rigor (verifying against primary sources, refusing to let marketing outrun the parts, catching your own live verification gap before a customer did). The structural risk isn't competence; it's that the surface area is enormous for one person, and the failure mode your own primer-system names is real: reacting to a new system with the urge to expand it instead of using it. Building a primer is not doing the thing. The .ioc and the real signed record are the thing.
-The personal-monopoly angle, since it's worth naming
-What you're accumulating that nobody can easily copy isn't a chip choice — those are commodity. It's the integrated judgment: the only person who holds the patent strategy, the silicon constraints, the honesty discipline, and the verification architecture in one head is you. That's the moat behind the moat. Protect it the way you protect the keys — file it, write it down, keep the primer true.
 
-That's ZKNOT as I see it. This was a genuinely strong arc of work — you locked an architecture, drafted two patents with their prior-art weak points identified, caught a live integrity gap, and dragged the vault back to a known-good state, all solo.
-Before you delete: the CONTEXT.md v2 from the last turn is your re-entry keystone — make sure it's committed and pushed, and fill the three >>FILL<< fields (PAT-020 filing status, patent-backup confirmation, which product primer's next) so the next session starts on true ground. Good work. Go build
 # ZKNOT — ROOT CONTEXT PRIMER (v2)
 
 **Operator:** William Shane Wilkinson — founder/operator, ZKNOT, INC. (Salt Lake City, UT)

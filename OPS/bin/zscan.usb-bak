@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+# zscan -- scan from the Ricoh fi-8170, OCR, name by the ZKNOT journal date-time convention.
+# Output: $DEST/YYYY-MM-DD_HHMMSS[_topic].pdf   (searchable PDF)
+#
+# Usage:
+#   zscan                 # no topic -> 2026-05-31_143022.pdf
+#   zscan "jag intake"    # with topic -> 2026-05-31_143022_jag-intake.pdf
+#
+# Override any default inline, e.g.:
+#   ZSCAN_SOURCE="ADF Front" ZSCAN_MODE=Gray zscan "patent exhibit"
+set -euo pipefail
+
+# ---- config -- adjust to match: scanimage --help -d "$DEV" ----
+DEV="${ZSCAN_DEV:-fujitsu:fi-8170:1851810}"  # PINNED: serial-stable id of your fi-8170
+DEST="${ZSCAN_DEST:-$HOME/Downloads}" # where finished PDFs land
+SOURCE="${ZSCAN_SOURCE:-ADF Duplex}"  # "ADF Duplex" both sides | "ADF Front" single-sided
+MODE="${ZSCAN_MODE:-Color}"           # Color | Gray | Lineart
+RES="${ZSCAN_RES:-300}"               # dpi (300 is the OCR sweet spot)
+LANGS="${ZSCAN_LANG:-eng}"            # tesseract langs, e.g. eng+deu
+# ----------------------------------------------------------------
+
+topic="${1:-}"
+slug=""
+if [ -n "$topic" ]; then
+  slug="_$(printf '%s' "$topic" \
+    | tr '[:upper:] ' '[:lower:]-' \
+    | tr -cd '[:alnum:]-' \
+    | sed 's/-\{2,\}/-/g; s/^-//; s/-$//')"
+fi
+
+stamp="$(date +%Y-%m-%d_%H%M%S)"
+out="$DEST/${stamp}${slug}.pdf"
+mkdir -p "$DEST"
+
+work="$(mktemp -d)"
+trap 'rm -rf "$work"' EXIT
+
+if [ -z "$DEV" ]; then
+  echo "!! no device set. Run: scanimage -L  and set ZSCAN_DEV or edit DEV." >&2
+  exit 1
+fi
+
+echo ">> scanning  dev='$DEV'  source='$SOURCE'  mode=$MODE  ${RES}dpi"
+set +e
+scanimage -d "$DEV" \
+  --source "$SOURCE" \
+  --mode "$MODE" \
+  --resolution "$RES" \
+  --format=tiff \
+  --batch="$work/p-%04d.tiff"
+rc=$?
+set -e
+
+shopt -s nullglob
+pages=("$work"/p-*.tiff)
+if [ "${#pages[@]}" -eq 0 ]; then
+  echo "!! no pages scanned (scanimage exit $rc). Is paper loaded? Is '$SOURCE' the right source string?" >&2
+  exit 1
+fi
+
+echo ">> merging ${#pages[@]} page(s) and running OCR..."
+tiffcp "${pages[@]}" "$work/merged.tiff"
+ocrmypdf -l "$LANGS" --rotate-pages --deskew --clean --optimize 1 \
+  "$work/merged.tiff" "$out"
+
+echo ">> done: $out"

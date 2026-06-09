@@ -1,0 +1,20 @@
+serial,zk_code,rev,potting,pigtail_mm,build_status,disposition,api_status,recipient,ship_date,notes
+PV1-00053,4JX4-NB4V-57X9,R1,clear,50,potted,?,200,,,photographed 2026-06-02 - confirmed R1 PAT 63/961118
+PV1-00046,501C-LPR0-FSAC,?,none-prepot,?,built,deploy-test,200,,,test/deploy unit - PUF deferred per record
+?,7PA6-EQSG-2PQM,?,?,?,?,?,200,,,run reconcile to pull serial
+?,8HRN-77JX-AFB3,?,?,?,?,?,200,,,run reconcile to pull serial
+?,A5RW-3SHW-27A4,?,?,?,?,?,200,,,run reconcile to pull serial
+?,C4G7-TW89-768V,?,?,?,?,?,200,,,run reconcile to pull serial
+?,JG3J-ARQ3-6WVP,?,?,?,?,?,200,,,run reconcile to pull serial
+?,JQQA-M409-B1TH,?,?,?,?,?,200,,,run reconcile to pull serial
+?,KAM6-M30B-4JHP,?,?,?,?,?,200,,,run reconcile to pull serial
+?,NDWY-XE6M-GXF7,?,?,?,?,?,200,,,run reconcile to pull serial
+?,PGLB-GN2D-F4EW,?,?,?,?,?,200,,,run reconcile to pull serial
+?,Q6B4-H7V3-9CW6,?,?,?,?,?,200,,,run reconcile to pull serial
+?,QG6M-EK0D-25QY,?,?,?,?,?,200,,,run reconcile to pull serial
+?,YVTX-RCH2-0JJG,?,?,?,?,?,200,,,run reconcile to pull serial
+?,D38K-Q430-4A57,?,?,?,?,?,200,,,run reconcile to pull serial
+GHOST,A3F7-K2M9-PX4R,-,-,-,-,ghost,404,,,doc placeholder only - not a physical unit - do not use or attest
+?,PENDING-1,R1,clear,50,in-progress,sale,,,,build night of 2026-06-02 - assign serial+code on attest
+?,PENDING-2,R1,clear,50,in-progress,sale,,,,build night of 2026-06-02 - assign serial+code on attest
+?,PENDING-3,R1,clear,50,in-progress,sale,,,,build night of 2026-06-02 - assign serial+code on attest
