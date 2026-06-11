@@ -78,3 +78,10 @@ node_modules/
 
 # Filed patent records — backed up off-repo, intentionally not tracked
 01_PATENTS/
+# KiCad
+*-backups/
+fp-info-cache
+*.kicad_prl
+_autosave-*
+*.lck
+*~
