@@ -85,3 +85,8 @@ fp-info-cache
 _autosave-*
 *.lck
 *~
+*.net
+fp-info-cache
+*-bak
+*_autosave*
+*.kicad_prl
