@@ -1,0 +1,11 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "102010428") (type "KiCad") (uri "${KIPRJMOD}/lib/symbols/102010428.kicad_sym") (options "") (descr ""))
+	(lib (name "PowerVerify_Pigtail") (type "KiCad") (uri "${KIPRJMOD}/lib/symbols/PowerVerify_Pigtail.kicad_sym") (options "") (descr ""))
+	(lib (name "SC0915") (type "KiCad") (uri "${KIPRJMOD}/lib/symbols/SC0915.kicad_sym") (options "") (descr ""))
+	(lib (name "SLS32AIA010MHUSON10XTMA2") (type "KiCad") (uri "${KIPRJMOD}/lib/symbols/SLS32AIA010MHUSON10XTMA2.kicad_sym") (options "") (descr ""))
+	(lib (name "TL1100F160Q") (type "KiCad") (uri "${KIPRJMOD}/lib/symbols/TL1100F160Q.kicad_sym") (options "") (descr ""))
+	(lib (name "USB4105-GF-A") (type "KiCad") (uri "${KIPRJMOD}/lib/symbols/USB4105-GF-A.kicad_sym") (options "") (descr ""))
+	(lib (name "WL-SMTW_3528") (type "KiCad") (uri "${KIPRJMOD}/lib/symbols/WL-SMTW_3528.kicad_sym") (options "") (descr ""))
+	(lib (name "ABS07-120-32.768KHZ-T") (type "KiCad") (uri "${KIPRJMOD}/lib/symbols/ABS07-120-32.768KHZ-T.kicad_sym") (options "") (descr ""))
+)
