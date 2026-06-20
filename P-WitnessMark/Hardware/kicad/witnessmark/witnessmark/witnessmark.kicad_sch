@@ -11539,7 +11539,7 @@
 				)
 			)
 		)
-		(property "Value" "Crystal"
+		(property "Value" "SAW31212F58-32.768K"
 			(at 184.15 323.85 0)
 			(show_name no)
 			(do_not_autoplace no)
