@@ -9290,7 +9290,7 @@
 		(uuid "06becada-1f37-4117-8535-e163c794fcf4")
 	)
 	(label "+3V3"
-		(at 105.41 90.17 0)
+		(at 102.87 90.17 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9680,7 +9680,7 @@
 		(uuid "8e0e7b21-3ad7-4c8c-a53b-17e5255baa40")
 	)
 	(label "+3V3"
-		(at 105.41 92.71 0)
+		(at 102.87 92.71 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9730,7 +9730,7 @@
 		(uuid "9d0c6d75-c857-4ea5-aeb8-a85b523b8535")
 	)
 	(label "+3V3"
-		(at 105.41 87.63 0)
+		(at 102.87 87.63 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9890,7 +9890,7 @@
 		(uuid "c1bede4e-a374-45be-8f11-9361b6dc5dac")
 	)
 	(label "+3V3"
-		(at 104.1399 85.09 0)
+		(at 102.87 85.09 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12457,7 +12457,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "22Ω"
+		(property "Value" "0Ω"
 			(at 158.75 36.8299 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12701,7 +12701,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "1µF"
+		(property "Value" "4.7µF"
 			(at 85.09 102.8699 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12864,7 +12864,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "33-100Ω"
+		(property "Value" "0Ω"
 			(at 223.52 -25.4 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13153,7 +13153,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "0 Ω / DNP"
+		(property "Value" "0Ω"
 			(at 186.69 116.8399 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14063,7 +14063,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "22Ω"
+		(property "Value" "0Ω"
 			(at 145.288 36.576 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14145,7 +14145,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "33-100Ω"
+		(property "Value" "0Ω"
 			(at 242.57 -25.4001 0)
 			(show_name no)
 			(do_not_autoplace no)
