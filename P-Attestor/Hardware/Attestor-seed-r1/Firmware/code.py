@@ -1,4 +1,4 @@
-# code.py  --  ZKNOT Rev2 Attestor : Pico signing firmware (CircuitPython)
+# code.py  --  ZKNOT Attestor : Seeed XIAO RP2040 signing firmware (CircuitPython)
 # =============================================================================
 # Press button -> ATECC608 signs a challenge with slot-0 -> signature out over USB.
 # 4 LEDs show state: READY / ARMED / BUSY / DONE.
@@ -6,25 +6,32 @@
 # Tier-0 self-assertion. Presence-actuation only (button = "sign now").
 # NOT display-then-confirm. Stays on the giveaway side of the PAT-001 line.
 #
-# Pin map (matches the breadboard wiring):
-#   SDA=GP4  SCL=GP5   |  LEDs: READY=GP6 ARMED=GP7 BUSY=GP8 DONE=GP9  |  BTN=GP15
+# PORTED from the Pico firmware. Crypto path UNCHANGED (verifies against
+# verify_unit.py). Board layer changed:
+#   (1) PINS dict  -- locked from Attestor-seed-r1-netlist.net
+#   (2) button pull -- external R7 pull-up + C3 debounce, so internal pull off.
+# LED drive is active-high (cathode->GND), unchanged.
+#
+# Pin map (Attestor-seed-r1 PCB, U1 = XIAO RP2040; from netlist):
+#   /SDA   D4  board.SDA  GP6   (R1 pull-up, ATECC U3.5)
+#   /SCL   D5  board.SCL  GP7   (R2 pull-up, ATECC U3.6)
+#   /BTN   D0  board.D0   GP26  (R7 ext pull-up + C3 debounce)
+#   /LED_G READY  D1  board.D1  GP27  (green)
+#   /LED_B ARMED  D3  board.D3  GP29  (blue)
+#   /LED_Y BUSY   D2  board.D2  GP28  (yellow)
+#   /LED_R DONE   D6  board.D6  GP0   (red)
 #
 # Output over USB serial:
 #   BOOT serial=<18hex> selftest=PASS|FAIL
 #   SIG <serial> <challenge:64hex> <signature:128hex>   (one per button press)
-#
-# A host (verify_unit.py) or verifyknot.io/start reads SIG lines and verifies
-# the signature against the slot-0 pubkey recorded for that serial in the ledger.
-# Optionally, send a 64-hex-char line over serial to set the next challenge
-# (then press the button to sign it) -> presence-gated challenge/response.
 
 import board, busio, digitalio, time, os, sys, supervisor
 from adafruit_atecc.adafruit_atecc import ATECC
 
 SLOT = 0
-PINS = dict(SDA=board.GP4, SCL=board.GP5,
-            READY=board.GP6, ARMED=board.GP7, BUSY=board.GP8, DONE=board.GP9,
-            BTN=board.GP15)
+PINS = dict(SDA=board.SDA, SCL=board.SCL,
+            READY=board.D1, ARMED=board.D3, BUSY=board.D2, DONE=board.D6,
+            BTN=board.D0)
 
 def _out(pin):
     d = digitalio.DigitalInOut(pin); d.direction = digitalio.Direction.OUTPUT
@@ -32,7 +39,7 @@ def _out(pin):
 
 ready, armed, busy, done = (_out(PINS[k]) for k in ("READY", "ARMED", "BUSY", "DONE"))
 btn = digitalio.DigitalInOut(PINS["BTN"]); btn.direction = digitalio.Direction.INPUT
-btn.pull = digitalio.Pull.UP   # pressed = LOW
+btn.pull = None   # external pull-up (R7) on this board; pressed = LOW
 
 def all_off(): ready.value = armed.value = busy.value = done.value = False
 def error_blink():
@@ -53,12 +60,11 @@ def is_hex64(s): return len(s) == 64 and all(c in "0123456789abcdefABCDEF" for c
 i2c = busio.I2C(PINS["SCL"], PINS["SDA"], frequency=100000)
 try:
     atecc = ATECC(i2c)
-    serial = atecc.serial_number          # Adafruit lib already returns an uppercase hex string
+    serial = atecc.serial_number
 except Exception as e:           # noqa: BLE001
     print("INIT_FAIL", repr(e)); error_blink()
     raise SystemExit
 
-# boot self-test: prove the part actually signs before we trust the button loop
 try:
     sig = bytes(atecc.ecdsa_sign(SLOT, bytearray(os.urandom(32))))
     selftest = "PASS" if len(sig) == 64 else "FAIL"
@@ -69,7 +75,7 @@ except Exception as e:           # noqa: BLE001
 print("BOOT serial=%s selftest=%s" % (serial, selftest))
 if selftest != "PASS":
     error_blink(); raise SystemExit
-ready.value = True               # chip alive + signs
+ready.value = True
 
 # --- main loop ----------------------------------------------------------------
 _buf = ""
@@ -83,17 +89,17 @@ def poll_line():
         _buf += c
     return None
 
-pending = None        # optional externally-supplied challenge (32 bytes)
+pending = None
 prev = True
 armed.value = True
 while True:
     line = poll_line()
     if line and is_hex64(line):
-        pending = unhex(line)     # next press signs this challenge
+        pending = unhex(line)
 
     cur = btn.value
-    if prev and not cur:          # falling edge = press
-        time.sleep(0.02)          # debounce
+    if prev and not cur:
+        time.sleep(0.02)
         if not btn.value:
             armed.value = False; busy.value = True
             challenge = pending if pending else os.urandom(32)
@@ -107,7 +113,7 @@ while True:
                 busy.value = False
                 print("SIGN_FAIL", repr(e)); error_blink()
             armed.value = True
-            while not btn.value:      # wait for release
+            while not btn.value:
                 time.sleep(0.01)
     prev = cur
     time.sleep(0.005)
