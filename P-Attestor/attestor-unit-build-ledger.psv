@@ -1,0 +1,24 @@
+# attestor-unit-build-ledger.psv
+# ZKNOT Attestor seed-r1 — unit-build + label-print tracking ledger (SOP-ATTESTOR-001 §8)
+# LIVING, APPEND-ONLY. Do not rewrite rows; append corrections as new rows w/ note. GPG-sign commits.
+# Identity source of truth: ~/ZKNOT/P-ZKKEY/atecc-provisioning-ledger.psv (serial <-> pubkey)
+#
+# WORKFLOW (per unit, handoff §6):
+#   1. Read serial from board boot banner / verify_unit.py
+#   2. Confirm serial enrolled in provisioning ledger  -> enrolled=Y (NEVER label an unenrolled chip)
+#   3. Functional check: unit signs against its enrolled key -> verify_tested=Y
+#   4. Print label for THAT serial (no batch-printing detached from boards)
+#   5. Pot -> potted=Y ; record sale ref when sold
+#
+# FIXED LABEL CONTENT (every seed-r1 commercial unit — do NOT vary):
+#   ZKNOT ATTESTOR / seed-r1 / PRESENCE-TIER · SELF-ASSERTED / Verify verifyknot.io / ZKNOT, INC.
+#   NO CAGE (commercial). NO "secure element" / tamper / FIPS / assurance verbs.
+#   QR target: verifyknot.io/v/<serial-lowercase> IF route live (curl check), else verifyknot.io/start
+#   Serial printed grouped 4-4-4-4-2 human-readable; QR encodes ungrouped lowercase.
+#
+# Columns:
+# build_no | serial_raw(lowercase,18hex) | serial_grouped | enrolled | verify_tested | label_printed | qr_target | potted | build_date | operator | sale_ref | notes
+build_no|serial_raw|serial_grouped|enrolled|verify_tested|label_printed|qr_target|potted|build_date|operator|sale_ref|notes
+ATT-SR1-0001|>>FILL<<|>>FILL<<|N|N|N|>>FILL: /v/<serial> or /start<<|N|>>FILL<<|WSW|>>FILL<<|first commercial pot run
+ATT-SR1-0002|>>FILL<<|>>FILL<<|N|N|N|>>FILL: /v/<serial> or /start<<|N|>>FILL<<|WSW|>>FILL<<|worked example in handoff = 01232753aeb3144fee (confirm against actual board before assigning)
+ATT-SR1-0003|>>FILL<<|>>FILL<<|N|N|N|>>FILL: /v/<serial> or /start<<|N|>>FILL<<|WSW|>>FILL<<|first commercial pot run
